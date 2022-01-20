@@ -59,7 +59,7 @@ React Antd Admin 是一个免费开源的中后台模版。使用了最新的`re
 │   │   ├─ constant.js        # 基础常量
 │   ├─ icons                  # svg资源
 │   ├─ layouts                # layout
-│   ├─ lib                    # 第三方库按需加载
+│   ├─ vendor                 # 第三方库按需加载
 │   ├─ mock                   # mock数据
 │   ├─ router                 # 路由
 │   ├─ store                  # 全局store管理

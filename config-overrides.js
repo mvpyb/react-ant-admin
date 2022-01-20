@@ -168,7 +168,7 @@ module.exports = {
       '@config' : resolve( './src/config' ),
       '@router' : resolve( './src/router' ),
       '@store' : resolve( './src/store' ),
-      '@lib' : resolve( './src/lib' ),
+      '@vendor' : resolve( './src/vendor' ),
       '@utils' : resolve( './src/utils' ),
       '@views' : resolve( './src/views' ),
       '@layout' : resolve( './src/views/layout' ),
