@@ -39,4 +39,3 @@ dist/**/*
 
 package-lock.json
 yarn.lock
-package1.json
