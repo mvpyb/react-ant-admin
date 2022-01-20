@@ -1,0 +1,10 @@
+# /node_modules/* and /bower_components/* ignored by default
+
+/test
+config
+/node_modules
+/scripts
+src/mock
+src/lib
+src/index.js
+#src/*

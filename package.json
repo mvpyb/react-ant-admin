@@ -1,0 +1,89 @@
+{
+  "name": "react-ant-admin",
+  "version": "1.0.0",
+  "author": "灰是小灰灰的灰<454539387@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "react-app-rewired start",
+    "build": "react-app-rewired --max-old-space-size=4096 build ",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "commit": "git cz",
+    "lint": "eslint --ext .js,.jsx src",
+    "lint-fix": "eslint --fix --ext .js,.jsx src"
+  },
+  "private": true,
+  "dependencies": {
+    "@manaflair/redux-batch": "^1.0.0",
+    "@reduxjs/toolkit": "^1.7.1",
+    "@testing-library/user-event": "^7.2.1",
+    "@toast-ui/react-editor": "^2.1.0",
+    "antd": "^4.18.4",
+    "axios": "^0.24.0",
+    "clipboard": "^2.0.6",
+    "draft-js": "^0.11.5",
+    "draftjs-to-html": "^0.9.1",
+    "draftjs-to-markdown": "^0.6.0",
+    "driver.js": "^0.9.8",
+    "echarts": "^4.7.0",
+    "file-saver": "^2.0.2",
+    "js-cookie": "^3.0.1",
+    "jszip": "^3.4.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "loadsh": "0.0.4",
+    "nprogress": "^0.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-beautiful-dnd": "^13.0.0",
+    "react-countup": "^4.3.3",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-document-title": "^2.0.3",
+    "react-dom": "^17.0.2",
+    "react-draft-wysiwyg": "^1.14.5",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^7.2.0",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "3.4.1",
+    "react-transition-group": "^4.4.1",
+    "redux-logger": "^3.0.6",
+    "screenfull": "^5.0.2",
+    "script-loader": "^0.7.2",
+    "svgo": "^2.8.0",
+    "xlsx": "^0.16.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "commitizen": "^4.0.3",
+    "customize-cra": "^0.9.1",
+    "customize-cra-eslint": "^0.1.3",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-react": "^7.28.0",
+    "mockjs": "^1.1.0",
+    "react-app-rewired": "^2.1.5",
+    "script-ext-html-webpack-plugin": "2.1.3",
+    "svg-sprite-loader": "^6.0.11",
+    "svgo-loader": "^3.0.0",
+    "user-agent": "^1.0.4",
+    "webpack": "^4.42.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
