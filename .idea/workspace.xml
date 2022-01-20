@@ -2,22 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f20c227d-431d-486e-8b82-1d8865fbeffe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/excel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/monitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/remoteSearch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/table.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/constant.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/constant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/imgs/draggable.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/imgs/githubCorner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/imgs/reward.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/imgs/wechat.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BreadCrumb/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BreadCrumb/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FullScreen/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FullScreen/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Hamburger/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Hamburger/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Mallki/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Mallki/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Markdown/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PanThumb/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PanThumb/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RichTextEditor/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RichTextEditor/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SvgIcon/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SvgIcon/index.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TypingCard/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UploadExcel/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/lib/blankScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/lib/jsError.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/lib/timing.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/lib/xhr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/utils/getLastEvent.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/utils/getSelector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/utils/onload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/monitor/utils/tracker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mock/excel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mock/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mock/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/cookies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cookies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/login/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/login/logo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login/logo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/login/logo.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login/logo.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/login/passwordLogin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login/passwordLogin.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mock/monitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mock/remoteSearch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mock/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +161,7 @@
       <workItem from="1642045272949" duration="46160000" />
       <workItem from="1642382277971" duration="28725000" />
       <workItem from="1642554946827" duration="34099000" />
-      <workItem from="1642647278947" duration="15482000" />
+      <workItem from="1642647278947" duration="16336000" />
     </task>
     <servers />
   </component>
@@ -172,10 +202,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="dock-window-2/1920.1.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1642644589775" />
-    <state x="213" y="95" width="1540" height="692" key="find.popup" timestamp="1642668176183">
+    <state x="213" y="95" width="1540" height="692" key="find.popup" timestamp="1642669248926">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="213" y="95" width="1540" height="692" key="find.popup/1920.1.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1642668176183" />
+    <state x="213" y="95" width="1540" height="692" key="find.popup/1920.1.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1642669248926" />
     <state x="601" y="246" width="700" height="530" key="recent.locations.popup" timestamp="1642125515718">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

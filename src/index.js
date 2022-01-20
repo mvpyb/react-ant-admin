@@ -5,7 +5,6 @@ import './icons'
 import "antd/dist/antd.less"
 import "@/styles/index.less"
 import "./mock"
-import '@/lib/monitor'
 
 const render = () => {
   ReactDOM.render(

@@ -4,9 +4,6 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 // import { unwrapResult } from '@reduxjs/toolkit'
 
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-
 import store from '@/store'
 import { asyncPermissionRoutes } from '@store/reducers/permission'
 import { getUserInfoSlice, clearUserInfo } from '@store/reducers/users'
@@ -37,7 +34,6 @@ const RouterComponent = ( props ) => {
 
   // 路由守卫
   const routeGuard = async() => {
-    NProgress.start()
     const hasToken = getCookie( TOKEN )
 
     if ( hasToken ) {
@@ -63,7 +59,6 @@ const RouterComponent = ( props ) => {
             // 退出登录
             dispatch( clearUserInfo() )
             navigate( '/login' )
-            NProgress.done()
             window.location.reload()
           }
         } else {
@@ -85,7 +80,6 @@ const RouterComponent = ( props ) => {
       // 设置路由
       if ( whiteList.indexOf( pathname ) === -1 ) {
         navigate( '/login', { replace : true } )
-        NProgress.done()
       }
     }
   }
