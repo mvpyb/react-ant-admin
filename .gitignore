@@ -7,7 +7,6 @@
 
 # Editor directories and files
 .idea
-*.idea
 .vscode
 *.suo
 *.ntvs*
