@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+// TODO hook 用法
+// import { useTranslation } from 'react-i18next'
+
+// TODO HOC 用法
+import { withTranslation } from 'react-i18next'
+
 import DocumentTitle from 'react-document-title'
 import './index.less'
 
@@ -10,10 +16,10 @@ import Logo from './logo'
 import PasswordLogin from './passwordLogin'
 // import SvgIcon from '@/components/SvgIcon'
 
-const Login = ( props ) => {
-  // console.log( 'LoginLogin', props.username )
+const Login = ( { t } ) => {
   const [loading, setLoading] = useState( false )
   const navigate = useNavigate()
+  // const { t } = useTranslation()
 
   const loginStart = () => {
     setLoading( true )
@@ -22,18 +28,20 @@ const Login = ( props ) => {
   const loginSuccess = async() => {
     navigate( '/' )
   }
-  const loginFailed = () => {}
+  const loginFailed = () => {
+    // setLoading( false )
+  }
 
   return (
-    <DocumentTitle title={'用户登录'}>
+    <DocumentTitle title= {t( 'login.title' )}>
       <div className='login-container syNormal un-select'>
         <div className={'body fix-width'}>
           <div className={'top'}>
             <Logo className='logos' />
-            <div className='desc'>影创科技 - 中后台模板</div>
+            <div className='desc'> {t( 'login.subTitle' )}</div>
           </div>
           <div className='main'>
-            <Spin spinning={loading} tip='登录中...'>
+            <Spin spinning={loading} tip={ t( 'login.loading' ) }>
               <PasswordLogin
                 loginFailed={ loginFailed }
                 loginSuccess={ loginSuccess }
@@ -45,11 +53,10 @@ const Login = ( props ) => {
             <div className='desc'/>
           </div>
         </div>
-
       </div>
     </DocumentTitle>
   )
 }
 
-export default Login
+export default withTranslation()( Login )
 // export default connect( ( state ) => state.users )( Login )

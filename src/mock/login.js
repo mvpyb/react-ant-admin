@@ -8,23 +8,23 @@ const users = {
   "admin-token" : {
     id : "admin",
     roles : [ "admin"],
-    name : "react-antd-admin",
-    avatar : "https://s1.ax1x.com/2020/04/28/J5hUaT.jpg",
-    description : "拥有系统内所有菜单和路由权限"
+    username : "灰是小灰灰的灰",
+    avatar : "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80",
+    description : "我是超级管理员"
   },
   "editor-token" : {
     id : "editor",
     roles : ["editor"],
-    name : "编辑员",
-    avatar : "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-    description : "可以看到除户管理页面之外的所有页面"
+    username : "编辑员",
+    avatar : "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80",
+    description : "我是普通用户"
   },
   "guest-token" : {
     id : "guest",
     roles : ["guest"],
-    name : "游客",
-    avatar : "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-    description : "仅能看到Dashboard、开发文档、权限测试和关于作者四个页面"
+    username : "游客",
+    avatar : "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80",
+    description : "产品啥也不是"
   }
 }
 
@@ -34,32 +34,37 @@ export default {
     const token = tokens[username]
     if ( !token ) {
       return {
-        status : 1,
+        code : -1,
         message : "用户名或密码错误"
       }
     }
     return {
-      status : 0,
-      token
+      code : 200,
+      message : "success",
+      data : {
+        token
+      }
     }
   },
   userInfo : ( config ) => {
-    const token = config.body
+    const { token } = JSON.parse( config.body )
     const userInfo = users[token]
-    if ( !userInfo ) {
+    if ( userInfo ) {
       return {
-        status : 1,
-        message : "获取用户信息失败"
+        code : 5004,
+        message : "无效token",
+        data : {}
       }
     }
     return {
-      status : 0,
-      userInfo
+      code : 200,
+      message : 'success',
+      data : userInfo
     }
   },
   getUsers : () => {
     return {
-      status : 0,
+      code : 200,
       users : Object.values( users )
     }
   },
@@ -112,8 +117,8 @@ export default {
   },
   logout : ( _ ) => {
     return {
-      status : 0,
-      data : "success"
+      code : 200,
+      message : "success"
     }
   }
 }

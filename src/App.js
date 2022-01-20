@@ -6,6 +6,7 @@ import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
 import store from './store'
 import Router from './router'
+import '@config/il8n'
 
 class App extends Component {
   render() {

@@ -2,7 +2,8 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { setToken, setUserInfo } from '@store/reducers/users'
+import { setToken } from '@store/reducers/users'
+import { getUserInfoSlice } from '@store/reducers/users'
 
 import './index.less'
 
@@ -17,6 +18,7 @@ const { Item } = Form
 
 const PasswordLogin = ( props ) => {
   const dispatch = useDispatch()
+
   const trigger = ['onChange', 'onBlur']
   // 这个是rules自定义的验证方法
   const checkAccount = value => {
@@ -26,9 +28,12 @@ const PasswordLogin = ( props ) => {
         message : '账号格式错误'
       }
     } else if ( !validPhone( value ) ) {
+      // return {
+      //   pass : false,
+      //   message : '账号格式错误'
+      // }
       return {
-        pass : false,
-        message : '账号格式错误'
+        pass : true
       }
     } else {
       return {
@@ -70,8 +75,8 @@ const PasswordLogin = ( props ) => {
   }
   let initialValues = {
     remember : true,
-    username : '15961917987',
-    password : '15961917987'
+    username : 'admin',
+    password : 'password'
   }
   const itemConfig = {
     colon : false, //
@@ -116,30 +121,23 @@ const PasswordLogin = ( props ) => {
       // 删除登录信息
       localStorageHandle.remove( `${STORAGE_PREFIX}_login_info` )
     }
-
+    
     // 发送登录请求
     try {
       const response = await login( {
-        account : username,
-        password : password
+        username,
+        password
       } )
       const { code, data } = response
-      // console.log( 'response', response )
       if ( code == 200 ) {
-        // 保存store
         await dispatch( setToken( data.token ) )
-        await dispatch( setUserInfo( {
-          ...data,
-          username : data.username || data.nickName || data.phone,
-          roles : ['admin']
-        } ) )
-        loginSuccess && loginSuccess( data )
+        const payload = await dispatch( getUserInfoSlice() ).unwrap()
+        loginSuccess && loginSuccess( payload )
       }
     } catch ( error ) {
       loginFailed && loginFailed( error )
     } finally {
       loginComplete && loginComplete()
-      // console.log( '2 num', num )
     }
   }
 
@@ -149,7 +147,7 @@ const PasswordLogin = ( props ) => {
 
   const onFinishFailed = error => {
     // const { values, errorFields, outOfDate } = error
-    console.log( 'onFinishFailed', error )
+    // console.log( 'onFinishFailed', error )
   }
 
   const onFieldsChange = ( changedFields, allFields ) => {

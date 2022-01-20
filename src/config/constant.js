@@ -8,7 +8,8 @@ const GLOBAL_DATA = {
   env : 'fat',
   proxy_url : 'https://webapi-fat.shadowcreator.com',
   dev : {
-    'baseUrl' : '/api/100026'
+    // 'baseUrl' : '/api/100026'
+    'baseUrl' : '/dev-api'
   },
   fat : {
     'baseUrl' : 'http://webapi-fat.shadowcreator.com/100026'

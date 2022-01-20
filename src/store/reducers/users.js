@@ -2,14 +2,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getCookie, addCookie, removeCookie } from '@utils/cookies'
 import { COOKIE_PREFIX, TOKEN } from '@config/constant'
-import { getUserInfo } from '@api/login'
+import { getUserInfo } from '@api/user'
 
 export const initialState = {
   username : '',
   roles : [],
   avatar : '',
-  token : getCookie( TOKEN ) || '',
-  count : 0
+  token : getCookie( TOKEN ) || ''
 }
 
 // A slice for posts with our three reducers
@@ -17,15 +16,11 @@ export const userSlice = createSlice( {
   name : 'users',
   initialState,
   reducers : {
-    setCount : ( state, { payload : count } ) => {
-      state.count = state.count + count
-    },
     setToken : ( state, { payload : token } ) => {
       state.token = token || ''
       addCookie( TOKEN, token )
     },
     setUserInfo : ( state, { payload : { roles, avatar, username }} ) => {
-      console.log( 'setUserInfo', username )
       state.roles = roles
       state.avatar = avatar || ''
       state.username = username || ''
@@ -51,27 +46,20 @@ export const userSlice = createSlice( {
       // console.log('pending 进行中');
     } )
     builder.addCase( getUserInfoSlice.fulfilled, ( state, { payload } ) => {
-      // console.log( 'fulfilled', payload, state );
-      userSlice.actions.setUserInfo( {
-        // ...payload,
-        username : payload.username || payload.nickName || payload.phone,
-        avatar : payload.avatar || '',
-        roles : ['admin']
-      } )
+      // console.log( '1 fulfilled', { payload, state } )
     } )
     builder.addCase( getUserInfoSlice.rejected, ( state, action ) => {
-      userSlice.actions.clearUserInfo()
+      // userSlice.actions.clearUserInfo()
     } )
   }
 
 } )
 
-export const { setCount, setToken, setUserInfo, clearUserInfo } = userSlice.actions
+export const { setToken, setUserInfo, clearUserInfo } = userSlice.actions
 
 // 异步请求
 export const asyncGetInfo = payload => async( dispatch ) => {
   const { code, data } = await getUserInfo()
-  console.log( 'asyncGetInfo', data )
   if ( code == 200 ) {
     dispatch( setUserInfo( {
       ...data,
@@ -89,23 +77,27 @@ export const asyncGetInfo = payload => async( dispatch ) => {
 export const getUserInfoSlice = createAsyncThunk(
   'user/getUserInfo',
   async( params, thunkAPI ) => {
+
     try {
-      const { code, data } = await getUserInfo()
+      const { code, data } = await getUserInfo( { token : getCookie( TOKEN ) || thunkAPI.getState().users.token } )
       if ( code == 200 ) {
         const result = {
           username : data.username || data.nickName || data.phone,
           avatar : data.avatar || '',
           roles : ['admin']
         }
-        // console.log( 'data', { ...result } )
-        // console.log( 'thunkAPI', thunkAPI )
-        // console.log( 'getState', thunkAPI.getState() )
+
+        thunkAPI.dispatch( setUserInfo( result ) )
+
         return result
       } else {
+        thunkAPI.dispatch( clearUserInfo( ) )
         return thunkAPI.rejectWithValue( data.message || '登录失败' )
         // return Promise.reject( '登录请求错误' )
       }
     } catch ( err ) {
+      console.log( 'err', err )
+      thunkAPI.dispatch( clearUserInfo( ) )
       return thunkAPI.rejectWithValue( err.response.data || '登录失败' )
     }
   }
