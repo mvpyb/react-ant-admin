@@ -119,7 +119,7 @@ const PasswordLogin = ( props ) => {
       // 删除登录信息
       localStorageHandle.remove( 'login_info' )
     }
-    
+
     // 发送登录请求
     try {
       const response = await login( {
