@@ -65,4 +65,11 @@ export default {
       data : userInfo
     }
   },
+  
+  logout: () => {
+    return {
+      code: 200,
+      message: "success",
+    };
+  },
 }
