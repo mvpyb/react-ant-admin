@@ -2,7 +2,6 @@
 const WX_APP_ID = 'appid'
 const STORAGE_PREFIX = 'rad_'
 const COOKIE_PREFIX = 'rad_'
-const TOKEN = `${COOKIE_PREFIX}token`
 
 const GLOBAL_DATA = {
   env : 'fat',
@@ -37,13 +36,10 @@ const LOGIN_ERROR_CODE = [
   }
 ]
 
-// exports.GLOBAL_DATA = GLOBAL_DATA;
-
 module.exports = {
   WX_APP_ID,
   STORAGE_PREFIX,
   COOKIE_PREFIX,
-  TOKEN,
   GLOBAL_DATA,
   WHITE_CODE_LIST,
   LOGIN_ERROR_CODE
