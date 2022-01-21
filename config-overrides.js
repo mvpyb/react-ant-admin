@@ -179,12 +179,6 @@ module.exports = {
     addCustomize(),
 
     adjustStyleLoaders( ( { use : [, css, postcss, resolve, processor] } ) => {
-      // css.options.sourceMap = true
-      // css.options.modules = {
-      //   // 配置默认的样式名称规则
-      //   localIdentName : '[name]__[local]--[hash:base64:5]'
-      // }
-
       css.options.sourceMap = true // css-loader
       postcss.options.sourceMap = true // postcss-loader
 
