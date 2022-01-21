@@ -1,10 +1,16 @@
-class sessionStorageProxy {
+
+import { STORAGE_PREFIX } from '@config/constant'
+
+class StorageProxy {
+  
   constructor( storageModel ) {
     this.storage = storageModel
   }
+  
   set( key, value ) {
     const { storage } = this
     if ( key ) {
+      key = `${STORAGE_PREFIX}_${key}`
       const data = JSON.stringify( value )
       storage.setItem( key, data )
     }
@@ -13,6 +19,7 @@ class sessionStorageProxy {
   get( key ) {
     const { storage } = this
     if ( key ) {
+      key = `${STORAGE_PREFIX}_${key}`
       let data = storage.getItem( key )
       if ( data == '' || data == null || JSON.stringify( data ) == '{}' ) {
         data = ''
@@ -39,6 +46,7 @@ class sessionStorageProxy {
       if ( isAll ) {
         this.clear()
       } else {
+        key = `${STORAGE_PREFIX}_${key}`
         storage.removeItem( key )
       }
     }
@@ -49,7 +57,7 @@ class sessionStorageProxy {
   }
 }
 
-class localStorageProxy extends sessionStorageProxy {
+class localStorageProxy extends StorageProxy {
   // eslint-disable-next-line no-useless-constructor
   constructor( localStorage ) {
     super( localStorage )
@@ -57,7 +65,7 @@ class localStorageProxy extends sessionStorageProxy {
 }
 
 // eslint-disable-next-line new-cap
-export const sessionStorageHandle = new sessionStorageProxy( window.sessionStorage )
+export const sessionStorageHandle = new StorageProxy( window.sessionStorage )
 
 // eslint-disable-next-line new-cap
-export const localStorageHandle = new localStorageProxy( window.localStorage )
+export const localStorageHandle = new StorageProxy( window.localStorage )
