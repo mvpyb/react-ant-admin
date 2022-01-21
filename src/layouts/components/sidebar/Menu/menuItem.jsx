@@ -72,6 +72,7 @@ const SideMenu = ( props ) => {
     return <Link to={to} {...rest} />
   }
 
+  // TODO 此处把遍历方法转移到父组件中即可
   return (
     <>
       { menuList &&

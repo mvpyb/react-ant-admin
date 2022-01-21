@@ -37,11 +37,8 @@ const SideMenu = ( props ) => {
           >
             <MenuItem menuList={menuList}/>
 
-            {/* { menuList &&
-            menuList.map( ( route, index ) =>
-              <MenuItem key={route.path + index} item={route} basePath={route.path} />
-            )}*/}
-
+            {/* { menuList && menuList.map( ( item, index ) => <MenuItem key={item.path + index} item={item} basePath={item.path} /> )}*/}
+6
           </Menu>
 
         </div>
