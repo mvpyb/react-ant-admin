@@ -1,7 +1,6 @@
 
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { getCookie, addCookie } from '@utils/cookies'
-import { getUserInfo, logOut } from '@api/user'
 
 export const initialState = {
   sidebarStatus : getCookie( 'sidebarStatus' ) ? !!+getCookie( 'sidebarStatus' ) : true,
