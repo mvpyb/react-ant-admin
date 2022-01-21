@@ -2,7 +2,7 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { getUserInfoSlice, setToken } from '@store/reducers/users'
+import { getUserInfoSlice, SET_TOKEN } from '@store/reducers/users'
 
 import './index.less'
 
@@ -128,7 +128,7 @@ const PasswordLogin = ( props ) => {
       } )
       const { code, data } = response
       if ( code == 200 ) {
-        await dispatch( setToken( data.token ) )
+        await dispatch( SET_TOKEN( data.token ) )
         const payload = await dispatch( getUserInfoSlice() ).unwrap()
         loginSuccess && loginSuccess( payload )
       }
