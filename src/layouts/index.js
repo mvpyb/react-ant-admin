@@ -11,7 +11,7 @@ const BaseLayout = ( props ) => {
       <Layout>
         <Header>Header</Header>
         <Content>
-          <div>Content</div>
+          <div>content</div>
           <Outlet />
         </Content>
         <Footer>Footer</Footer>
