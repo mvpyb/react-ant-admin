@@ -2,11 +2,10 @@
 import { STORAGE_PREFIX } from '@config/constant'
 
 class StorageProxy {
-  
   constructor( storageModel ) {
     this.storage = storageModel
   }
-  
+
   set( key, value ) {
     const { storage } = this
     if ( key ) {
