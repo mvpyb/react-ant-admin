@@ -19,7 +19,7 @@ import {
 } from '@config/constant'
 
 import store from '@/store'
-import { CLEAR_USER_INFO } from '@store/reducers/users'
+import { loginOut } from '@store/reducers/users'
 // import qs from 'qs'
 
 class HttpRequest {
@@ -143,7 +143,7 @@ class HttpRequest {
 
           if ( isErrorToken ) {
             // token已过期 跳转到登录
-            store.dispatch( CLEAR_USER_INFO() )
+            store.dispatch( loginOut() )
             window.location.reload()
           } else if ( !isWhiteCode ) {
             AntMessage.error( {
