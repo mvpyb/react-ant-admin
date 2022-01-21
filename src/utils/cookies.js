@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 import { getEnvs } from '@utils/env'
+import { COOKIE_PREFIX } from '@config/constant'
 const getEnv = getEnvs()
 
 const { hostname } = window.location
@@ -16,6 +17,7 @@ if ( hostname.indexOf( 'localhost' ) >= 0 || reg.test( hostname ) ) {
     cookiePreFix = ''
   }
 }
+cookiePreFix += COOKIE_PREFIX
 const baseParams = {
   path : '/',
   domain : hostname,
