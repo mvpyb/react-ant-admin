@@ -15,11 +15,11 @@ export const userSlice = createSlice( {
   name : 'users',
   initialState,
   reducers : {
-    setToken : ( state, { payload : token } ) => {
+    SET_TOKEN : ( state, { payload : token } ) => {
       state.token = token || ''
       addCookie( 'token', token )
     },
-    setUserInfo : ( state, { payload : { roles, avatar, username }} ) => {
+    SET_USER_INFO : ( state, { payload : { roles, avatar, username }} ) => {
       state.roles = roles
       state.avatar = avatar || ''
       state.username = username || ''
@@ -27,7 +27,7 @@ export const userSlice = createSlice( {
       addCookie( `username`, username )
       addCookie( `roles`, roles )
     },
-    clearUserInfo : ( state ) => {
+    CLEAR_USER_INFO : ( state ) => {
       state.roles = []
       state.avatar = ''
       state.username = ''
@@ -48,29 +48,29 @@ export const userSlice = createSlice( {
       // console.log( '1 fulfilled', { payload, state } )
     } )
     builder.addCase( getUserInfoSlice.rejected, ( state, action ) => {
-      // userSlice.actions.clearUserInfo()
+      // userSlice.actions.CLEAR_USER_INFO()
     } )
   }
 
 } )
 
-export const { setToken, setUserInfo, clearUserInfo } = userSlice.actions
+export const { SET_TOKEN, SET_USER_INFO, CLEAR_USER_INFO } = userSlice.actions
 
-// 异步请求
-export const asyncGetInfo = payload => async( dispatch ) => {
-  const { code, data } = await getUserInfo()
-  if ( code == 200 ) {
-    dispatch( setUserInfo( {
-      ...data,
-      username : data.username || data.nickName || data.phone,
-      roles : data.roles && data.roles > 0 ? ['admin'] : []
-    } ) )
-    return data
-  } else {
-    dispatch( clearUserInfo() )
-    return {}
-  }
-}
+// // 异步请求
+// export const asyncGetInfo = payload => async( dispatch ) => {
+//   const { code, data } = await getUserInfo()
+//   if ( code == 200 ) {
+//     dispatch( SET_USER_INFO( {
+//       ...data,
+//       username : data.username || data.nickName || data.phone,
+//       roles : data.roles && data.roles > 0 ? ['admin'] : []
+//     } ) )
+//     return data
+//   } else {
+//     dispatch( CLEAR_USER_INFO() )
+//     return {}
+//   }
+// }
 
 // 文档 ： https://redux-toolkit.js.org/api/createAsyncThunk
 export const getUserInfoSlice = createAsyncThunk(
@@ -85,17 +85,17 @@ export const getUserInfoSlice = createAsyncThunk(
           roles : ['admin']
         }
 
-        thunkAPI.dispatch( setUserInfo( result ) )
+        thunkAPI.dispatch( SET_USER_INFO( result ) )
 
         return result
       } else {
-        thunkAPI.dispatch( clearUserInfo( ) )
+        thunkAPI.dispatch( CLEAR_USER_INFO( ) )
         return thunkAPI.rejectWithValue( data.message || '登录失败' )
         // return Promise.reject( '登录请求错误' )
       }
     } catch ( err ) {
       console.log( 'err', err )
-      thunkAPI.dispatch( clearUserInfo( ) )
+      thunkAPI.dispatch( CLEAR_USER_INFO( ) )
       return thunkAPI.rejectWithValue( err.response.data || '登录失败' )
     }
   }
@@ -107,7 +107,7 @@ export const loginOut = createAsyncThunk(
     try {
       const { code, data } = await logOut()
       if ( code == 200 ) {
-        thunkAPI.dispatch( clearUserInfo() )
+        thunkAPI.dispatch( CLEAR_USER_INFO() )
 
         return {}
       } else {
