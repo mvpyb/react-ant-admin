@@ -9,3 +9,11 @@ export function getUserInfo( data ) {
     data
   } )
 }
+
+export function logOut( data ) {
+  return request( {
+    url : '/logout',
+    method : 'post',
+    data
+  } )
+}
