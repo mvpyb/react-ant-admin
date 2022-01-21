@@ -6,4 +6,4 @@
 src/mock
 src/vendor
 src/index.js
-src/*
+#src/*
