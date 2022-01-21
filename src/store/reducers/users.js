@@ -108,6 +108,7 @@ export const loginOut = createAsyncThunk(
       const { code, data } = await logOut()
       if ( code == 200 ) {
         thunkAPI.dispatch( CLEAR_USER_INFO() )
+        window.location.reload()
 
         return {}
       } else {
