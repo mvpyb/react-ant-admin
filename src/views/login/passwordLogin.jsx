@@ -2,14 +2,12 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { setToken } from '@store/reducers/users'
-import { getUserInfoSlice } from '@store/reducers/users'
+import { getUserInfoSlice, setToken } from '@store/reducers/users'
 
 import './index.less'
 
 import { validPhone } from '@/utils/validate'
 import { localStorageHandle } from '@utils/storages'
-import { STORAGE_PREFIX } from '@config/constant'
 import { login } from '@api/login'
 
 import { Form, Input, Button, Checkbox } from 'antd'
@@ -87,7 +85,7 @@ const PasswordLogin = ( props ) => {
 
   // 初始话登录信息 => 是否记住密码
   const initLogin = () => {
-    const loginInfo = localStorageHandle.get( `${STORAGE_PREFIX}_login_info` )
+    const loginInfo = localStorageHandle.get( 'login_info' )
     if ( loginInfo && loginInfo.remember ) {
       const { username, password } = loginInfo
       initialValues = {
@@ -111,7 +109,7 @@ const PasswordLogin = ( props ) => {
     loginStart && loginStart()
     if ( remember ) {
       // 保存本地
-      localStorageHandle.set( `${STORAGE_PREFIX}_login_info`, {
+      localStorageHandle.set( 'login_info', {
         username,
         password,
         remember : true,
@@ -119,7 +117,7 @@ const PasswordLogin = ( props ) => {
       } )
     } else {
       // 删除登录信息
-      localStorageHandle.remove( `${STORAGE_PREFIX}_login_info` )
+      localStorageHandle.remove( 'login_info' )
     }
     
     // 发送登录请求
