@@ -13,7 +13,6 @@ import { message as AntMessage } from 'antd'
 import { getEnvs } from '@utils/env'
 import { getCookie } from '@utils/cookies'
 import {
-  TOKEN,
   WHITE_CODE_LIST,
   LOGIN_ERROR_CODE,
   GLOBAL_DATA
@@ -118,8 +117,8 @@ class HttpRequest {
           } )
           return Promise.reject( '请检查您的网络是否正常' )
         }
-        // config.headers.token = getCookie( TOKEN ) || ''
-        config.headers.common['token'] = getCookie( TOKEN ) || ''
+        // config.headers.token = getCookie( 'token' ) || ''
+        config.headers.common['token'] = getCookie( 'token' ) || ''
         // config.data = qs.stringify(config.data)
 
         return config
