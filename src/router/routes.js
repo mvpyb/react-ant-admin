@@ -32,7 +32,7 @@ export const asyncRoutes = [
       }
 
     ]
-  },
+  }
 ]
 
 export const constantRoutes = [
@@ -52,7 +52,7 @@ export const constantRoutes = [
     component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@views/errorPage/404' ) ),
     hidden : true
   },
-  
+
   {
     path : '/',
     redirect : '/dashboard/index'
@@ -60,5 +60,5 @@ export const constantRoutes = [
   {
     path : '*',
     redirect : '/404'
-  },
+  }
 ]
