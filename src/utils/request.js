@@ -145,7 +145,6 @@ class HttpRequest {
             // token已过期 跳转到登录
             store.dispatch( clearUserInfo() )
             window.location.reload()
-            
           } else if ( !isWhiteCode ) {
             AntMessage.error( {
               content : message || 'Error',
