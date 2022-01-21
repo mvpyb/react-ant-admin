@@ -31,8 +31,8 @@ const store = configureStore( {
 
 // // 配置组件和redux的热重载
 // if (process.env.NODE_ENV === 'development' && module.hot) {
-//   module.hot.accept('./rootReducer', () => {
-//     const newRootReducer = require('./rootReducer').default
+//   module.hot.accept('./reducers', () => {
+//     const newRootReducer = require('./reducers').default
 //     store.replaceReducer(newRootReducer)
 //   })
 // }
