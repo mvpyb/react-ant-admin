@@ -17,9 +17,10 @@ export const permissionSlice = createSlice( {
   initialState,
   reducers : {
     setRoutes : ( state, { payload } ) => {
-      const { allAsyncRoutes, routers } = payload
-      state.addRoutes = allAsyncRoutes
+      const { allAsyncRoutes, routers, addRoutes } = payload
+      state.addRoutes = addRoutes
       state.routes = routers
+      state.basicRoutes = state.basicRoutes.concat( allAsyncRoutes )
     }
     // resetRoutes : ( state, { payload } ) => {
     //   state.addRoutes = []
@@ -39,7 +40,10 @@ export const asyncPermissionRoutes = roles => async( dispatch ) => {
   const allAsyncRoutes = asyncRedirects.concat( accessedRoutes )
 
   const result = {
+    // accessedRoutes,
+    // asyncRedirects,
     allAsyncRoutes,
+    addRoutes : accessedRoutes,
     routers : basicRoutes.concat( allAsyncRoutes )
   }
 
