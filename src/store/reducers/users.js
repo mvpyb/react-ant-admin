@@ -32,7 +32,7 @@ export const userSlice = createSlice( {
       state.avatar = ''
       state.username = ''
       state.token = ''
-      
+
       removeCookie( 'username' )
       removeCookie( 'roles' )
       removeCookie( 'token' )
@@ -74,51 +74,49 @@ export const asyncGetInfo = payload => async( dispatch ) => {
 
 // 文档 ： https://redux-toolkit.js.org/api/createAsyncThunk
 export const getUserInfoSlice = createAsyncThunk(
-    'user/getUserInfo',
-    async( params, thunkAPI ) => {
-      
-      try {
-        const { code, data } = await getUserInfo( { token : getCookie( 'token' ) || thunkAPI.getState().users.token } )
-        if ( code == 200 ) {
-          const result = {
-            username : data.username || data.nickName || data.phone,
-            avatar : data.avatar || '',
-            roles : ['admin']
-          }
-          
-          thunkAPI.dispatch( setUserInfo( result ) )
-          
-          return result
-        } else {
-          thunkAPI.dispatch( clearUserInfo( ) )
-          return thunkAPI.rejectWithValue( data.message || '登录失败' )
-          // return Promise.reject( '登录请求错误' )
+  'user/getUserInfo',
+  async( params, thunkAPI ) => {
+    try {
+      const { code, data } = await getUserInfo( { token : getCookie( 'token' ) || thunkAPI.getState().users.token } )
+      if ( code == 200 ) {
+        const result = {
+          username : data.username || data.nickName || data.phone,
+          avatar : data.avatar || '',
+          roles : ['admin']
         }
-      } catch ( err ) {
-        console.log( 'err', err )
+
+        thunkAPI.dispatch( setUserInfo( result ) )
+
+        return result
+      } else {
         thunkAPI.dispatch( clearUserInfo( ) )
-        return thunkAPI.rejectWithValue( err.response.data || '登录失败' )
+        return thunkAPI.rejectWithValue( data.message || '登录失败' )
+        // return Promise.reject( '登录请求错误' )
       }
+    } catch ( err ) {
+      console.log( 'err', err )
+      thunkAPI.dispatch( clearUserInfo( ) )
+      return thunkAPI.rejectWithValue( err.response.data || '登录失败' )
     }
+  }
 )
 
 export const loginOut = createAsyncThunk(
-    'user/loginOut',
-    async( params, thunkAPI ) => {
-      
-      try {
-        const { code, data } = await logOut()
-        if ( code == 200 ) {
-          thunkAPI.dispatch( clearUserInfo() )
-          
-          return {}
-        } else {
-          return thunkAPI.rejectWithValue( data.message || '登出失败' )
-        }
-      } catch ( err ) {
-        return thunkAPI.rejectWithValue( err.response.data || '登出失败' )
+  'user/loginOut',
+  async( params, thunkAPI ) => {
+    try {
+      const { code, data } = await logOut()
+      if ( code == 200 ) {
+        thunkAPI.dispatch( clearUserInfo() )
+
+        return {}
+      } else {
+        return thunkAPI.rejectWithValue( data.message || '登出失败' )
       }
+    } catch ( err ) {
+      return thunkAPI.rejectWithValue( err.response.data || '登出失败' )
     }
+  }
 )
 
 export default userSlice.reducer
