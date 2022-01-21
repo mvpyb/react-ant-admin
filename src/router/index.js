@@ -6,11 +6,10 @@ import { useDispatch } from 'react-redux'
 
 import store from '@/store'
 import { asyncPermissionRoutes } from '@store/reducers/permission'
-import { getUserInfoSlice, clearUserInfo } from '@store/reducers/users'
+import { getUserInfoSlice, CLEAR_USER_INFO } from '@store/reducers/users'
 
 import DynamicRouter from './dynamicRouter'
 import { getCookie } from '@utils/cookies'
-import { TOKEN } from '@config/constant'
 
 const whiteList = [
   '/login', '/401', '/404'
@@ -34,7 +33,7 @@ const RouterComponent = ( props ) => {
 
   // 路由守卫
   const routeGuard = async() => {
-    const hasToken = getCookie( TOKEN )
+    const hasToken = getCookie( 'token' )
 
     if ( hasToken ) {
       if ( pathname == '/login' ) {
@@ -57,7 +56,7 @@ const RouterComponent = ( props ) => {
             currentRoles = payload.roles
           } catch ( e ) {
             // 退出登录
-            dispatch( clearUserInfo() )
+            dispatch( CLEAR_USER_INFO() )
             navigate( '/login' )
             window.location.reload()
           }
