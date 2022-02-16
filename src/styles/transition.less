@@ -1,17 +1,139 @@
-//  路由转场动画
-.fade-enter {
+/*******************fade-in**************/
+.fade-in-enter {
   opacity: 0;
   transform: translateX(-30px);
 }
 
-.fade-enter-active,
-.fade-exit-active {
+.fade-in-enter-active,
+.fade-in-exit-active {
   opacity: 1;
   transition: all 500ms ease-out;
   transform: translateX(0);
 }
 
-.fade-exit {
+.fade-in-exit {
   opacity: 0;
   transform: translateX(30px);
+}
+
+/************forward-from-right****************/
+.forward-from-right-enter {
+  z-index: 2;
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.forward-from-right-enter-active {
+  z-index: 2;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 500ms;
+}
+
+.forward-from-right-exit {
+  z-index: 1;
+  opacity: 1;
+}
+
+.forward-from-right-exit-active {
+  z-index: 1;
+  opacity: .3;
+  transition: all 500ms;
+}
+
+.back-to-right-enter {
+  z-index: 1;
+  opacity: .3;
+}
+
+.back-to-right-enter-active {
+  z-index: 1;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 500ms;
+}
+
+.back-to-right-exit {
+  z-index: 2;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.back-to-right-exit-active {
+  z-index: 2;
+  opacity: 0;
+  transform: translate(100%);
+  transition: all 500ms;
+}
+
+/************fade-transform**************/
+.fade-transform-enter,
+.fade-transform-exit {
+  transition: all .5s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.fade-transform-exit-active {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.fade-transform-enter-done {
+  transform: translateX(0);
+}
+.fade-transform-exit {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.fade-transform-active {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.fade-transform-done {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/*************fade***************/
+.fade-enter,.fade-appear {
+  transform: translateX(100%);
+}
+.fade-enter-active,.fade-appear {
+  transform: translateX(0);
+  transition: transform 0.5s ease;
+}
+.fade-exit {
+  transform: translateX(0);
+}
+.fade-exit-active {
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.fade-exit-done {
+  transform: translateX(-100%);
+}
+
+/************refade***************/
+.refade-enter,.refade-appear {
+  transform: translateX(-100%);
+  animation:fadeOut 0.5s infinite;
+}
+.refade-enter-active,.refade-appear-active {
+  transform: translateX(0%);
+  transition: transform 0.5s ease;
+  animation:fadeIn 0.5s infinite;
+}
+.refade-enter-done {
+  transform: translateX(0%);
+}
+.refade-exit {
+  transform: translateX(0%);
+}
+.refade-exit-active {
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+}
+.refade-exit-done {
+  transform: translateX(100%);
 }
