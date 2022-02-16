@@ -1,167 +1,117 @@
 
-import React, { useState } from 'react'
-
+import React from 'react'
 import { Link } from 'react-router-dom'
-
-import { Scrollbars } from 'react-custom-scrollbars'
-
-import { connect } from 'react-redux'
-import { useDispatch } from 'react-redux'
-import { asyncPermissionRoutes } from '@store/reducers/permission'
-
-import { Menu } from 'antd'
-const { SubMenu, Item } = Menu
 
 import './index.less'
 
-import {
-  AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  PieChartOutlined,
-  DesktopOutlined,
-  ContainerOutlined,
-  MailOutlined
-} from '@ant-design/icons'
+import { isArray, isExternal } from '@utils/validate'
+import SvgIcon from '@/components/SvgIcon'
 
-const SideMenu = ( props ) => {
-  console.log( 'menuItem', { ...props } )
+import Icon from '@ant-design/icons'
+import { Menu } from 'antd'
+const { SubMenu, Item } = Menu
 
-  const { menuList, item, basePath } = props
-  const [onlyOneChild, setOnlyOneChild] = useState( null )
+const MenuItem = ( menuList ) => {
+  // console.log( 'menuList', menuList )
+  let onlyOneChild = null
 
-  const hasOneShowingChild = ( route = [] ) => {
-    console.log( 'hasOneShowingChild', route )
-
-    const { children } = route
-
-    console.log( 'children', children )
-
-    if ( !children || !children.length ) {
-      return true
+  const hasEffectChild = ( children = [], parent ) => {
+    if ( !children || !isArray( children ) || !children.length ) {
+      return false
     }
 
     const showingChildren = children.filter( item => {
       if ( item.hidden ) {
         return false
       } else {
-        // // Temp set(will be used if only has one showing child)
-        // setOnlyOneChild( item )
+        // 临时设置
+        onlyOneChild = item
         return true
       }
     } )
-
-    console.log( 'showingChildren', showingChildren )
-
-    // When there is only one child router, the child router is displayed by default
-    if ( showingChildren.length === 1 ) {
-      return true
-    }
-
-    // Show parent if there are no child router to display
+    // 如果没有要显示的子路由器，则显示parent
     if ( showingChildren.length === 0 ) {
-      // setOnlyOneChild( { ... route, path : '', noShowingChildren : true } )
+      onlyOneChild = { ...parent, path : '', noShowingChildren : true }
       return true
     }
-    console.log( 'test' )
-
-    return false
+    return true
   }
 
-  const WrappedLink = ( { to, ...rest } ) => {
-    return <Link to={to} {...rest} />
+  const isLink = ( to ) => {
+    return isExternal( to )
   }
 
-  // TODO 此处把遍历方法转移到父组件中即可
-  return (
-    <>
-      { menuList &&
-      menuList.map( ( item, index ) =>
-        // ( hasOneShowingChild( item ) && ( !onlyOneChild.children || onlyOneChild.noShowingChildren ) && !item.alwaysShow )
-        hasOneShowingChild( item )
-          ? (
-            <Item key={item.path}>
-              {item.icon}
-              <WrappedLink to={item.path}>{item.title}</WrappedLink>
-            </Item>
-          )
-          : (
-            <SubMenu key={item.path} title={item.name} icon={item.icon}>
-              {item.children &&
-                  item.children.map( ( child, cIndex ) => (
-                    <Item key={child.path}>
-                      <WrappedLink to={child.path}>{child.title}</WrappedLink>
-                    </Item>
-                  ) )}
+  const renderMenu = ( lists, callback ) => {
+    if ( !lists || !lists.length || !isArray( lists ) ) {
+      return null
+    }
+
+    return lists.map( item => {
+      const CustomSvg = () => (
+        item.icon ? <SvgIcon iconClass={ item.icon } className={ 'menu-icon' } /> : null
+      )
+
+      const { hidden, children, title, path } = item
+      if ( !hidden ) {
+        // 判断children是否至少有一个有效的 ( hidden == false .length > 0)
+        const hasEffectChildren = hasEffectChild( children, item )
+        const effectChildren = !!( children && children.length && isArray( children ) )
+
+        if ( effectChildren && hasEffectChildren && !onlyOneChild.noShowingChildren ) {
+          return (
+            <SubMenu
+              className={ `sub-menu-section ${item.icon ? 'has-icon' : 'no-icon'}` }
+              key={ `${path}_${item.fullPath || item.redirect}` }
+              title={ title }
+              icon={ <Icon component={ CustomSvg } /> }
+              /* title={
+                <div className={ 'menu-title-section' }>
+                  { item.icon ? <SvgIcon iconClass={ item.icon } className={ 'menu-icon' } /> : null }
+                  <span className={ 'menu-title' }>{ title }</span>
+                </div>
+              }*/
+            >
+              { renderMenu( children, callback ) }
             </SubMenu>
           )
-      )}
+        }
+        return (
+          <Item
+            className={ `menu-item-section ${item.icon ? 'has-icon' : 'no-icon'}` }
+            key={ `${path}_${item.fullPath || item.redirect}` }
+            onClick={() => callback( item ) }
+            title={ title }
+            icon={ <Icon component={ CustomSvg } /> }
+          >
+            {/* <Link to={ item.fullPath }>
+              { item.icon ? <SvgIcon iconClass={ item.icon } className={ 'menu-icon' } /> : null }
+              <span className={ 'menu-title' }>{ title }</span>
+            </Link>*/}
 
-      {/*  { menuList &&
-      menuList.map( ( item, index ) =>
-        item.children ? (
-          <SubMenu key={item.path + index} title={item.name} icon={item.icon}>
-            {item.children &&
-                item.children.map( ( child, cIndex ) => (
-                  <Item key={child.path + cIndex}>
-                    <WrappedLink to={child.path}>{child.title}</WrappedLink>
-                  </Item>
-                ) )}
-          </SubMenu>
-        ) : (
-          <Item key={item.path + index}>
-            {item.icon}
-            <WrappedLink to={item.path}>{item.title}</WrappedLink>
+            {
+              isLink( item.fullPath )
+                ? ( <a href={ item.fullPath } target={ '_blank' } rel='noreferrer'> { title } </a> )
+                : (
+                  <Link to={ item.fullPath }>
+                    { title }
+                  </Link>
+                )
+            }
+
           </Item>
         )
-      )}*/}
+      }
+      return < React.Fragment key={ `${item.path}_${item.fullPath || item.redirect}` } />
+    } )
+  }
 
-      {/* {
-        ( hasOneShowingChild( item.children, item ) && ( !onlyOneChild.children || onlyOneChild.noShowingChildren ) && !item.alwaysShow )
-          ? (
-            <Item key={item.path}>
-              {item.icon}
-              <WrappedLink to={item.path}>{item.title}</WrappedLink>
-            </Item>
-          )
-          : (
-            <SubMenu key={item.path} title={item.name} icon={item.icon}>
-              {item.children &&
-                  item.children.map( ( child, cIndex ) => (
-                    <Item key={child.path + cIndex}>
-                      <WrappedLink to={child.path}>{child.title}</WrappedLink>
-                    </Item>
-                  ) )}
-            </SubMenu>
-          )
+  // TODO 路由跳转
+  const menuClick = item => {
+    // console.log( 'menuClick', { ...item })
+    // const menuList = menuList
+  }
 
-      }*/}
-
-      <Menu.Item key='1' icon={<PieChartOutlined />}>
-        Option 1
-      </Menu.Item>
-      <Menu.Item key='2' icon={<DesktopOutlined />}>
-        Option 2
-      </Menu.Item>
-      <Menu.Item key='3' icon={<ContainerOutlined />}>
-        Option 3
-      </Menu.Item>
-      <SubMenu key='sub1' icon={<MailOutlined />} title='Navigation One'>
-        <Menu.Item key='5'>Option 5</Menu.Item>
-        <Menu.Item key='6'>Option 6</Menu.Item>
-        <Menu.Item key='7'>Option 7</Menu.Item>
-        <Menu.Item key='8'>Option 8</Menu.Item>
-      </SubMenu>
-      <SubMenu key='sub2' icon={<AppstoreOutlined />} title='Navigation Two'>
-        <Menu.Item key='9'>Option 9</Menu.Item>
-        <Menu.Item key='10'>Option 10</Menu.Item>
-        <SubMenu key='sub3' title='Submenu'>
-          <Menu.Item key='11'>Option 11</Menu.Item>
-          <Menu.Item key='12'>Option 12</Menu.Item>
-        </SubMenu>
-      </SubMenu>
-    </>
-  )
+  return renderMenu( menuList, menuClick )
 }
 
-export default SideMenu
+export default MenuItem
