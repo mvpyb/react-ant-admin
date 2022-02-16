@@ -145,7 +145,7 @@ const PasswordLogin = ( props ) => {
 
   const onFinishFailed = error => {
     // const { values, errorFields, outOfDate } = error
-    // console.log( 'onFinishFailed', error )
+    console.log( 'onFinishFailed', error )
   }
 
   const onFieldsChange = ( changedFields, allFields ) => {
