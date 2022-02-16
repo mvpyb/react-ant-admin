@@ -1,10 +1,7 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
-
 import { connect } from 'react-redux'
-// import { useDispatch } from 'react-redux'
-// import { asyncPermissionRoutes } from '@store/reducers/permission'
 
 import { Menu } from 'antd'
 import MenuItem from './menuItem'
@@ -12,10 +9,21 @@ import MenuItem from './menuItem'
 import './index.less'
 
 const SideMenu = ( props ) => {
-  console.log( 'menu', { ...props } )
-
+  // console.log( 'SideMenu menu', { ...props } )
   const { addRoutes : menuList } = props
-  const [collapsed, setCollapsed] = useState( false )
+  const [openKeys, setOpenKeys] = useState( [] )
+
+  // TODO 如果需要实现Element的 unique-opened（ 是否只保持一个子菜单的展开 ）， 需要获取与所有的key
+  const allSubmenuKeys = []
+
+  const onOpenChange = keys => {
+    const latestOpenKey = keys.find( key => openKeys.indexOf( key ) === -1 )
+    if ( allSubmenuKeys.indexOf( latestOpenKey ) === -1 ) {
+      setOpenKeys( keys )
+    } else {
+      setOpenKeys( latestOpenKey ? [latestOpenKey] : [] )
+    }
+  }
 
   return (
     <div className={'side-menu-section'}>
@@ -25,32 +33,31 @@ const SideMenu = ( props ) => {
         autoHideDuration={200}
         autoHeightMin={200}
         thumbMinSize={30}
-        universal={false}>
-        <div className={''}>
-
+        universal={false}
+      >
+        <div className={'side-menu-wrapper'}>
           <Menu
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            className={''}
             mode='inline'
             theme='dark'
-            inlineCollapsed={collapsed}
+            openKeys={openKeys}
+            onOpenChange={onOpenChange}
           >
-            <MenuItem menuList={menuList}/>
-
-            {/* { menuList && menuList.map( ( item, index ) => <MenuItem key={item.path + index} item={item} basePath={item.path} /> )}*/}
-6
+            {
+              MenuItem( menuList )
+            }
           </Menu>
-
         </div>
       </Scrollbars>
     </div>
   )
 }
 
-export default connect( ( state ) => state.permission )( SideMenu )
-// export default connect( ( state ) => {
-//   return {
-//     routes : state.permission.routes
-//   }
-// } )( SideMenu )
+const mapStateToProps = state => {
+  return {
+    ...state.permission,
+    ...state.app
+  }
+}
 
+export default connect( mapStateToProps )( SideMenu )

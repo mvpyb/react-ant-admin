@@ -1,0 +1,23 @@
+
+.ant-layout-content{
+  &.main-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .main-wrapper {
+      position: relative;
+      min-height: calc(100vh - 64px);
+    }
+    .main-content {
+      position: absolute;
+      width: 100% ;
+      height: 100%;
+      top: 0;
+      padding: 10px 20px 0;
+    }
+  }
+}
+
+.fixed-header+.main-section.ant-layout-content {
+  padding-top: 50px;
+}
