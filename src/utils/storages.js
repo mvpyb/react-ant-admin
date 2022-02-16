@@ -9,6 +9,7 @@ class StorageProxy {
   set( key, value ) {
     const { storage } = this
     if ( key ) {
+      // eslint-disable-next-line no-param-reassign
       key = `${STORAGE_PREFIX}_${key}`
       const data = JSON.stringify( value )
       storage.setItem( key, data )
@@ -18,6 +19,7 @@ class StorageProxy {
   get( key ) {
     const { storage } = this
     if ( key ) {
+      // eslint-disable-next-line no-param-reassign
       key = `${STORAGE_PREFIX}_${key}`
       let data = storage.getItem( key )
       if ( data == '' || data == null || JSON.stringify( data ) == '{}' ) {
@@ -45,6 +47,7 @@ class StorageProxy {
       if ( isAll ) {
         this.clear()
       } else {
+        // eslint-disable-next-line no-param-reassign
         key = `${STORAGE_PREFIX}_${key}`
         storage.removeItem( key )
       }
@@ -56,6 +59,7 @@ class StorageProxy {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 class localStorageProxy extends StorageProxy {
   // eslint-disable-next-line no-useless-constructor
   constructor( localStorage ) {
