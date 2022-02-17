@@ -1,0 +1,9 @@
+{
+
+    "i18n" : {
+        "title": "Switch Language",
+        "note": "The internationalization of this project is based on react-i18next",
+        "webRTC": "Webrtc (web real time communication) es una API que se puede utilizar en aplicaciones web como video chat, audio chat o intercambio de archivos P2P.",
+        "WebGL": "WebGL trae gráficos en 3D para la Web mediante la introducción de una API que cumple estrictamente la OpenGL ES 2.0 que se puede utilizar en elementos canvas HTML5. La compatibilidad para WebGL viene en Firefox 4 y se puede probar en las betas de Firefox 4 o en trunk builds."
+    }
+}

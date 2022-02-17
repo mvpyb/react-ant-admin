@@ -1,0 +1,13 @@
+{
+    "login": {
+        "title": "用户登录",
+        "subTitle": "Out of the box for the background templates",
+        "loading": "Logging in..."
+    },
+    "i18n" : {
+        "title": "Switch Language",
+        "note": "The internationalization of this project is based on react-i18next",
+        "webRTC": "WebRTC (Web Real-Time Communication) is an API that can be used by video-chat, voice-calling, and P2P-file-sharing Web apps.",
+        "WebGL": "WebGL (Web Graphics Library) is a JavaScript API for rendering high-performance interactive 3D and 2D graphics within any compatible web browser without the use of plug-ins. WebGL does so by introducing an API that closely conforms to OpenGL ES 2.0 that can be used in HTML5 <canvas> elements. This conformance makes it possible for the API to take advantage of hardware graphics acceleration provided by the user's device."
+    }
+}

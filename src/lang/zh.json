@@ -1,0 +1,13 @@
+{
+    "login": {
+        "title": "用户登录",
+        "subTitle": "开箱即用得中后台模板",
+        "loading": "登录中..."
+    },
+    "i18n" : {
+        "title": "切换语言",
+        "note": "本项目国际化基于 react-i18next",
+        "webRTC": "WebRTC (Web Real-Time Communication) 是一个可以用在视频聊天，音频聊天或P2P文件分享等Web App中的 API。",
+        "WebGL": "WebGL（Web图形库）是一个JavaScript API，可在任何兼容的Web浏览器中渲染高性能的交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenGL ES 2.0非常一致的API来做到这一点，该API可以在HTML5 <canvas>元素中使用。 这种一致性使API可以利用用户设备提供的硬件图形加速。"
+    }
+}

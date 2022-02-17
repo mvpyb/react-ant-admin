@@ -1,0 +1,9 @@
+{
+
+    "i18n" : {
+        "title": "言語切替",
+        "note": "react-i18nextを使っています",
+        "webRTC": "WebRTC (Web Real-Time Communication)はビデオチャット、音声通話、P2P ファイル共有を行うウェブアプリで使われる API です。",
+        "WebGL": "WebGL (Web Graphics Library) は、互換性があるウェブブラウザーでプラグインを使用せずにインタラクティブな 3D グラフィックスや 2D グラフィックスをレンダリングするための JavaScript API です。HTML5 <canvas> 要素へ OpenGL ES 2.0 に密接に従った API を導入することにより、WebGL を実現します。これにより、ユーザーの端末が提供するハードウェアのグラフィックアクセラレーションを API で利用することが可能になります。"
+    }
+}
