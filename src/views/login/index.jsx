@@ -14,7 +14,6 @@ import { Spin } from 'antd'
 
 import Logo from './logo'
 import PasswordLogin from './passwordLogin'
-// import SvgIcon from '@/components/SvgIcon'
 
 const Login = ( { t } ) => {
   const [loading, setLoading] = useState( false )
