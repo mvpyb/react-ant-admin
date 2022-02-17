@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import DocumentTitle from 'react-document-title'
 
 const Dashboard = ( props ) => {
-  console.log( 'Dashboard', props )
-
   return (
     <DocumentTitle title={'dashboard页面'}>
       <div className='login-container syNormal un-select'>
