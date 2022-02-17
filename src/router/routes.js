@@ -3,64 +3,77 @@ import Layout from '@/layouts'
 import { dynamicImport } from './utils'
 import { isExternal } from '@utils/validate'
 
+const constantRoutesList = [
+  {
+    path : '/login',
+    name : 'Login',
+    component : dynamicImport( () => import( /* webpackChunkName:'Login'*/'@views/login' ) ),
+    hidden : true
+  },
+  {
+    path : '/401',
+    component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@views/errorPage/401' ) ),
+    hidden : true
+  },
+  {
+    path : '/404',
+    component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@views/errorPage/404' ) ),
+    hidden : true
+  },
+  // {
+  //   path : '/dashboard',
+  //   // exact : true,
+  //   // strict : true,
+  //   // title : '首页',
+  //   // icon : 'home',
+  //   redirect : '/dashboard/index',
+  //   component : Layout,
+  //   children : [
+  //     // {
+  //     //   title : '首页',
+  //     //   // index: true,       // { index: true, element: <Home/> },
+  //     //   // path : '',
+  //     //   path : 'index',
+  //     //   icon : 'home',
+  //     //   component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
+  //     // },
+  //
+  //     {
+  //       title : '首页',
+  //       path : 'index',
+  //       icon : 'home',
+  //       component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
+  //     }
+  //
+  //   ]
+  // },
+
+  {
+    path : '/',
+    redirect : '/dashboard/index'
+  },
+  {
+    path : '*',
+    redirect : '/404'
+  }
+]
+
 const asyncRoutesList = [
-/*  {
-    path : '/test1',
-    title : 'test1',
-    redirect : '/test1/index',
-    roles : ['admin'],
+  {
+    path : '/dashboard',
+    title : '首页',
+    icon : 'home',
+    redirect : '/dashboard/index',
     component : Layout,
-    icon : '404',
     children : [
       {
+        title : '首页',
         path : 'index',
-        title : 'test1-1',
-        // icon : 'test',
-        roles : ['admin'],
-        // hidden : true,
-        component : dynamicImport( () => import( /!* webpackChunkName:'Dashboard'*!/'@views/test' ) )
-
-        // redirect : '/test1/index1/index11',
-        // children : [
-        //   {
-        //     path : 'index11',
-        //     title : 'test1-1-1',
-        //     icon : 'test',
-        //     roles : ['admin'],
-        //     // hidden : true,
-        //     component : dynamicImport( () => import( /!* webpackChunkName:'Dashboard'*!/'@views/test' ) )
-        //   }
-        // ]
-      },
-      {
-        path : 'index2',
-        title : 'test1-2',
-        roles : ['admin'],
-        // icon : 'test2',
-        // hidden : true,
-        component : dynamicImport( () => import( /!* webpackChunkName:'Dashboard'*!/'@views/test/index1' ) )
+        hidden : true,
+        component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
       }
     ]
   },
-
-  {
-    path : '/test2',
-    title : 'test2',
-    redirect : '/test2/index',
-    component : Layout,
-    icon : 'link',
-    roles : ['admin'],
-    children : [
-      {
-        path : 'index',
-        title : 'test2-1',
-        icon : 'link',
-        roles : ['admin'],
-        // hidden : true,
-        component : dynamicImport( () => import( /!* webpackChunkName:'Dashboard'*!/'@views/test' ) )
-      }
-    ]
-  },*/
 
   {
     path : '/icons',
@@ -583,61 +596,6 @@ const asyncRoutesList = [
   //   ]
   // }
 
-]
-
-const constantRoutesList = [
-  {
-    path : '/login',
-    name : 'Login',
-    component : dynamicImport( () => import( /* webpackChunkName:'Login'*/'@views/login' ) ),
-    hidden : true
-  },
-  {
-    path : '/401',
-    component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@views/errorPage/401' ) ),
-    hidden : true
-  },
-  {
-    path : '/404',
-    component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@views/errorPage/404' ) ),
-    hidden : true
-  },
-  {
-    path : '/dashboard',
-    // exact : true,
-    // strict : true,
-    // title : '首页',
-    // icon : 'home',
-    redirect : '/dashboard/index',
-    component : Layout,
-    children : [
-      // {
-      //   title : '首页',
-      //   // index: true,       // { index: true, element: <Home/> },
-      //   // path : '',
-      //   path : 'index',
-      //   icon : 'home',
-      //   component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
-      // },
-
-      {
-        title : '首页',
-        path : 'index',
-        icon : 'home',
-        component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
-      }
-
-    ]
-  },
-
-  {
-    path : '/',
-    redirect : '/dashboard/index'
-  },
-  {
-    path : '*',
-    redirect : '/404'
-  }
 ]
 
 // 补全
