@@ -4,7 +4,7 @@ import { dynamicImport } from './utils'
 import { isExternal } from '@utils/validate'
 
 const asyncRoutesList = [
-  {
+/*  {
     path : '/test1',
     title : 'test1',
     redirect : '/test1/index',
@@ -18,7 +18,7 @@ const asyncRoutesList = [
         // icon : 'test',
         roles : ['admin'],
         // hidden : true,
-        component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/test' ) )
+        component : dynamicImport( () => import( /!* webpackChunkName:'Dashboard'*!/'@views/test' ) )
 
         // redirect : '/test1/index1/index11',
         // children : [
@@ -28,7 +28,7 @@ const asyncRoutesList = [
         //     icon : 'test',
         //     roles : ['admin'],
         //     // hidden : true,
-        //     component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/test' ) )
+        //     component : dynamicImport( () => import( /!* webpackChunkName:'Dashboard'*!/'@views/test' ) )
         //   }
         // ]
       },
@@ -38,7 +38,7 @@ const asyncRoutesList = [
         roles : ['admin'],
         // icon : 'test2',
         // hidden : true,
-        component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/test/index1' ) )
+        component : dynamicImport( () => import( /!* webpackChunkName:'Dashboard'*!/'@views/test/index1' ) )
       }
     ]
   },
@@ -57,7 +57,157 @@ const asyncRoutesList = [
         icon : 'link',
         roles : ['admin'],
         // hidden : true,
-        component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/test' ) )
+        component : dynamicImport( () => import( /!* webpackChunkName:'Dashboard'*!/'@views/test' ) )
+      }
+    ]
+  },*/
+
+  {
+    path : '/icons',
+    title : '图标',
+    redirect : '/icons/index',
+    component : Layout,
+    roles : ['admin'],
+    icon : 'icon2',
+    children : [
+      {
+        path : 'index',
+        title : '图标',
+        icon : 'icon2',
+        roles : ['admin'],
+        hidden : true,
+        component : dynamicImport( () => import( /* webpackChunkName:'Icons'*/'@views/icons' ) )
+      }
+    ]
+  },
+
+  {
+    path : '/i18n',
+    title : '国际化',
+    redirect : '/i18n/index',
+    component : Layout,
+    roles : ['admin'],
+    icon : 'i18n',
+    children : [
+      {
+        path : 'index',
+        title : '国际化',
+        // roles : ['admin'],
+        hidden : true,
+        component : dynamicImport( () => import( /* webpackChunkName:'I18n'*/'@views/i18n' ) )
+      }
+    ]
+  },
+  {
+    path : '/clipboard',
+    title : '剪贴板',
+    redirect : '/clipboard/index',
+    component : Layout,
+    roles : ['admin'],
+    icon : 'clipboard',
+    children : [
+      {
+        path : 'index',
+        title : '剪贴板',
+        // icon : '剪贴板',
+        // roles : ['admin'],
+        hidden : true,
+        component : dynamicImport( () => import( /* webpackChunkName:'Clipboard'*/'@views/clipboard' ) )
+      }
+    ]
+  },
+
+  /* components-demo*/
+  {
+    path : '/components',
+    title : '组件示例',
+    redirect : '/components/tinymce',
+    component : Layout,
+    icon : 'menu2',
+    roles : ['admin'],
+
+    children : [
+      {
+        path : 'tinymce',
+        title : '富文本（tinymce）',
+        component : dynamicImport( () => import( /* webpackChunkName:'Tinymce'*/'@views/components-demo/richText/tinymce' ) )
+      },
+      {
+        path : 'draft',
+        title : '富文本（draft）',
+        component : dynamicImport( () => import( /* webpackChunkName:'Draft'*/'@views/components-demo/richText/draft' ) )
+      },
+      {
+        path : 'draggable',
+        title : '拖拽组件',
+        component : dynamicImport( () => import( /* webpackChunkName:'Drag'*/'@views/components-demo/drag/index' ) )
+      }
+    ]
+  },
+
+  {
+    path : '/charts',
+    title : '图表',
+    redirect : '/charts/index',
+    component : Layout,
+    icon : 'chat',
+    roles : ['admin'],
+    children : [
+      {
+        path : 'index',
+        title : '折线图',
+        roles : ['admin'],
+        component : dynamicImport( () => import( /* webpackChunkName:'Line'*/'@views/charts/line' ) )
+      },
+      {
+        path : 'keyboard',
+        title : '键盘图表',
+        roles : ['admin'],
+        component : dynamicImport( () => import( /* webpackChunkName:'Keyboard'*/'@views/charts/keyboard' ) )
+      },
+      {
+        path : 'mixChart',
+        title : '混合图表',
+        roles : ['admin'],
+        component : dynamicImport( () => import( /* webpackChunkName:'MixChart'*/'@views/charts/mixChart' ) )
+      }
+    ]
+  },
+
+  {
+    path : '/excel',
+    title : 'Excel',
+    redirect : '/excel/export',
+    component : Layout,
+    icon : 'excel',
+    children : [
+      {
+        path : 'export',
+        title : '导出表格',
+        component : dynamicImport( () => import( /* webpackChunkName:'Export'*/'@views/excel/export' ) )
+      },
+      {
+        path : 'upload',
+        title : '上传表格',
+        component : dynamicImport( () => import( /* webpackChunkName:'Upload'*/'@views/excel/upload' ) )
+      }
+
+    ]
+  },
+
+  {
+    path : '/zip',
+    title : 'Zip',
+    redirect : '/zip/index',
+    component : Layout,
+    icon : 'zip',
+    children : [
+      {
+        path : 'index',
+        title : 'Zip',
+        // roles : ['admin'],
+        hidden : true,
+        component : dynamicImport( () => import( /* webpackChunkName:'Zip'*/'@views/zip/index' ) )
       }
     ]
   },
@@ -109,20 +259,24 @@ const asyncRoutesList = [
   },
 
   {
-    path : '/icons',
-    title : '图标',
-    redirect : '/icons/index',
+    path : '/error',
+    title : '错误页面',
+    redirect : '/error/404',
     component : Layout,
+    icon : '404',
     roles : ['admin'],
-    icon : 'icon2',
     children : [
       {
-        path : 'index',
-        title : '图标',
-        icon : 'icon2',
+        path : '404',
+        title : '404',
         roles : ['admin'],
-        hidden : true,
-        component : dynamicImport( () => import( /* webpackChunkName:'Icons'*/'@views/icons' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'ErrorPage404'*/'@views/errorPage/404' ) )
+      },
+      {
+        path : '401',
+        title : '401',
+        roles : ['admin'],
+        component : dynamicImport( () => import( /* webpackChunkName:'ErrorPage401'*/'@views/errorPage/401' ) )
       }
     ]
   },
