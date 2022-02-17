@@ -1,5 +1,5 @@
 
-// 详情参照 ： https://github.com/arackaf/customize-cra/blob/master/api.md
+// more ： https://github.com/arackaf/customize-cra/blob/master/api.md
 const {
   override,
   fixBabelImports,
@@ -7,6 +7,9 @@ const {
   addWebpackAlias,
   overrideDevServer,
   adjustStyleLoaders,
+  // getBabelLoader,
+  // addBabelPlugin,
+  // addBabelPlugins,
   // addWebpackModuleRule,
   // addWebpackPlugin,
   watchAll
@@ -44,8 +47,7 @@ function invade( target, name, callback ) {
 // 自定义组合配置
 const addCustomize = () => ( config, env ) => {
   const oneOf_loc = config.module.rules.findIndex( rule => rule.oneOf )
-  // TODO 也可以使用 addWebpackModuleRule
-  // https://blog.csdn.net/qq_21567385/article/details/108438371
+
   config.module.rules[oneOf_loc].oneOf = [
     {
       test : /.(eot|otf|fon|font|ttf|ttc|woff|woff2)$/,
@@ -68,11 +70,10 @@ const addCustomize = () => ( config, env ) => {
         {
           loader : 'url-loader',
           options : {
-            limit : 1024 * 10 // < 10k 使用base64
+            limit : 1024 * 10
           }
         }
       ]
-
     },
 
     {
@@ -85,7 +86,6 @@ const addCustomize = () => ( config, env ) => {
             symbolId : 'icon-[name]'
           }
         },
-        //  移除SVG fill属性
         {
           loader : 'svgo-loader',
           options : {
@@ -118,8 +118,6 @@ const addCustomize = () => ( config, env ) => {
   return config
 }
 
-// 自定义dev配置 ：https://v4.webpack.docschina.org/configuration/dev-server/#devserver-open
-// https://github.com/arackaf/customize-cra
 const devServerConfig = () => config => {
   const result = {
     ...config,
@@ -137,20 +135,17 @@ const devServerConfig = () => config => {
   return result
 }
 
-// https://blog.csdn.net/qq_21567385/article/details/108383083
 module.exports = {
-  // 自定义配置 react 打包生成目录
   paths : function( paths ) {
     paths.appBuild = resolve( './dist' )
     return paths
   },
   webpack : override(
     eslintConfigOverrides( eslintConfig ),
-    // 针对antd实现按需打包: 根据import来打包(使用babel-plugin-import)
     fixBabelImports( 'import', {
       libraryName : 'antd',
       libraryDirectory : 'es',
-      style : true // 自动打包相关的样式
+      style : true
     } ),
 
     // 使用less-loader对源码中的less的变量进行重新指定
@@ -160,7 +155,6 @@ module.exports = {
       // modifyVars : { '@primary-color' : '#1DA57A' }
     } ),
 
-    // 配置路径别名
     addWebpackAlias( {
       '@' : resolve( './src' ),
       '@api' : resolve( './src/api' ),
@@ -179,11 +173,9 @@ module.exports = {
     addCustomize(),
 
     adjustStyleLoaders( ( { use : [, css, postcss, resolve, processor] } ) => {
-      css.options.sourceMap = true // css-loader
-      postcss.options.sourceMap = true // postcss-loader
+      css.options.sourceMap = true
+      postcss.options.sourceMap = true
 
-      // when enable pre-processor,
-      // resolve-url-loader will be enabled too
       if ( resolve ) {
         resolve.options.sourceMap = true // resolve-url-loader
       }
@@ -193,10 +185,8 @@ module.exports = {
       }
 
       // css.options.modules = {
-      //   // 配置默认的样式名称规则
       //   localIdentName : '[name]__[local]--[hash:base64:5]',
       //   getLocalIdent : ( loaderContext, localIdentName, localName, options ) => {
-      //     // 处理antd 的样式
       //     if ( loaderContext.resourcePath.includes( 'node_modules' ) ) {
       //       return localName
       //     }
@@ -207,22 +197,17 @@ module.exports = {
     ( config ) => {
       if ( process.env.NODE_ENV === 'production' ) {
         config.devtool = false
-        // 美化打包后 js 文件名
         config.output.chunkFilename = config.output.chunkFilename.replace( '.chunk', '' )
 
         invade( config.optimization.minimizer, 'TerserPlugin', ( e ) => {
-          // 去除 LICENSE.txt
           e.options.extractComments = false
-          // 去除生产环境 console.log
           e.options.terserOptions.compress.drop_console = true
         } )
 
-        // 美化打包后 css 文件名
         invade( config.plugins, 'MiniCssExtractPlugin', ( e ) => {
           e.options.chunkFilename = e.options.chunkFilename.replace( '.chunk', '' )
         } )
 
-        // 打包 splitChunks 分块策略 参照vue config配置
         config.optimization.splitChunks = {
           chunks : 'all',
           cacheGroups : {
@@ -230,11 +215,11 @@ module.exports = {
               name : 'chunk-libs',
               test : /[\\/]node_modules[\\/]/,
               priority : 10,
-              chunks : 'initial' // 只打包最初依赖的第三方
+              chunks : 'initial'
             },
             commons : {
               name : 'chunk-commons',
-              test : resolve( './src/components' ), // 可以自定义规则
+              test : resolve( './src/components' ),
               minChunks : 3,
               priority : 5,
               reuseExistingChunk : true
@@ -245,7 +230,6 @@ module.exports = {
         config.plugins.push(
           new ScriptExtHtmlWebpackPlugin(
             {
-              // runtime 必须与 runtimeChunk  名称相同。默认是“runtime”
               inline : /runtime\..*\.js$/
             } )
         )
