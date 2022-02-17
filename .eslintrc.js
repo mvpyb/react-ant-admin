@@ -86,7 +86,7 @@ module.exports = {
      "import/extensions": 0,
      "react/jsx-closing-tag-location": 0,
      "import/prefer-default-export": 0,
-     "react/forbid-prop-types": 1,
+     "react/forbid-prop-types": 0,
      "class-methods-use-this": 0,
      "consistent-return": 0,
      "prefer-destructuring": 0,
