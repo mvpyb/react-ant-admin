@@ -17,6 +17,7 @@
     "@manaflair/redux-batch": "^1.0.0",
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/user-event": "^7.2.1",
+    "@tinymce/tinymce-react": "^3.13.0",
     "@toast-ui/react-editor": "^2.1.0",
     "antd": "^4.18.4",
     "axios": "^0.24.0",
