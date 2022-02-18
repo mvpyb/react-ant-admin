@@ -7,3 +7,10 @@ export function getTableData() {
     method : 'get'
   } )
 }
+
+export function getDashboardList() {
+  return request( {
+    url : '/table/dashboard',
+    method : 'get'
+  } )
+}
