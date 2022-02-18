@@ -1,4 +1,5 @@
 @import './transition.less';
+@import './iconfont/iconfont.css';
 
 body {
   height: 100%;
@@ -26,7 +27,7 @@ html {
 }
 
 .no-padding {
-  padding: 0px !important;
+  padding: 0 !important;
 }
 
 .padding-content {
@@ -75,7 +76,7 @@ div:focus {
 }
 
 .inlineBlock {
-  display: block;
+  display: inline-block;
 }
 
 .clearfix {
@@ -89,6 +90,54 @@ div:focus {
   }
 }
 
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ellipsis-col {
+  overflow: hidden;
+  text-align: justify;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.ellipsis-col2 {
+  -webkit-line-clamp: 2;
+}
+
+.un-select {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+.text-center {
+  text-align: center
+}
+
 .app-container {
   padding: 20px;
 }
+
+/*ICONFONT*/
+[class*="yu-icon-"], [class^=yu-icon-] {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+}
+
