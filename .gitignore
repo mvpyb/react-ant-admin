@@ -36,7 +36,7 @@ yarn-error.log*
 **/*.log
 **/*.test.js
 
-dist/**/*
+#dist/**/*
 
 package-lock.json
 yarn.lock
