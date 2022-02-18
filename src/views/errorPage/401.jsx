@@ -30,7 +30,7 @@ const Page404 = ( props ) => {
 
   return (
     <DocumentTitle title={'404'}>
-      <div className='errPage-container'>
+      <div className='errPage-container app-container'>
         <Button type='primary' onClick={ backToHome }>返回主页</Button>
         <Row>
 
