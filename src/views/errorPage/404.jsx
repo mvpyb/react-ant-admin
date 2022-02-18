@@ -16,7 +16,7 @@ const Page404 = ( props ) => {
   }
   return (
     <DocumentTitle title={'404'}>
-      <div className='wscn-http404-container'>
+      <div className='wscn-http404-container app-container'>
 
         <div className='wscn-http404'>
           <div className='pic-404'>
