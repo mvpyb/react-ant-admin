@@ -91,7 +91,7 @@ const Zip = () => {
   }
 
   return (
-    <div className='zip-section'>
+    <div className='zip-section app-container'>
 
       <div style={{ marginTop : '20px' }}>
         <Form layout='inline'>
