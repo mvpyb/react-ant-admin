@@ -156,7 +156,7 @@ class Excel extends Component {
     }
 
     return (
-      <div className='export-section'>
+      <div className='export-section app-container'>
         <div style={{ marginTop : '20px' }}>
           <Form layout='inline'>
             <Item label='文件名:'>
