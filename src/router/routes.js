@@ -626,5 +626,3 @@ function addFullPath( lists, initPath = '' ) {
 
 export const asyncRoutes = addFullPath( asyncRoutesList )
 export const constantRoutes = addFullPath( constantRoutesList )
-
-console.log( 'asyncRoutes', asyncRoutes )
