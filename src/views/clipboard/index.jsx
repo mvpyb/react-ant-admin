@@ -17,52 +17,54 @@ const defaultText = 'React Antd Admin 是一个免费开源的中后台模版。
 const Clipboard = () => {
   const [text, setText] = useState( defaultText )
   return (
-    <Row gutter={16}>
+    <div className={'app-container'}>
+      <Row gutter={16}>
 
-      <Col className='gutter-row' span={12}>
-        <div className='clipboard-section'>
-          <Card title='文字复制' >
-            <p>{ defaultText }</p>
-            <Button
-              type='primary'
-              icon={ <CopyOutlined /> }
-              onClick={( e ) => {
-                handleCopy( defaultText, e )
-              }}
-            >
-              Copy
-            </Button>
-          </Card>
-        </div>
-      </Col>
+        <Col className='gutter-row' span={12}>
+          <div className='clipboard-section'>
+            <Card title='文字复制' >
+              <p>{ defaultText }</p>
+              <Button
+                type='primary'
+                icon={ <CopyOutlined /> }
+                onClick={( e ) => {
+                  handleCopy( defaultText, e )
+                }}
+              >
+                Copy
+              </Button>
+            </Card>
+          </div>
+        </Col>
 
-      <Col className='gutter-row' span={12}>
-        <div className='clipboard-section'>
-          <Card title='表单复制'>
-            <div style={{ marginBottom : '5px' }}>
-              <TextArea
-                autoSize={true}
-                showCount
-                value={text}
-                onChange={ ( e ) => {
-                  setText( e.target.value )
-                } }
-              />
-            </div>
-            <Button
-              type='primary'
-              icon={ <CopyOutlined /> }
-              onClick={( e ) => {
-                handleCopy( text, e )
-              }}
-            >
-              Copy
-            </Button>
-          </Card>
-        </div>
-      </Col>
+        <Col className='gutter-row' span={12}>
+          <div className='clipboard-section'>
+            <Card title='表单复制'>
+              <div style={{ marginBottom : '5px' }}>
+                <TextArea
+                  autoSize={true}
+                  showCount
+                  value={text}
+                  onChange={ ( e ) => {
+                    setText( e.target.value )
+                  } }
+                />
+              </div>
+              <Button
+                type='primary'
+                icon={ <CopyOutlined /> }
+                onClick={( e ) => {
+                  handleCopy( text, e )
+                }}
+              >
+                Copy
+              </Button>
+            </Card>
+          </div>
+        </Col>
 
-    </Row>
+      </Row>
+    </div>
   )
 }
 
