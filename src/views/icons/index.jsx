@@ -23,7 +23,7 @@ const Ions = ( props ) => {
   }
 
   return (
-    <div className={ 'icons-container' }>
+    <div className={ 'icons-container app-container' }>
 
       <Alert message='Icons Demo' type='info' />
 
