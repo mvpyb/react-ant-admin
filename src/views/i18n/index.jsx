@@ -35,43 +35,45 @@ const I18n = ( { t, i18n } ) => {
   ]
 
   return (
-    <Row gutter={16}>
+    <div className={'app-container'}>
+      <Row gutter={16}>
 
-      <Col className='gutter-row' span={24}>
-        <div className='i18n-section'>
-          <Card title={t( 'i18n.title' )} style={{ width : 600, margin : '50px auto' }} hoverable>
-            <Radio.Group value={lang} buttonStyle='solid' onChange={ ( e ) => radioChange( e ) }>
-              <Radio.Button value='zh'>中文</Radio.Button>
-              <Radio.Button value='en'>English</Radio.Button>
-              <Radio.Button value='es'>Español</Radio.Button>
-              <Radio.Button value='ja'>日本語</Radio.Button>
-            </Radio.Group>
+        <Col className='gutter-row' span={24}>
+          <div className='i18n-section'>
+            <Card title={t( 'i18n.title' )} style={{ width : 600, margin : '50px auto' }} hoverable>
+              <Radio.Group value={lang} buttonStyle='solid' onChange={ ( e ) => radioChange( e ) }>
+                <Radio.Button value='zh'>中文</Radio.Button>
+                <Radio.Button value='en'>English</Radio.Button>
+                <Radio.Button value='es'>Español</Radio.Button>
+                <Radio.Button value='ja'>日本語</Radio.Button>
+              </Radio.Group>
 
-            <Alert message={t( 'i18n.note' )} type='info' style={{ marginTop : '50px' }} />
+              <Alert message={t( 'i18n.note' )} type='info' style={{ marginTop : '50px' }} />
 
-          </Card>
-        </div>
-      </Col>
+            </Card>
+          </div>
+        </Col>
 
-      <Col className='gutter-row' span={24}>
-        <div className='i18n-section'>
+        <Col className='gutter-row' span={24}>
+          <div className='i18n-section'>
 
-          <List
-            itemLayout='horizontal'
-            dataSource={data}
-            renderItem={item => (
-              <List.Item>
-                <List.Item.Meta
-                  title={<a href={ item.more } target={'_blank'} rel='noreferrer'>{item.title}</a>}
-                  description={t( item.content )}
-                />
-              </List.Item>
-            )}
-          />
-        </div>
-      </Col>
+            <List
+              itemLayout='horizontal'
+              dataSource={data}
+              renderItem={item => (
+                <List.Item>
+                  <List.Item.Meta
+                    title={<a href={ item.more } target={'_blank'} rel='noreferrer'>{item.title}</a>}
+                    description={t( item.content )}
+                  />
+                </List.Item>
+              )}
+            />
+          </div>
+        </Col>
 
-    </Row>
+      </Row>
+    </div>
   )
 }
 
