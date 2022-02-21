@@ -82,7 +82,7 @@ export const getUserInfoSlice = createAsyncThunk(
         const result = {
           username : data.username || data.nickName || data.phone,
           avatar : data.avatar || '',
-          roles : ['admin']
+          roles : data.roles || ['admin']
         }
 
         thunkAPI.dispatch( SET_USER_INFO( result ) )

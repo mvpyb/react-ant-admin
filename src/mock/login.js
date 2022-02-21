@@ -18,15 +18,8 @@ const users = {
     roles : ["editor"],
     username : "普通用户",
     avatar : "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80",
-    description : "我是普通用户"
-  },
-  "guest-token" : {
-    id : "guest",
-    roles : ["guest"],
-    username : "游客",
-    avatar : "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80",
     description : "产品啥也不是"
-  }
+  },
 }
 
 export default {

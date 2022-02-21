@@ -18,15 +18,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/f61ee4bd8489d36317ed8bdfad5f87a2.ttf"
   },
   {
-    "revision": "9fa136691451eaec6a3a6e3309f973b3",
+    "revision": "8a4e7a3c80ceefba423aac926e8fba80",
     "url": "/react-ant-admin/dist/index.html"
   },
   {
-    "revision": "ed6527aa72523ea76ed2",
-    "url": "/react-ant-admin/dist/static/css/Dashboard.43807344.css"
+    "revision": "08376df62ef92509ff48",
+    "url": "/react-ant-admin/dist/static/css/Dashboard.f5979c99.css"
   },
   {
-    "revision": "d150c7d4069a6f503ada",
+    "revision": "da95aa0742436b3bd1e7",
     "url": "/react-ant-admin/dist/static/css/Draft.dcc64f3f.css"
   },
   {
@@ -42,7 +42,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/css/ErrorPage404.d470de1f.css"
   },
   {
-    "revision": "3dea8d43e267d1ca6d2f",
+    "revision": "a9f2163fc3881afdfe79",
     "url": "/react-ant-admin/dist/static/css/Export.24a09cac.css"
   },
   {
@@ -50,19 +50,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/css/Icons.0f967925.css"
   },
   {
-    "revision": "52cbef664ac82ca8bfdb",
+    "revision": "da276504888720d60192",
     "url": "/react-ant-admin/dist/static/css/Login.7642c6fa.css"
   },
   {
-    "revision": "331d0e4cbc36d7e5c192",
+    "revision": "2f20ef81d69a8fb6c8d1",
     "url": "/react-ant-admin/dist/static/css/Tinymce.d8a5dba5.css"
   },
   {
-    "revision": "1de1d76ac49ee37e9254",
+    "revision": "dbe6f4f8656a98aa8b40",
     "url": "/react-ant-admin/dist/static/css/Upload.15859934.css"
   },
   {
-    "revision": "8a61a76a94e6161eb65d",
+    "revision": "a21425596e5f6a36675b",
     "url": "/react-ant-admin/dist/static/css/Zip.24a09cac.css"
   },
   {
@@ -70,7 +70,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/css/chunk-libs.bf831f1c.css"
   },
   {
-    "revision": "5fca2c0ec90a64bdea47",
+    "revision": "4a33cfb942b74cd5ae52",
     "url": "/react-ant-admin/dist/static/css/main.60cd2a5a.css"
   },
   {
@@ -90,7 +90,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/css/vendors~Dashboard~Export~I18n~Upload~Zip.8fad2eeb.css"
   },
   {
-    "revision": "d74fca2a5f3f413ccf51",
+    "revision": "faf3ed2ac43f3606a7f9",
     "url": "/react-ant-admin/dist/static/css/vendors~Draft.a9166474.css"
   },
   {
@@ -110,40 +110,40 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/css/vendors~Login.090fcd4e.css"
   },
   {
-    "revision": "b90f3b36c80a8eadaac1",
-    "url": "/react-ant-admin/dist/static/js/34.aa910bc2.js"
+    "revision": "c06fb4320a851eee1ecb",
+    "url": "/react-ant-admin/dist/static/js/34.6fb0692d.js"
   },
   {
-    "revision": "cc82ffe5504a4d441e40",
-    "url": "/react-ant-admin/dist/static/js/35.15cc94d7.js"
+    "revision": "299a058c5a6858b0b19b",
+    "url": "/react-ant-admin/dist/static/js/35.19e0731f.js"
   },
   {
-    "revision": "e6ac14e957d38fb7f7fd",
-    "url": "/react-ant-admin/dist/static/js/36.9de40629.js"
+    "revision": "a7344e4c469a2fc8ab30",
+    "url": "/react-ant-admin/dist/static/js/36.b7d4444f.js"
   },
   {
     "revision": "353dca7d470634107fd0",
     "url": "/react-ant-admin/dist/static/js/37.da3166d6.js"
   },
   {
-    "revision": "f72fe3df7ef26f74b9c5",
-    "url": "/react-ant-admin/dist/static/js/6.b4d17fee.js"
+    "revision": "4d412e74549f02edbe97",
+    "url": "/react-ant-admin/dist/static/js/6.60c70dfd.js"
   },
   {
     "revision": "154221b68ada32e2c920",
     "url": "/react-ant-admin/dist/static/js/Clipboard.3314538d.js"
   },
   {
-    "revision": "ed6527aa72523ea76ed2",
+    "revision": "08376df62ef92509ff48",
     "url": "/react-ant-admin/dist/static/js/Dashboard.8cf3d5ee.js"
   },
   {
-    "revision": "d150c7d4069a6f503ada",
-    "url": "/react-ant-admin/dist/static/js/Draft.9fbe65b4.js"
+    "revision": "da95aa0742436b3bd1e7",
+    "url": "/react-ant-admin/dist/static/js/Draft.15c6b409.js"
   },
   {
-    "revision": "8298a180703721572393",
-    "url": "/react-ant-admin/dist/static/js/Drag.a10a510e.js"
+    "revision": "cb3b83b692ec4d64e4a5",
+    "url": "/react-ant-admin/dist/static/js/Drag.7ae31529.js"
   },
   {
     "revision": "0c9f3ec7a2f9db6f0437",
@@ -158,8 +158,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/ErrorPage404.94544e33.js"
   },
   {
-    "revision": "3dea8d43e267d1ca6d2f",
-    "url": "/react-ant-admin/dist/static/js/Export.52f01b76.js"
+    "revision": "a9f2163fc3881afdfe79",
+    "url": "/react-ant-admin/dist/static/js/Export.e18d4878.js"
   },
   {
     "revision": "a58453b2718d51f7b66c",
@@ -170,16 +170,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/Icons.8155b815.js"
   },
   {
-    "revision": "48eff113c986b5ecbf20",
-    "url": "/react-ant-admin/dist/static/js/Keyboard.43d8fc20.js"
+    "revision": "1cf9b60279994113f282",
+    "url": "/react-ant-admin/dist/static/js/Keyboard.5bf998a1.js"
   },
   {
-    "revision": "6204eac80b0bd25e9ad4",
-    "url": "/react-ant-admin/dist/static/js/Line.14624e5f.js"
+    "revision": "43c4396820d205737fee",
+    "url": "/react-ant-admin/dist/static/js/Line.dba4a054.js"
   },
   {
-    "revision": "52cbef664ac82ca8bfdb",
-    "url": "/react-ant-admin/dist/static/js/Login.fb43d6bd.js"
+    "revision": "da276504888720d60192",
+    "url": "/react-ant-admin/dist/static/js/Login.91421263.js"
   },
   {
     "revision": "79ed7e4b563f52de1499",
@@ -190,32 +190,32 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/Menu1.76312d9d.js"
   },
   {
-    "revision": "30ee13fb93bf06b4b816",
-    "url": "/react-ant-admin/dist/static/js/MixChart.ad4e96fd.js"
+    "revision": "6f9333c5a9aed169d90e",
+    "url": "/react-ant-admin/dist/static/js/MixChart.af65c645.js"
   },
   {
-    "revision": "331d0e4cbc36d7e5c192",
-    "url": "/react-ant-admin/dist/static/js/Tinymce.1aa1b808.js"
+    "revision": "2f20ef81d69a8fb6c8d1",
+    "url": "/react-ant-admin/dist/static/js/Tinymce.26fcd1cf.js"
   },
   {
-    "revision": "1de1d76ac49ee37e9254",
-    "url": "/react-ant-admin/dist/static/js/Upload.de06a0ff.js"
+    "revision": "dbe6f4f8656a98aa8b40",
+    "url": "/react-ant-admin/dist/static/js/Upload.9cb2fa56.js"
   },
   {
-    "revision": "8a61a76a94e6161eb65d",
-    "url": "/react-ant-admin/dist/static/js/Zip.b4c65778.js"
+    "revision": "a21425596e5f6a36675b",
+    "url": "/react-ant-admin/dist/static/js/Zip.dcf85b5a.js"
   },
   {
     "revision": "6ff076686b4fb925f880",
     "url": "/react-ant-admin/dist/static/js/chunk-libs.470eafac.js"
   },
   {
-    "revision": "5fca2c0ec90a64bdea47",
-    "url": "/react-ant-admin/dist/static/js/main.233d1b6b.js"
+    "revision": "4a33cfb942b74cd5ae52",
+    "url": "/react-ant-admin/dist/static/js/main.973c587b.js"
   },
   {
-    "revision": "a41e3bb49118d63dfc52",
-    "url": "/react-ant-admin/dist/static/js/runtime.61b43027.js"
+    "revision": "073a23f2d534507c0775",
+    "url": "/react-ant-admin/dist/static/js/runtime.225ecd01.js"
   },
   {
     "revision": "d44c144b42218a96e03e",
@@ -238,8 +238,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/vendors~Dashboard~Export~I18n~Upload~Zip.ca66e8eb.js"
   },
   {
-    "revision": "d74fca2a5f3f413ccf51",
-    "url": "/react-ant-admin/dist/static/js/vendors~Draft.2bdc5f3f.js"
+    "revision": "faf3ed2ac43f3606a7f9",
+    "url": "/react-ant-admin/dist/static/js/vendors~Draft.1c161cef.js"
   },
   {
     "revision": "2049cae7b18e68a36596",

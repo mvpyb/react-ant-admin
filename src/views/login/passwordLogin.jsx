@@ -199,7 +199,7 @@ const PasswordLogin = ( props ) => {
       </Item>
 
       <Item>
-        账号 ： admin ， 密码 ：password
+        账号 ： admin | editor ， 密码 ：password
       </Item>
     </Form>
   )
