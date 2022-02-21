@@ -18,7 +18,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/f61ee4bd8489d36317ed8bdfad5f87a2.ttf"
   },
   {
-    "revision": "51a357777857abeddfd3dde564c7ae60",
+    "revision": "22dd53c5d0304495cfa5599370bdd1b1",
     "url": "/react-ant-admin/dist/index.html"
   },
   {
@@ -50,7 +50,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/css/Icons.0f967925.css"
   },
   {
-    "revision": "97d0ccc5215cec483eb1",
+    "revision": "52cbef664ac82ca8bfdb",
     "url": "/react-ant-admin/dist/static/css/Login.7642c6fa.css"
   },
   {
@@ -66,11 +66,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/css/Zip.24a09cac.css"
   },
   {
-    "revision": "d61db0e74dfa0dcf7188",
-    "url": "/react-ant-admin/dist/static/css/chunk-libs.bf831f1c.css"
+    "revision": "cc1d160d27a94e3eda12",
+    "url": "/react-ant-admin/dist/static/css/chunk-libs.1c603229.css"
   },
   {
-    "revision": "d27c7d907dae05940548",
+    "revision": "634e3f67b332a0963e8c",
     "url": "/react-ant-admin/dist/static/css/main.60cd2a5a.css"
   },
   {
@@ -178,8 +178,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/Line.14624e5f.js"
   },
   {
-    "revision": "97d0ccc5215cec483eb1",
-    "url": "/react-ant-admin/dist/static/js/Login.7a1ee795.js"
+    "revision": "52cbef664ac82ca8bfdb",
+    "url": "/react-ant-admin/dist/static/js/Login.fb43d6bd.js"
   },
   {
     "revision": "79ed7e4b563f52de1499",
@@ -206,16 +206,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/Zip.b4c65778.js"
   },
   {
-    "revision": "d61db0e74dfa0dcf7188",
+    "revision": "cc1d160d27a94e3eda12",
     "url": "/react-ant-admin/dist/static/js/chunk-libs.58a22030.js"
   },
   {
-    "revision": "d27c7d907dae05940548",
-    "url": "/react-ant-admin/dist/static/js/main.afe64a63.js"
+    "revision": "634e3f67b332a0963e8c",
+    "url": "/react-ant-admin/dist/static/js/main.e384ae85.js"
   },
   {
-    "revision": "df057cc74f6c8d0a34a9",
-    "url": "/react-ant-admin/dist/static/js/runtime.5eb53a09.js"
+    "revision": "11218e3ba678c79c146e",
+    "url": "/react-ant-admin/dist/static/js/runtime.cce2effa.js"
   },
   {
     "revision": "d44c144b42218a96e03e",

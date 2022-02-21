@@ -197,6 +197,10 @@ const PasswordLogin = ( props ) => {
       <Item>
         <Button type='primary' htmlType={ 'submit' } className='login-form-button' >登录</Button>
       </Item>
+
+      <Item>
+        账号 ： admin ， 密码 ：password
+      </Item>
     </Form>
   )
 }

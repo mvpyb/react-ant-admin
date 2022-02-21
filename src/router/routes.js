@@ -51,10 +51,6 @@ const constantRoutesList = [
   {
     path : '/',
     redirect : '/dashboard/index'
-  },
-  {
-    path : '*',
-    redirect : '/404'
   }
 ]
 
@@ -320,6 +316,11 @@ const asyncRoutesList = [
         icon : 'baidu'
       }
     ]
+  },
+
+  {
+    path : '*',
+    redirect : '/404'
   }
 
   // {

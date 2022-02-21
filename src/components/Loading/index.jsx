@@ -1,9 +1,9 @@
+
 import React, { useEffect } from 'react'
 import { Spin } from 'antd'
-import NProgress from 'nprogress' // progress bar
-import 'nprogress/nprogress.css' // progress bar style
-
-NProgress.configure( { showSpinner : false } ) // NProgress Configuration
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+NProgress.configure( { showSpinner : false } )
 
 const Loading = () => {
   useEffect( () => {

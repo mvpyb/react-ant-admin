@@ -12,7 +12,7 @@ import DynamicRouter from './dynamicRouter'
 import { getCookie } from '@utils/cookies'
 
 const whiteList = [
-  '/login', '/401', '/404'
+  '/login'
 ]
 
 const addBasicRoutes = async( { dispatch, setRouteList } ) => {
@@ -24,7 +24,6 @@ const addBasicRoutes = async( { dispatch, setRouteList } ) => {
 }
 
 const RouterComponent = ( props ) => {
-  // console.log( 'props', { ...props } )
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const location = useLocation()
@@ -41,18 +40,13 @@ const RouterComponent = ( props ) => {
       } else {
         // 权限判断
         const { users : { roles }} = await store.getState()
-
         const hasRoles = roles && roles.length > 0
         let currentRoles
 
         // 权限为空 则重新获取用户信息
         if ( !hasRoles ) {
           try {
-            // 首选 unwrap 也可以用 unwrapResult 代替
             const payload = await dispatch( getUserInfoSlice() ).unwrap()
-            // const payload = await dispatch( getUserInfoSlice() )
-            // console.log( 'unwrapResult', unwrapResult( payload ) )
-
             currentRoles = payload.roles
           } catch ( e ) {
             // 退出登录
@@ -63,7 +57,6 @@ const RouterComponent = ( props ) => {
         } else {
           currentRoles = roles
         }
-
         // 注入权限路由
         await dispatch( asyncPermissionRoutes( currentRoles ) )
 
@@ -75,14 +68,12 @@ const RouterComponent = ( props ) => {
     } else {
       // 注入基础路由
       await addBasicRoutes( { dispatch, setRouteList } )
-
       // 设置路由
       if ( whiteList.indexOf( pathname ) === -1 ) {
         navigate( '/login', { replace : true } )
       }
     }
   }
-
   useEffect( async() => await routeGuard(), [pathname] )
 
   return (

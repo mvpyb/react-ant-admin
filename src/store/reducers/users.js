@@ -109,7 +109,6 @@ export const loginOut = createAsyncThunk(
       if ( code == 200 ) {
         thunkAPI.dispatch( CLEAR_USER_INFO() )
         window.location.reload()
-
         return {}
       } else {
         return thunkAPI.rejectWithValue( data.message || '登出失败' )
