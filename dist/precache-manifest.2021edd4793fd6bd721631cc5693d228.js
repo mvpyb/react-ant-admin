@@ -18,7 +18,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/f61ee4bd8489d36317ed8bdfad5f87a2.ttf"
   },
   {
-    "revision": "a56b2ef51200b1c87baeac1ef9954af8",
+    "revision": "b9310254353a723918857cd5680324cd",
     "url": "/react-ant-admin/dist/index.html"
   },
   {
@@ -66,12 +66,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/css/Zip.24a09cac.css"
   },
   {
-    "revision": "6ff076686b4fb925f880",
-    "url": "/react-ant-admin/dist/static/css/chunk-libs.bf831f1c.css"
+    "revision": "992deefa027169b99379",
+    "url": "/react-ant-admin/dist/static/css/chunk-libs.1c603229.css"
   },
   {
-    "revision": "4a33cfb942b74cd5ae52",
-    "url": "/react-ant-admin/dist/static/css/main.60cd2a5a.css"
+    "revision": "fd189bce4d17493ff446",
+    "url": "/react-ant-admin/dist/static/css/main.e87ff0c6.css"
   },
   {
     "revision": "d44c144b42218a96e03e",
@@ -206,11 +206,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/Zip.dcf85b5a.js"
   },
   {
-    "revision": "6ff076686b4fb925f880",
+    "revision": "992deefa027169b99379",
     "url": "/react-ant-admin/dist/static/js/chunk-libs.470eafac.js"
   },
   {
-    "revision": "4a33cfb942b74cd5ae52",
+    "revision": "fd189bce4d17493ff446",
     "url": "/react-ant-admin/dist/static/js/main.973c587b.js"
   },
   {
