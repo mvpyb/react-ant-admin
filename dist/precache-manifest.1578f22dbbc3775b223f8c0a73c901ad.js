@@ -18,12 +18,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/f61ee4bd8489d36317ed8bdfad5f87a2.ttf"
   },
   {
-    "revision": "8a4e7a3c80ceefba423aac926e8fba80",
+    "revision": "a56b2ef51200b1c87baeac1ef9954af8",
     "url": "/react-ant-admin/dist/index.html"
   },
   {
-    "revision": "08376df62ef92509ff48",
-    "url": "/react-ant-admin/dist/static/css/Dashboard.f5979c99.css"
+    "revision": "a9fefc93525776180c03",
+    "url": "/react-ant-admin/dist/static/css/Dashboard.74f4a068.css"
   },
   {
     "revision": "da95aa0742436b3bd1e7",
@@ -134,7 +134,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/Clipboard.3314538d.js"
   },
   {
-    "revision": "08376df62ef92509ff48",
+    "revision": "a9fefc93525776180c03",
     "url": "/react-ant-admin/dist/static/js/Dashboard.8cf3d5ee.js"
   },
   {
@@ -214,8 +214,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-ant-admin/dist/static/js/main.973c587b.js"
   },
   {
-    "revision": "073a23f2d534507c0775",
-    "url": "/react-ant-admin/dist/static/js/runtime.225ecd01.js"
+    "revision": "3ad893bb7d7f2c42fc49",
+    "url": "/react-ant-admin/dist/static/js/runtime.635fac62.js"
   },
   {
     "revision": "d44c144b42218a96e03e",
