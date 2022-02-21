@@ -12,13 +12,13 @@ const defaultTodo = [
   { id : 1, text : 'star this repository', done : false },
   { id : 2, text : 'fork this repository', done : false },
   { id : 3, text : 'follow author', done : false },
-  { id : 4, text : 'element-plus-vite-admin', done : true },
-  { id : 5, text : 'vite', done : true },
-  { id : 6, text : 'vue', done : true },
-  { id : 7, text : 'Vuex', done : true },
-  { id : 8, text : 'Vue Router', done : true },
-  { id : 9, text : 'React', done : true },
-  { id : 10, text : 'element-plus', done : true }
+  { id : 4, text : 'react-ant-admin', done : true },
+  { id : 5, text : 'webpack', done : true },
+  { id : 6, text : 'react', done : true },
+  { id : 7, text : 'redux', done : true },
+  { id : 8, text : 'react router', done : true },
+  { id : 9, text : 'vite', done : true },
+  { id : 10, text : 'vite-element-plus', done : true }
 ]
 
 const filters = {
@@ -34,7 +34,7 @@ const TodoList = ( props ) => {
 
   const remaining = useMemo( () => todos.filter( todo => !todo.done ).length, [todos] )
 
-  const newPluralize = useMemo( () => remaining == 1 ? 'item' : 'items', [remaining] )
+  const newPluralize = useMemo( () => remaining === 1 ? 'item' : 'items', [remaining] )
 
   const allChecked = useMemo( () => todos.every( todo => todo.done ), [todos] )
 
@@ -121,6 +121,8 @@ const TodoList = ( props ) => {
           onChange={ ( e ) => toggleAll( { done : !allChecked } ) }
         />
         <label htmlFor='toggle-all' />
+
+        { /* 动画 styles-transition.less => forward-from-right back-to-right fade-in fade-transform*/ }
         <ul className='todo-list'>
           {
             filteredTodos && filteredTodos.map( ( todo, index ) => {

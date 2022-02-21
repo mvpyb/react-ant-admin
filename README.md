@@ -14,8 +14,8 @@ React Antd Admin 是一个免费开源的中后台模版。使用了最新的`re
 
 ## 预览
 
-- [github](https://github.com/mvpyb/react-antd-admin.git) - 完整版github站点
-- [预览](https://mvpyb.github.io/react-antd-admin/dist/)- 完整版预览 ( github )
+- [github](https://github.com/mvpyb/react-ant-admin.git) - 完整版github站点
+- [预览](https://mvpyb.github.io/react-ant-admin/dist/)- 完整版预览 ( github )
 
 
 ## Vite Element Admin - （vite + Element Plus 开箱即用的中后台模板）
@@ -83,7 +83,7 @@ React Antd Admin 是一个免费开源的中后台模版。使用了最新的`re
 
 ```bash
 # 克隆项目
-git clone https://github.com/mvpyb/react-antd-admin.git
+git clone https://github.com/mvpyb/react-ant-admin.git
 
 # 进入项目目录
 cd vite-element-plus-admin

@@ -12,6 +12,7 @@ import TransactionTable from './components/TransactionTable'
 import YuStreetMap from '@/components/YuStreetMap'
 import YuWeather from './components/YuWeather'
 import TodoList from './components/TodoList'
+import BoxCard from './components/BoxCard'
 
 import './index.less'
 
@@ -144,8 +145,9 @@ const Dashboard = ( props ) => {
             <TodoList />
           </Col>
 
+          {/* TODO  此处还未编辑*/}
           <Col span={6}>
-            {/* <YuStreetMap />*/}
+            <BoxCard />
           </Col>
         </Row>
 

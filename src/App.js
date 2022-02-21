@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { HashRouter, MemoryRouter } from 'react-router-dom'
-import { HashRouter } from 'react-router-dom'
-// import { BrowserRouter } from 'react-router-dom'
+// import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
@@ -14,9 +14,9 @@ class App extends Component {
     return (
       <ConfigProvider locale={zhCN}>
         <Provider store={store}>
-          <HashRouter>
+          <BrowserRouter>
             <Router />
-          </HashRouter>
+          </BrowserRouter>
         </Provider>
       </ConfigProvider>
     )

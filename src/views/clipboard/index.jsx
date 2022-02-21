@@ -12,7 +12,7 @@ const handleCopy = ( text, event ) => {
   clip( text, event )
 }
 
-const defaultText = 'React Antd Admin 是一个免费开源的中后台模版。使用了最新的`react 17.x`,`react-router 6.x`,`@reduxjs/toolkit`,`antd4.x`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。模板集成了基础权限、国际化以及各种常用组件。More : https://github.com/mvpyb/react-antd-admin'
+const defaultText = 'React Ant Admin 是一个免费开源的中后台模版。使用了最新的`react 17.x`,`react-router 6.x`,`@reduxjs/toolkit`,`antd4.x`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。模板集成了基础权限、国际化以及各种常用组件。More : https://github.com/mvpyb/react-ant-admin'
 
 const Clipboard = () => {
   const [text, setText] = useState( defaultText )
