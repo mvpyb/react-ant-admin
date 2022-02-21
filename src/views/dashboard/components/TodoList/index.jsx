@@ -122,7 +122,6 @@ const TodoList = ( props ) => {
         />
         <label htmlFor='toggle-all' />
 
-        { /* 动画 styles-transition.less => forward-from-right back-to-right fade-in fade-transform*/ }
         <ul className='todo-list'>
           {
             filteredTodos && filteredTodos.map( ( todo, index ) => {
