@@ -1,12 +1,14 @@
 
 import { createSlice } from '@reduxjs/toolkit'
 import defaultSettings from '@/defaultSettings'
-// const { showSettings, sidebarLogo, fixedHeader, tagsView } = defaultSettings
-const { fixedHeader, sidebarLogo } = defaultSettings
+const { showSettings, sidebarLogo, fixedHeader, tagsView } = defaultSettings
+// const { fixedHeader, sidebarLogo } = defaultSettings
 
 export const initialState = {
+  showSettings,
   fixedHeader,
-  sidebarLogo
+  sidebarLogo,
+  tagsView
 }
 
 export const settingsSlice = createSlice( {
