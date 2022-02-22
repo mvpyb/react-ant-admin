@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-// TODO hook 用法
-// import { useTranslation } from 'react-i18next'
-
-// TODO HOC 用法
 import { withTranslation } from 'react-i18next'
-
 import DocumentTitle from 'react-document-title'
 import './index.less'
 
@@ -18,7 +12,6 @@ import PasswordLogin from './passwordLogin'
 const Login = ( { t } ) => {
   const [loading, setLoading] = useState( false )
   const navigate = useNavigate()
-  // const { t } = useTranslation()
 
   const loginStart = () => {
     setLoading( true )
@@ -58,4 +51,3 @@ const Login = ( { t } ) => {
 }
 
 export default withTranslation()( Login )
-// export default connect( ( state ) => state.users )( Login )
