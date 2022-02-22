@@ -1,19 +1,25 @@
 
 import Layout from '@/layouts'
 import { dynamicImport } from './utils'
-import { isExternal } from '@utils/validate'
+// import { isExternal } from '@utils/validate'
 
 import componentsRouter from './modules/components'
 import nestedRouter from './modules/nested'
 
-// 管理员 admin:该角色拥有系统内所有菜单和路由的权限。
-// 编辑员 editor:该角色拥有系统内除用户管理页之外的所有菜单和路由的权限。
-// 游客 guest:该角色仅拥有Dashboard、开发文档、权限测试和关于作者三个页面的权限。
+/**
+ * Note: 子菜单只在路由子菜单时出现。长度> = 1
+ *
+ * hidden: true                   如果设置为true, item将不会显示在侧边栏中(默认为false)
+ * redirect: '                    重定向地址
+ * title:'router-name'            名称显示在侧边栏和面包屑(建议设置)
+ * roles: ['admin','editor']      控制页面角色(您可以设置多个角色)
+ * icon: 'svg-name'               svgIcon
+ * affix: true                    如果设置为true，标签将会一直显示在tags-view中
+ */
 
 const constantRoutesList = [
   {
     path : '/login',
-    name : 'Login',
     component : dynamicImport( () => import( /* webpackChunkName:'Login'*/'@views/login' ) ),
     hidden : true
   },
@@ -72,8 +78,9 @@ const asyncRoutesList = [
     children : [
       {
         title : '首页',
-        path : 'index',
+        path : '/dashboard/index',
         hidden : true,
+        affix : true,
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
       }
@@ -89,11 +96,12 @@ const asyncRoutesList = [
     icon : 'icon2',
     children : [
       {
-        path : 'index',
+        path : '/icons/index',
         title : '图标',
         icon : 'icon2',
         roles : ['admin', 'editor'],
         hidden : true,
+        affix : true,
         component : dynamicImport( () => import( /* webpackChunkName:'Icons'*/'@views/icons' ) )
       }
     ]
@@ -108,7 +116,7 @@ const asyncRoutesList = [
     icon : 'i18n',
     children : [
       {
-        path : 'index',
+        path : '/i18n/index',
         title : '国际化',
         roles : ['admin', 'editor'],
         hidden : true,
@@ -125,7 +133,7 @@ const asyncRoutesList = [
     icon : 'clipboard',
     children : [
       {
-        path : 'index',
+        path : '/clipboard/index',
         title : '剪贴板',
         roles : ['admin', 'editor'],
         hidden : true,
@@ -143,19 +151,19 @@ const asyncRoutesList = [
     roles : ['admin', 'editor'],
     children : [
       {
-        path : 'index',
+        path : '/charts/index',
         title : '折线图',
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'Line'*/'@views/charts/line' ) )
       },
       {
-        path : 'keyboard',
+        path : '/charts/keyboard',
         title : '键盘图表',
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'Keyboard'*/'@views/charts/keyboard' ) )
       },
       {
-        path : 'mixChart',
+        path : '/charts/mixChart',
         title : '混合图表',
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'MixChart'*/'@views/charts/mixChart' ) )
@@ -172,18 +180,17 @@ const asyncRoutesList = [
     roles : ['admin', 'editor'],
     children : [
       {
-        path : 'export',
+        path : '/excel/export',
         title : '导出表格',
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'Export'*/'@views/excel/export' ) )
       },
       {
-        path : 'upload',
+        path : '/excel/upload',
         title : '上传表格',
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'Upload'*/'@views/excel/upload' ) )
       }
-
     ]
   },
 
@@ -196,7 +203,7 @@ const asyncRoutesList = [
     roles : ['admin', 'editor'],
     children : [
       {
-        path : 'index',
+        path : '/zip/index',
         title : 'Zip',
         roles : ['admin', 'editor'],
         hidden : true,
@@ -218,13 +225,13 @@ const asyncRoutesList = [
     roles : ['admin', 'editor'],
     children : [
       {
-        path : '404',
+        path : '/error/404',
         title : '404',
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'ErrorPage404'*/'@views/errorPage/404' ) )
       },
       {
-        path : '401',
+        path : '/error/401',
         title : '401',
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'ErrorPage401'*/'@views/errorPage/401' ) )
@@ -243,58 +250,50 @@ const asyncRoutesList = [
         roles : ['admin', 'editor'],
         path : 'https://ant.design/docs/react/introduce-cn',
         title : 'ant-design'
-      }
-    ]
-  },
-  {
-    path : 'baidu',
-    component : Layout,
-    title : '外链-百度',
-    icon : 'baidu',
-    roles : ['admin', 'editor'],
-    redirect : 'https://www.baidu.com/',
-    children : [
+      },
       {
-        hidden : true,
-        path : 'https://www.baidu.com/',
-        title : '外链1',
         roles : ['admin', 'editor'],
-        icon : 'baidu'
+        path : 'https://www.baidu.com/',
+        title : '百度'
       }
     ]
   },
 
   {
     path : '*',
-    redirect : '/404'
+    redirect : '/error/404'
   }
 ]
 
-// 补全
-const isLink = ( to ) => isExternal( to )
-function addFullPath( lists, initPath = '' ) {
-  lists.forEach( ( list, index ) => {
-    const { children, redirect, path } = list
-    let currentPath
-    if ( isLink( path ) ) {
-      currentPath = path
-    } else {
-      currentPath = path.startsWith( '/' ) ? `${initPath}${path}` : `${initPath}/${path}`
-    }
-    // const currentPath = path.startsWith( '/' ) ? `${initPath}${path}` : `${initPath}/${path}`
+// // 补全
+// const isLink = ( to ) => isExternal( to )
 
-    lists.splice( index, 1, {
-      ...list,
-      fullPath : redirect || currentPath
-    } )
+// function addFullPath( lists, initPath = '' ) {
+//   lists.forEach( ( list, index ) => {
+//     const { children, redirect, path } = list
+//     let currentPath
+//     if ( isLink( path ) ) {
+//       currentPath = path
+//     } else {
+//       currentPath = path.startsWith( '/' ) ? `${initPath}${path}` : `${initPath}/${path}`
+//     }
+//     // const currentPath = path.startsWith( '/' ) ? `${initPath}${path}` : `${initPath}/${path}`
+//
+//     lists.splice( index, 1, {
+//       ...list,
+//       fullPath : redirect || currentPath
+//     } )
+//
+//     if ( children && children.length ) {
+//       addFullPath( children, currentPath )
+//     }
+//   } )
+//
+//   return lists
+// }
 
-    if ( children && children.length ) {
-      addFullPath( children, currentPath )
-    }
-  } )
+// export const asyncRoutes = addFullPath( asyncRoutesList )
+// export const constantRoutes = addFullPath( constantRoutesList )
 
-  return lists
-}
-
-export const asyncRoutes = addFullPath( asyncRoutesList )
-export const constantRoutes = addFullPath( constantRoutesList )
+export const asyncRoutes = asyncRoutesList
+export const constantRoutes = constantRoutesList
