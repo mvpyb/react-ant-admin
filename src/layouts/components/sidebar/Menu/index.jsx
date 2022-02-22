@@ -34,11 +34,8 @@ const SideMenu = ( props ) => {
     routes.forEach( item => {
       const { children, path, redirect } = item
       if ( key == path && !tag.find( v => v.path == path ) ) {
-        console.log( 'item', item, redirect )
-
         if ( redirect && children && children.length > 0 ) {
           const obj = children.find( v => v.path == redirect )
-          console.log( 'obj', obj )
           tag.push( {
             ...obj
           } )
@@ -48,12 +45,6 @@ const SideMenu = ( props ) => {
           } )
         }
       }
-
-      // if ( !redirect && key == path && !tag.find( v => v.path == path ) ) {
-      //   tag.push( {
-      //     ...item
-      //   } )
-      // }
 
       if ( children && children.length > 0 ) {
         filterTags( children, key, tag )

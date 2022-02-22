@@ -13,7 +13,7 @@ import './index.less'
 import { Scrollbars } from 'react-custom-scrollbars'
 
 const BaseLayout = ( props ) => {
-  console.log( 'props', props )
+  // console.log( 'props', props )
   const { tagsView } = props
   return (
     <Layout style={{ minHeight : '100vh' }}>
