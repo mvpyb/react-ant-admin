@@ -145,7 +145,6 @@ const Dashboard = ( props ) => {
             <TodoList />
           </Col>
 
-          {/* TODO  此处还未编辑*/}
           <Col span={6}>
             <BoxCard />
           </Col>
