@@ -76,3 +76,9 @@ export function filterAsyncRoutes( routes, roles ) {
   }
   return res
 }
+
+// export function getFullKey( route ) {
+//   const { path, fullPath, redirect } = route
+//   const fullKey = `${path}_${fullPath || redirect}`
+//   return fullKey
+// }
