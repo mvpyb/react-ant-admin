@@ -9,7 +9,8 @@ const basicRoutes = basicRedirect.concat( constantRoutes )
 export const initialState = {
   routes : [],
   addRoutes : [],
-  basicRoutes
+  basicRoutes,
+  allRedirects : basicRedirect
 }
 
 export const permissionSlice = createSlice( {
@@ -17,10 +18,11 @@ export const permissionSlice = createSlice( {
   initialState,
   reducers : {
     setRoutes : ( state, { payload } ) => {
-      const { allAsyncRoutes, routers, addRoutes } = payload
+      const { allAsyncRoutes, routers, addRoutes, asyncRedirects } = payload
       state.addRoutes = addRoutes
       state.routes = routers
       state.basicRoutes = state.basicRoutes.concat( allAsyncRoutes )
+      state.allRedirects = state.allRedirects.concat( asyncRedirects )
     }
     // resetRoutes : ( state, { payload } ) => {
     //   state.addRoutes = []
@@ -37,11 +39,12 @@ export const asyncPermissionRoutes = roles => async( dispatch ) => {
   const asyncRedirects = getAllRedirects( accessedRoutes, [] )
 
   // 所有权限路由 ： 权限路由 + 权限重定向路由
+  // const allAsyncRoutes = accessedRoutes.concat( asyncRedirects )
   const allAsyncRoutes = asyncRedirects.concat( accessedRoutes )
 
   const result = {
     // accessedRoutes,
-    // asyncRedirects,
+    asyncRedirects,
     allAsyncRoutes,
     addRoutes : accessedRoutes,
     routers : basicRoutes.concat( allAsyncRoutes )
