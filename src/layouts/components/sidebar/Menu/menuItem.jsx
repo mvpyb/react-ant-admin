@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './index.less'
 
+// import { getFullKey } from '@router/utils'
 import { isArray, isExternal } from '@utils/validate'
 import SvgIcon from '@/components/SvgIcon'
 
@@ -38,7 +39,7 @@ const MenuItem = ( menuList ) => {
   }
 
   const isLink = ( to ) => {
-    return isExternal( to )
+    return isExternal( to ) || !( to.startsWith( '/' ) )
   }
 
   const renderMenu = ( lists, callback ) => {
@@ -47,11 +48,16 @@ const MenuItem = ( menuList ) => {
     }
 
     return lists.map( item => {
+      if ( item.path == '*' ) {
+        return null
+      }
       const CustomSvg = () => (
         item.icon ? <SvgIcon iconClass={ item.icon } className={ 'menu-icon' } /> : null
       )
 
       const { hidden, children, title, path } = item
+      // const fullKey = getFullKey( item )
+
       if ( !hidden ) {
         // 判断children是否至少有一个有效的 ( hidden == false .length > 0)
         const hasEffectChildren = hasEffectChild( children, item )
@@ -61,15 +67,9 @@ const MenuItem = ( menuList ) => {
           return (
             <SubMenu
               className={ `sub-menu-section ${item.icon ? 'has-icon' : 'no-icon'}` }
-              key={ `${path}_${item.fullPath || item.redirect}` }
+              key={ path }
               title={ title }
               icon={ <Icon component={ CustomSvg } /> }
-              /* title={
-                <div className={ 'menu-title-section' }>
-                  { item.icon ? <SvgIcon iconClass={ item.icon } className={ 'menu-icon' } /> : null }
-                  <span className={ 'menu-title' }>{ title }</span>
-                </div>
-              }*/
             >
               { renderMenu( children, callback ) }
             </SubMenu>
@@ -78,38 +78,29 @@ const MenuItem = ( menuList ) => {
         return (
           <Item
             className={ `menu-item-section ${item.icon ? 'has-icon' : 'no-icon'}` }
-            key={ `${path}_${item.fullPath || item.redirect}` }
+            key={ path }
             onClick={() => callback( item ) }
             title={ title }
             icon={ <Icon component={ CustomSvg } /> }
           >
-            {/* <Link to={ item.fullPath }>
-              { item.icon ? <SvgIcon iconClass={ item.icon } className={ 'menu-icon' } /> : null }
-              <span className={ 'menu-title' }>{ title }</span>
-            </Link>*/}
-
             {
-              isLink( item.fullPath )
-                ? ( <a href={ item.fullPath } target={ '_blank' } rel='noreferrer'> { title } </a> )
+              isLink( item.path )
+                ? ( <a href={ item.path } target={ '_blank' } rel='noreferrer'> { title } </a> )
                 : (
-                  <Link to={ item.fullPath }>
+                  <Link to={ item.path }>
                     { title }
                   </Link>
                 )
             }
-
           </Item>
         )
       }
-      return < React.Fragment key={ `${item.path}_${item.fullPath || item.redirect}` } />
+      return < React.Fragment key={ path } />
     } )
   }
 
   // TODO 路由跳转
-  const menuClick = item => {
-    // console.log( 'menuClick', { ...item })
-    // const menuList = menuList
-  }
+  const menuClick = item => {}
 
   return renderMenu( menuList, menuClick )
 }
