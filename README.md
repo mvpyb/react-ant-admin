@@ -16,6 +16,7 @@ React Antd Admin 是一个免费开源的中后台模版。使用了最新的`re
 
 - [github](https://github.com/mvpyb/react-ant-admin.git) - 完整版github站点
 - [预览](https://mvpyb.github.io/react-ant-admin/dist/)- 完整版预览 ( github )
+- [预览](https://mvpyb.github.io/react-ant-admin/dist/)- 完整版预览 ( 码云 )
 
 
 ## Vite Element Admin - （vite + Element Plus 开箱即用的中后台模板）
