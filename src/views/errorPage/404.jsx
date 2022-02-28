@@ -3,8 +3,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 
-import img404 from '@imgs/404_images/404.png'
-import cloud from '@imgs/404_images/404.png'
+import img404 from '@/assets/imgs/404_images/404.png'
+import cloud from '@/assets/imgs/404_images/404.png'
 
 import './styles/404.less'
 

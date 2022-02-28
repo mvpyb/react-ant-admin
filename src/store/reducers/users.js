@@ -1,7 +1,7 @@
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getCookie, addCookie, removeCookie } from '@utils/cookies'
-import { getUserInfo, logOut } from '@api/user'
+import { getCookie, addCookie, removeCookie } from '@/utils/cookies'
+import { getUserInfo, logOut } from '@/api/user'
 
 export const initialState = {
   username : '灰是小灰灰的灰',

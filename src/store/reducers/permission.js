@@ -1,7 +1,7 @@
 
 import { createSlice } from '@reduxjs/toolkit'
-import { asyncRoutes, constantRoutes } from '@router/routes'
-import { getAllRedirects, filterAsyncRoutes } from '@router/utils'
+import { asyncRoutes, constantRoutes } from '@/router/routes'
+import { getAllRedirects, filterAsyncRoutes } from '@/router/utils'
 
 const basicRedirect = getAllRedirects( constantRoutes, [] )
 const basicRoutes = basicRedirect.concat( constantRoutes )

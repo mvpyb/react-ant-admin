@@ -7,7 +7,7 @@ import {
 import { ProfileOutlined, FileZipOutlined } from '@ant-design/icons'
 const { Item } = Form
 
-import { getTableData } from '@api/table'
+import { getTableData } from '@/api/table'
 
 const columns = [
   {
@@ -68,7 +68,7 @@ const Zip = () => {
   }, [] )
 
   const exportZip = () => {
-    import( '@vendor/Export2Zip' ).then( ( zip ) => {
+    import( '@/vendor/Export2Zip' ).then( ( zip ) => {
       setDownloadLoading( true )
       const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
       const filterVal = ['id', 'title', 'author', 'readings', 'date']

@@ -3,7 +3,7 @@ import React from 'react'
 import { connect, useDispatch } from 'react-redux'
 import './index.less'
 
-import { TOGGLE_SIDEBAR } from '@store/reducers/app'
+import { TOGGLE_SIDEBAR } from '@/store/reducers/app'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 
 const Hamburger = ( props ) => {

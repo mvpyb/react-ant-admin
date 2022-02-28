@@ -1,5 +1,5 @@
 
-import { request } from '@utils/request'
+import { request } from '@/utils/request'
 
 // 此处接入的是真实接口
 // export function login( data ) {

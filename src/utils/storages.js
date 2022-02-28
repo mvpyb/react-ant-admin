@@ -1,5 +1,5 @@
 
-import { STORAGE_PREFIX } from '@config/constant'
+import { STORAGE_PREFIX } from '@/config/constant'
 
 class StorageProxy {
   constructor( storageModel ) {

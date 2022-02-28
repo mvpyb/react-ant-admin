@@ -14,27 +14,27 @@ const nestedRouter = {
       path : '/nested/menu1',
       title : 'Menu1',
       redirect : '/nested/menu1/menu1-1',
-      component : dynamicImport( () => import( /* webpackChunkName:'Menu1'*/'@views/nested/menu1' ) ),
+      component : dynamicImport( () => import( /* webpackChunkName:'Menu1'*/'@/views/nested/menu1' ) ),
       roles : ['admin', 'editor'],
       children : [
         {
           path : '/nested/menu1/menu1-1',
           title : 'Menu1-1',
           icon : 'nested',
-          component : dynamicImport( () => import( /* webpackChunkName:'Menu1-1'*/'@views/nested/menu1/menu1-1' ) ),
+          component : dynamicImport( () => import( /* webpackChunkName:'Menu1-1'*/'@/views/nested/menu1/menu1-1' ) ),
           roles : ['admin', 'editor']
         },
         {
           path : '/nested/menu1/menu1-2',
           title : 'Menu1-2',
           redirect : '/nested/menu1/menu1-2/menu1-2-1',
-          component : dynamicImport( () => import( /* webpackChunkName:'Menu1'*/'@views/nested/menu1/menu1-2' ) ),
+          component : dynamicImport( () => import( /* webpackChunkName:'Menu1'*/'@/views/nested/menu1/menu1-2' ) ),
           roles : ['admin', 'editor'],
           children : [
             {
               path : '/nested/menu1/menu1-2/menu1-2-1',
               title : 'Menu1-2-1',
-              component : dynamicImport( () => import( /* webpackChunkName:'Menu1'*/'@views/nested/menu1/menu1-2/menu1-2-1' ) ),
+              component : dynamicImport( () => import( /* webpackChunkName:'Menu1'*/'@/views/nested/menu1/menu1-2/menu1-2-1' ) ),
               roles : ['admin', 'editor']
             }
           ]

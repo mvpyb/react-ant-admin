@@ -1,6 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit'
-import { isArray } from '@utils/validate'
+import { isArray } from '@/utils/validate'
 
 export const initialState = {
   tags : [],

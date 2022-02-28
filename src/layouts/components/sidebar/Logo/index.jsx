@@ -1,6 +1,6 @@
 
 import React from 'react'
-import logo from '@imgs/ant.svg'
+import logo from '@/assets/imgs/ant.svg'
 import './index.less'
 
 const Logo = () => {

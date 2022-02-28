@@ -1,7 +1,7 @@
 
 import React from 'react'
 import './logo.less'
-import logo from '@imgs/ant.svg'
+import logo from '@/assets/imgs/ant.svg'
 
 const Logo = ( props ) => {
   return (

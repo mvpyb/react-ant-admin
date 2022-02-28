@@ -6,7 +6,7 @@ import cloneDeep from 'loadsh/cloneDeep'
 
 import Todo from './todo'
 
-import { localStorageHandle } from '@utils/storages'
+import { localStorageHandle } from '@/utils/storages'
 const TODO_LIST_KEY = 'react-todos'
 const defaultTodo = [
   { id : 1, text : 'star this repository', done : false },

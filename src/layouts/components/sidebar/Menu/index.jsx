@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom'
 
 import { Menu } from 'antd'
 
-import { UPDATE_TAGS, SET_DEFAULT_TAGS } from '@store/reducers/tagsView'
+import { UPDATE_TAGS, SET_DEFAULT_TAGS } from '@/store/reducers/tagsView'
 import MenuItem from './menuItem'
 
 import './index.less'

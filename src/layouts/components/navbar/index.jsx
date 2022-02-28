@@ -3,13 +3,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { useDispatch } from 'react-redux'
-import { loginOut } from '@store/reducers/users'
+import { loginOut } from '@/store/reducers/users'
 
 import './index.less'
 import FullScreen from '@/components/FullScreen'
 import Hamburger from '@/components/Hamburger'
 
-import { subStringStr } from '@utils/filters'
+import { subStringStr } from '@/utils/filters'
 
 import {
   Menu, Dropdown, Modal, Layout, Avatar

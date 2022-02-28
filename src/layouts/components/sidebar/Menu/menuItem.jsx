@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 import './index.less'
 
-// import { getFullKey } from '@router/utils'
-import { isArray, isExternal } from '@utils/validate'
+// import { getFullKey } from '@/router/utils'
+import { isArray, isExternal } from '@/utils/validate'
 import SvgIcon from '@/components/SvgIcon'
 
 import Icon from '@ant-design/icons'

@@ -46,6 +46,7 @@ function invade( target, name, callback ) {
 
 // 自定义组合配置
 const addCustomize = () => ( config, env ) => {
+  console.log( 'config', { ...config } )
   const oneOf_loc = config.module.rules.findIndex( rule => rule.oneOf )
 
   config.module.rules[oneOf_loc].oneOf = [
@@ -157,19 +158,7 @@ module.exports = {
     } ),
 
     addWebpackAlias( {
-      '@' : resolve( './src' ),
-      '@api' : resolve( './src/api' ),
-      '@components' : resolve( './src/components' ),
-      '@config' : resolve( './src/config' ),
-      '@router' : resolve( './src/router' ),
-      '@store' : resolve( './src/store' ),
-      '@vendor' : resolve( './src/vendor' ),
-      '@utils' : resolve( './src/utils' ),
-      '@views' : resolve( './src/views' ),
-      '@layout' : resolve( './src/views/layout' ),
-      '@styles' : resolve( './src/styles' ),
-      '@assets' : resolve( './src/assets' ),
-      '@imgs' : resolve( './src/assets/imgs' )
+      '@' : resolve( './src' )
     } ),
     addCustomize(),
 

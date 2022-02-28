@@ -1,6 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit'
-import { getCookie, addCookie } from '@utils/cookies'
+import { getCookie, addCookie } from '@/utils/cookies'
 
 export const initialState = {
   sidebarStatus : getCookie( 'sidebarStatus' ) ? !!+getCookie( 'sidebarStatus' ) : true,

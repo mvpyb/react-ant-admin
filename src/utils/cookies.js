@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
-import { getEnvs } from '@utils/env'
-import { COOKIE_PREFIX } from '@config/constant'
+import { getEnvs } from '@/utils/env'
+import { COOKIE_PREFIX } from '@/config/constant'
 const getEnv = getEnvs()
 
 const { hostname } = window.location

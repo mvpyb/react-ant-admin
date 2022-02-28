@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux'
 // import { unwrapResult } from '@reduxjs/toolkit'
 
 import store from '@/store'
-import { asyncPermissionRoutes } from '@store/reducers/permission'
-import { getUserInfoSlice, CLEAR_USER_INFO } from '@store/reducers/users'
+import { asyncPermissionRoutes } from '@/store/reducers/permission'
+import { getUserInfoSlice, CLEAR_USER_INFO } from '@/store/reducers/users'
 
 import DynamicRouter from './dynamicRouter'
-import { getCookie } from '@utils/cookies'
+import { getCookie } from '@/utils/cookies'
 
 const whiteList = [
   '/login'

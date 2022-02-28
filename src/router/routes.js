@@ -1,7 +1,7 @@
 
 import Layout from '@/layouts'
 import { dynamicImport } from './utils'
-// import { isExternal } from '@utils/validate'
+// import { isExternal } from '@/utils/validate'
 
 import componentsRouter from './modules/components'
 import nestedRouter from './modules/nested'
@@ -20,17 +20,17 @@ import nestedRouter from './modules/nested'
 const constantRoutesList = [
   {
     path : '/login',
-    component : dynamicImport( () => import( /* webpackChunkName:'Login'*/'@views/login' ) ),
+    component : dynamicImport( () => import( /* webpackChunkName:'Login'*/'@/views/login' ) ),
     hidden : true
   },
   {
     path : '/401',
-    component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@views/errorPage/401' ) ),
+    component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@/views/errorPage/401' ) ),
     hidden : true
   },
   {
     path : '/404',
-    component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@views/errorPage/404' ) ),
+    component : dynamicImport( () => import( /* webpackChunkName:'Error401'*/'@/views/errorPage/404' ) ),
     hidden : true
   },
   // {
@@ -48,14 +48,14 @@ const constantRoutesList = [
   //     //   // path : '',
   //     //   path : 'index',
   //     //   icon : 'home',
-  //     //   component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
+  //     //   component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@/views/dashboard' ) )
   //     // },
   //
   //     {
   //       title : '首页',
   //       path : 'index',
   //       icon : 'home',
-  //       component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
+  //       component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@/views/dashboard' ) )
   //     }
   //
   //   ]
@@ -82,7 +82,7 @@ const asyncRoutesList = [
         hidden : true,
         affix : true,
         roles : ['admin', 'editor'],
-        component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@views/dashboard' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@/views/dashboard' ) )
       }
     ]
   },
@@ -102,7 +102,7 @@ const asyncRoutesList = [
         roles : ['admin', 'editor'],
         hidden : true,
         affix : true,
-        component : dynamicImport( () => import( /* webpackChunkName:'Icons'*/'@views/icons' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'Icons'*/'@/views/icons' ) )
       }
     ]
   },
@@ -120,7 +120,7 @@ const asyncRoutesList = [
         title : '国际化',
         roles : ['admin', 'editor'],
         hidden : true,
-        component : dynamicImport( () => import( /* webpackChunkName:'I18n'*/'@views/i18n' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'I18n'*/'@/views/i18n' ) )
       }
     ]
   },
@@ -137,7 +137,7 @@ const asyncRoutesList = [
         title : '剪贴板',
         roles : ['admin', 'editor'],
         hidden : true,
-        component : dynamicImport( () => import( /* webpackChunkName:'Clipboard'*/'@views/clipboard' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'Clipboard'*/'@/views/clipboard' ) )
       }
     ]
   },
@@ -154,19 +154,19 @@ const asyncRoutesList = [
         path : '/charts/index',
         title : '折线图',
         roles : ['admin', 'editor'],
-        component : dynamicImport( () => import( /* webpackChunkName:'Line'*/'@views/charts/line' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'Line'*/'@/views/charts/line' ) )
       },
       {
         path : '/charts/keyboard',
         title : '键盘图表',
         roles : ['admin', 'editor'],
-        component : dynamicImport( () => import( /* webpackChunkName:'Keyboard'*/'@views/charts/keyboard' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'Keyboard'*/'@/views/charts/keyboard' ) )
       },
       {
         path : '/charts/mixChart',
         title : '混合图表',
         roles : ['admin', 'editor'],
-        component : dynamicImport( () => import( /* webpackChunkName:'MixChart'*/'@views/charts/mixChart' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'MixChart'*/'@/views/charts/mixChart' ) )
       }
     ]
   },
@@ -183,13 +183,13 @@ const asyncRoutesList = [
         path : '/excel/export',
         title : '导出表格',
         roles : ['admin', 'editor'],
-        component : dynamicImport( () => import( /* webpackChunkName:'Export'*/'@views/excel/export' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'Export'*/'@/views/excel/export' ) )
       },
       {
         path : '/excel/upload',
         title : '上传表格',
         roles : ['admin', 'editor'],
-        component : dynamicImport( () => import( /* webpackChunkName:'Upload'*/'@views/excel/upload' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'Upload'*/'@/views/excel/upload' ) )
       }
     ]
   },
@@ -207,7 +207,7 @@ const asyncRoutesList = [
         title : 'Zip',
         roles : ['admin', 'editor'],
         hidden : true,
-        component : dynamicImport( () => import( /* webpackChunkName:'Zip'*/'@views/zip/index' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'Zip'*/'@/views/zip/index' ) )
       }
     ]
   },
@@ -228,13 +228,13 @@ const asyncRoutesList = [
         path : '/error/404',
         title : '404',
         roles : ['admin', 'editor'],
-        component : dynamicImport( () => import( /* webpackChunkName:'ErrorPage404'*/'@views/errorPage/404' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'ErrorPage404'*/'@/views/errorPage/404' ) )
       },
       {
         path : '/error/401',
         title : '401',
         roles : ['admin', 'editor'],
-        component : dynamicImport( () => import( /* webpackChunkName:'ErrorPage401'*/'@views/errorPage/401' ) )
+        component : dynamicImport( () => import( /* webpackChunkName:'ErrorPage401'*/'@/views/errorPage/401' ) )
       }
     ]
   },

@@ -16,7 +16,7 @@ const { Item } = Form
 
 import { ProfileOutlined, FileExcelOutlined } from '@ant-design/icons'
 
-import { getTableData } from '@api/table'
+import { getTableData } from '@/api/table'
 
 const columns = [
   {
@@ -105,7 +105,7 @@ class Excel extends Component {
     this.setState( {
       downloadLoading : true
     } )
-    import( '@vendor/Export2Excel' ).then( ( excel ) => {
+    import( '@/vendor/Export2Excel' ).then( ( excel ) => {
       const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
       const filterVal = ['id', 'title', 'author', 'readings', 'date']
       const list = type === 'all' ? this.state.list : this.state.selectedRows

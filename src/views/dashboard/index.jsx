@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import DocumentTitle from 'react-document-title'
-import YuCard from '@components/YuCard'
+import YuCard from '@/components/YuCard'
 
 import BarChart from './components/BarChart'
 import RaddarChart from './components/RaddarChart'

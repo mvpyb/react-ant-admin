@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import clip from '@utils/clipboard'
+import clip from '@/utils/clipboard'
 import {
   Button, Row, Col, Card, Input
 } from 'antd'

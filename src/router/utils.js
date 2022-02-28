@@ -1,7 +1,7 @@
 
 // import { Suspense, lazy } from 'react'
 import Loadable from 'react-loadable'
-import Loading from '@components/Loading'
+import Loading from '@/components/Loading'
 
 // 文档： https://www.npmjs.com/package/react-loadable
 export const dynamicImport = ( fn ) => {

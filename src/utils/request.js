@@ -10,16 +10,16 @@
 'use strict'
 import axios from 'axios'
 import { message as AntMessage } from 'antd'
-import { getEnvs } from '@utils/env'
-import { getCookie } from '@utils/cookies'
+import { getEnvs } from '@/utils/env'
+import { getCookie } from '@/utils/cookies'
 import {
   WHITE_CODE_LIST,
   LOGIN_ERROR_CODE,
   GLOBAL_DATA
-} from '@config/constant'
+} from '@/config/constant'
 
 import store from '@/store'
-import { loginOut } from '@store/reducers/users'
+import { loginOut } from '@/store/reducers/users'
 // import qs from 'qs'
 
 class HttpRequest {

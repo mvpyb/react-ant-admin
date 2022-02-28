@@ -2,13 +2,13 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { getUserInfoSlice, SET_TOKEN } from '@store/reducers/users'
+import { getUserInfoSlice, SET_TOKEN } from '@/store/reducers/users'
 
 import './index.less'
 
 import { validPhone } from '@/utils/validate'
-import { localStorageHandle } from '@utils/storages'
-import { login } from '@api/login'
+import { localStorageHandle } from '@/utils/storages'
+import { login } from '@/api/login'
 
 import { Form, Input, Button, Checkbox } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
