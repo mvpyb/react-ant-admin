@@ -104,12 +104,13 @@ const addCustomize = () => ( config, env ) => {
     ...config.module.rules[oneOf_loc].oneOf
   ]
 
-  if ( config.output.publicPath ) {
-    config.output.publicPath =
-        process.env.NODE_ENV === 'production'
-          ? '/react-ant-admin/dist/'
-          : '/'
-  }
+  // if ( config.output.publicPath ) {
+  //   config.output.publicPath =
+  //       process.env.NODE_ENV === 'production'
+  //         ? '/react-ant-admin/dist/'
+  //         : '/'
+  // }
+  config.output.publicPath = './'
 
   if ( config.resolve ) {
     config.resolve.extensions.push( '.jsx' )
