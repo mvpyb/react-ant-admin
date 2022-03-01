@@ -46,19 +46,45 @@ function invade( target, name, callback ) {
 
 // 自定义组合配置
 const addCustomize = () => ( config, env ) => {
-  console.log( 'config', { ...config } )
   const oneOf_loc = config.module.rules.findIndex( rule => rule.oneOf )
 
   config.module.rules[oneOf_loc].oneOf = [
     {
       test : /.(eot|otf|fon|font|ttf|ttc|woff|woff2)$/,
+      // test : /\.(eot|woff|ttf|woff2)\??.*$/,
+      // exclude : [/^node_modules$/, path.resolve( __dirname, '../src/icons/svg' )],
       use : [
+        // {
+        //   loader : 'file-loader',
+        //   options : {
+        //     postTransformPublicPath : ( p ) => `__webpack_public_path__ + ${p}`,
+        //     publicPath : '../fonts/',
+        //     outputPath : 'static/fonts/',
+        //     // name : '[path][name].[ext]',
+        //     // name : '[contenthash].[ext]'
+        //     name : '[contenthash].[ext]'
+        //   }
+        // },
+
         {
           loader : 'url-loader',
           options : {
-            limit : 1024
+            limit : 1024 * 10,
+            fallback : 'file-loader',
+            postTransformPublicPath : ( p ) => `__webpack_public_path__ + ${p}`,
+            publicPath : '../fonts/',
+            outputPath : 'static/fonts/',
+            name : '[contenthash].[ext]'
           }
         }
+
+        // {
+        //   loader : 'url-loader',
+        //   options : {
+        //     limit : 1024 * 100,
+        //     fallback : 'file-loader'
+        //   }
+        // }
       ]
     },
     {
@@ -172,6 +198,9 @@ module.exports = {
       // pre-processor
       if ( processor && processor.loader.includes( 'sass-loader' ) ) {
         processor.options.sourceMap = true // sass-loader
+      }
+      if ( processor && processor.loader.includes( 'less-loader' ) ) {
+        processor.options.sourceMap = true
       }
 
       // css.options.modules = {
