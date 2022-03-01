@@ -22,6 +22,9 @@ const { GLOBAL_DATA } = require( './src/config/constant' )
 const ScriptExtHtmlWebpackPlugin = require( 'script-ext-html-webpack-plugin' )
 const path = require( 'path' )
 
+const HardSourceWebpackPlugin = require( 'hard-source-webpack-plugin' )
+const BundleAnalyzerPlugin = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin
+
 function resolve( dir ) {
   return path.join( __dirname, dir )
 }
@@ -251,6 +254,21 @@ module.exports = {
             {
               inline : /runtime\..*\.js$/
             } )
+        )
+        config.plugins.push(
+          new BundleAnalyzerPlugin()
+        )
+
+        // https://github.com/mzgoddard/hard-source-webpack-plugin
+        config.plugins.push(
+          new HardSourceWebpackPlugin( {
+            // cacheDirectory : 'node_modules/.cache/hard-source/[confighash]',
+            environmentHash : {
+              root : process.cwd(),
+              directories : [],
+              files : ['package-lock.json', 'yarn.lock', 'package.json', 'config-overrides.js']
+            }
+          } )
         )
 
         config.optimization.runtimeChunk = 'single'

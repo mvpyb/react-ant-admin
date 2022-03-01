@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "react-app-rewired start",
     "dll": "webpack --config ./webpack.dll.config.js",
-    "build": "react-app-rewired --max-old-space-size=4096 build ",
+    "build": "react-app-rewired --max-old-space-size=4096 build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "commit": "git cz",
@@ -30,6 +30,7 @@
     "driver.js": "^0.9.8",
     "echarts": "^4.7.0",
     "file-saver": "^2.0.2",
+    "hard-source-webpack-plugin": "^0.13.1",
     "i18next": "^21.6.6",
     "js-cookie": "^3.0.1",
     "jszip": "^3.4.0",
@@ -80,6 +81,7 @@
     "svgo-loader": "^3.0.0",
     "user-agent": "^1.0.4",
     "webpack": "^4.42.0",
+    "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2"
   },
   "eslintConfig": {
