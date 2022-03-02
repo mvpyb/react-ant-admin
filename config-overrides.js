@@ -24,6 +24,7 @@ const path = require( 'path' )
 
 const HardSourceWebpackPlugin = require( 'hard-source-webpack-plugin' )
 const BundleAnalyzerPlugin = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin
+const SpeedMeasurePlugin = require( 'speed-measure-webpack-plugin' )
 
 function resolve( dir ) {
   return path.join( __dirname, dir )
@@ -49,6 +50,11 @@ function invade( target, name, callback ) {
 
 // 自定义组合配置
 const addCustomize = () => ( config, env ) => {
+  // 监控 webpack 每一步操作的耗时
+  config.plugins.push(
+    new SpeedMeasurePlugin()
+  )
+
   const oneOf_loc = config.module.rules.findIndex( rule => rule.oneOf )
 
   config.module.rules[oneOf_loc].oneOf = [
@@ -146,6 +152,69 @@ const addCustomize = () => ( config, env ) => {
     config.resolve.extensions.push( '.jsx' )
   }
 
+  if ( process.env.NODE_ENV === 'production' ) {
+    config.devtool = false
+    config.output.chunkFilename = config.output.chunkFilename.replace( '.chunk', '' )
+
+    invade( config.optimization.minimizer, 'TerserPlugin', ( e ) => {
+      e.options.extractComments = false
+      e.options.terserOptions.compress.drop_console = true
+    } )
+
+    invade( config.plugins, 'MiniCssExtractPlugin', ( e ) => {
+      e.options.chunkFilename = e.options.chunkFilename.replace( '.chunk', '' )
+    } )
+
+    config.optimization.splitChunks = {
+      chunks : 'all',
+      cacheGroups : {
+        libs : {
+          name : 'chunk-libs',
+          test : /[\\/]node_modules[\\/]/,
+          priority : -10,
+          chunks : 'initial'
+        },
+        antd : {
+          name : 'chunk-antd', // 单独将 antd 拆包
+          priority : 20, // 权重要大于 libs 不然会被打包进 libs
+          test : /[\\/]node_modules[\\/]antd[\\/]/
+        },
+        commons : {
+          name : 'chunk-commons',
+          test : resolve( './src/components' ),
+          minChunks : 3, // 最小公用次数
+          priority : 5,
+          reuseExistingChunk : true
+        }
+      }
+    }
+
+    config.plugins.push(
+      new ScriptExtHtmlWebpackPlugin(
+        {
+          inline : /runtime\..*\.js$/
+        } )
+    )
+
+    config.optimization.runtimeChunk = 'single'
+
+    config.plugins.push(
+      new BundleAnalyzerPlugin()
+    )
+
+    // https://github.com/mzgoddard/hard-source-webpack-plugin
+    config.plugins.push(
+      new HardSourceWebpackPlugin( {
+        // cacheDirectory : 'node_modules/.cache/hard-source/[confighash]',
+        environmentHash : {
+          root : process.cwd(),
+          directories : [],
+          files : ['package-lock.json', 'yarn.lock', 'package.json', 'config-overrides.js']
+        }
+      } )
+    )
+  }
+
   return config
 }
 
@@ -172,7 +241,9 @@ module.exports = {
     return paths
   },
   webpack : override(
+
     eslintConfigOverrides( eslintConfig ),
+
     fixBabelImports( 'import', {
       libraryName : 'antd',
       libraryDirectory : 'es',
@@ -189,6 +260,7 @@ module.exports = {
     addWebpackAlias( {
       '@' : resolve( './src' )
     } ),
+
     addCustomize(),
 
     adjustStyleLoaders( ( { use : [, css, postcss, resolve, processor] } ) => {
@@ -216,66 +288,9 @@ module.exports = {
       // }
     } ),
 
-    ( config ) => {
-      if ( process.env.NODE_ENV === 'production' ) {
-        config.devtool = false
-        config.output.chunkFilename = config.output.chunkFilename.replace( '.chunk', '' )
-
-        invade( config.optimization.minimizer, 'TerserPlugin', ( e ) => {
-          e.options.extractComments = false
-          e.options.terserOptions.compress.drop_console = true
-        } )
-
-        invade( config.plugins, 'MiniCssExtractPlugin', ( e ) => {
-          e.options.chunkFilename = e.options.chunkFilename.replace( '.chunk', '' )
-        } )
-
-        config.optimization.splitChunks = {
-          chunks : 'all',
-          cacheGroups : {
-            libs : {
-              name : 'chunk-libs',
-              test : /[\\/]node_modules[\\/]/,
-              priority : 10,
-              chunks : 'initial'
-            },
-            commons : {
-              name : 'chunk-commons',
-              test : resolve( './src/components' ),
-              minChunks : 3,
-              priority : 5,
-              reuseExistingChunk : true
-            }
-          }
-        }
-
-        config.plugins.push(
-          new ScriptExtHtmlWebpackPlugin(
-            {
-              inline : /runtime\..*\.js$/
-            } )
-        )
-        config.plugins.push(
-          new BundleAnalyzerPlugin()
-        )
-
-        // https://github.com/mzgoddard/hard-source-webpack-plugin
-        config.plugins.push(
-          new HardSourceWebpackPlugin( {
-            // cacheDirectory : 'node_modules/.cache/hard-source/[confighash]',
-            environmentHash : {
-              root : process.cwd(),
-              directories : [],
-              files : ['package-lock.json', 'yarn.lock', 'package.json', 'config-overrides.js']
-            }
-          } )
-        )
-
-        config.optimization.runtimeChunk = 'single'
-      }
-
-      return config
-    }
+    // ( config ) => {
+    //   return config
+    // }
   ),
   devServer : overrideDevServer(
     devServerConfig(),
