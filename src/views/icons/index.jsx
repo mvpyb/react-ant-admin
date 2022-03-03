@@ -3,8 +3,7 @@ import React from 'react'
 import SvgIcon from '@/components/SvgIcon'
 import svgs from './svg-icons'
 import handleClipboard from '@/utils/clipboard'
-
-import './index.less'
+import styles from './index.module.less'
 
 import {
   Alert, Card, Tooltip, Tabs
@@ -23,25 +22,25 @@ const Ions = ( props ) => {
   }
 
   return (
-    <div className={ 'icons-container app-container' }>
+    <div className={ 'app-container' }>
 
       <Alert message='Icons Demo' type='info' />
 
-      <Card className={ 'card-section' } >
+      <Card className={ styles.cardSection } >
 
-        <Tabs defaultActiveKey='1' className={'tabs-section'}>
+        <Tabs defaultActiveKey='1' className={ styles.tabsSection }>
           <TabPane
             tab={ 'svg-icon' }
             key='1'
           >
-            <div className={'grid'}>
+            <div className={styles.grid}>
               {
                 svgs && svgs.length && svgs.map( ( svg, index ) => {
                   return (
                     <div key={ svg } onClick={ ( e ) => copyIcons( generateIconCode( svg ), index, e ) }>
                       <Tooltip placement='top' title={ () => generateIconCode( svg ) }>
-                        <div className={'icon-item'}>
-                          <SvgIcon iconClass={ svg } className={ 'menu-icon disabled' } />
+                        <div className={ styles.iconItem }>
+                          <SvgIcon iconClass={ svg } className={ `${styles.disabled}` } />
                           <span> { svg } </span>
                         </div>
                       </Tooltip>

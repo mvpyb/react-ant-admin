@@ -1,19 +1,15 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { useDispatch } from 'react-redux'
 import { loginOut } from '@/store/reducers/users'
-
-import './index.less'
 import FullScreen from '@/components/FullScreen'
 import Hamburger from '@/components/Hamburger'
-
 import { subStringStr } from '@/utils/filters'
-
 import {
   Menu, Dropdown, Modal, Layout, Avatar
 } from 'antd'
+import styles from './index.module.less'
 
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 
@@ -43,7 +39,7 @@ const NavBar = ( props ) => {
   }
 
   const menu = (
-    <Menu onClick={menuClick} className={ 'user-info' }>
+    <Menu onClick={menuClick} className={ styles.userInfo }>
       <Menu.Item key='dashboard'>
         {username}
       </Menu.Item>
@@ -54,18 +50,23 @@ const NavBar = ( props ) => {
   )
 
   return (
-    <div className={`nav-bar-section ${!sidebarStatus ? 'open-slide' : 'close-slide'}`}>
+    // <div className={`nav-bar-section ${!sidebarStatus ? 'open-slide' : 'close-slide'}`}>
+    <div className={`${styles.navBarSection} ${!sidebarStatus ? '' : styles.closeSlide}`}>
+
       {fixedHeader ? <Header /> : null}
-      <Header className={fixedHeader ? 'fix-header' : ''}>
+
+      <Header className={ fixedHeader ? styles.fixHeader : ''}>
+
         <Hamburger />
-        <div className='right-menu'>
+
+        <div className={ styles.rightMenu }>
           <FullScreen />
-          <div className='dropdown-wrap'>
+          <div className={ styles.dropdownWrap }>
             <Dropdown overlay={menu}>
               <div>
-                <Avatar size={40} icon={<UserOutlined/> } src={avatar} className={ 'avatar-wrapper' } />
+                <Avatar size={40} icon={<UserOutlined/> } src={avatar} className={ styles.avatarWrapper } />
 
-                <span className={ 'username' }>{ subStringStr( username, 3 ) }</span>
+                <span className={ styles.username } >{ subStringStr( username, 3 ) }</span>
 
                 <CaretDownOutlined style={{ color : 'rgba(0,0,0,.3)' }}/>
               </div>
@@ -73,6 +74,7 @@ const NavBar = ( props ) => {
           </div>
         </div>
       </Header>
+
     </div>
   )
 }

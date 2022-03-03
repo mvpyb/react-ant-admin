@@ -1,0 +1,37 @@
+
+.editorSection {
+
+}
+
+.tinymceContainer {
+  position: relative;
+  line-height: normal;
+  .mce-fullscreen {
+    z-index: 10000;
+  }
+}
+
+.tinymceTextarea {
+  visibility: hidden;
+  z-index: -1;
+}
+
+.editor-custom-btn-container {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  /*z-index: 2005;*/
+}
+
+.fullscreen {
+  :global {
+    .editor-custom-btn-container {
+      z-index: 10000;
+      position: fixed;
+    }
+  }
+}
+
+.editor-upload-btn {
+  display: inline-block;
+}

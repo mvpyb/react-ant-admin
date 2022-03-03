@@ -1,21 +1,15 @@
 
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
+import React from 'react'
 import { Card } from 'antd'
-
 import { Editor } from '@tinymce/tinymce-react'
-
-import './index.less'
+import styles from './index.module.less'
 
 const RichTextEditor = () => {
-  // const [editorState, setEditorState] = useState( EditorState.createEmpty() )
-  // const onEditorStateChange = ( editorState ) => setEditorState( editorState )
   const handleEditorChange = ( content, editor ) => {
     console.log( 'Content was updated:', content )
-    // setContent( content )
   }
   return (
-    <div className={'editor-section'}>
+    <div className={styles.editorSection}>
       <Card bordered={false}>
         <Editor
           init={{

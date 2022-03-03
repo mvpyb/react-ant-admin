@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import './index.less'
+import styles from './index.module.less'
 
 const PanThumb = ( props ) => {
   const {
@@ -8,17 +8,17 @@ const PanThumb = ( props ) => {
   } = props
   return (
     <div
-      className={`pan-item ${className}`}
+      className={`${styles.panItem} ${className}`}
       style={{
         zIndex,
         height,
         width
       }}
     >
-      <div className='pan-info'>
-        <div className='pan-info-roles-container'>{props.children}</div>
+      <div className={ styles.panInfo }>
+        <div className={ styles.panInfoRolesContainer }>{props.children}</div>
       </div>
-      <img src={image} className='pan-thumb' alt='' />
+      <img src={image} className={ styles.panThumb } alt='' />
     </div>
   )
 }

@@ -1,11 +1,11 @@
 
 import React from 'react'
 import TagList from './TagList'
-import './index.less'
+import styles from './index.module.less'
 
 const TagsView = () => {
   return (
-    <div className='tagsView-container'>
+    <div className={styles.tagsViewContainer}>
       <TagList />
     </div>
   )

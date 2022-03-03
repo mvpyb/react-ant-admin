@@ -3,13 +3,10 @@ import React, { useState, useEffect } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-
 import { Menu } from 'antd'
-
 import { UPDATE_TAGS, SET_DEFAULT_TAGS } from '@/store/reducers/tagsView'
 import MenuItem from './menuItem'
-
-import './index.less'
+import styles from './index.module.less'
 
 const SideMenu = ( props ) => {
   // console.log( 'SideMenu menu', { ...props } )
@@ -107,7 +104,7 @@ const SideMenu = ( props ) => {
   }, [currentPath] )
 
   return (
-    <div className={'side-menu-section'}>
+    <div className={styles.sideMenuSection}>
       <Scrollbars
         autoHide
         autoHideTimeout={1000}
@@ -116,7 +113,7 @@ const SideMenu = ( props ) => {
         thumbMinSize={30}
         universal={false}
       >
-        <div className={'side-menu-wrapper'}>
+        <div>
           <Menu
             className={''}
             mode='inline'

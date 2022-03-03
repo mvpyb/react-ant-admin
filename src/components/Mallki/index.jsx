@@ -1,12 +1,12 @@
 
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import './index.less'
+import styles from './index.module.less'
 
 const Mallki = ( props ) => {
   const { className, text } = props
   return (
-    <a className={`mallki ${className}`} href='#/'>
+    <a className={`${styles.mallki} ${className}`} href='#/'>
       {text}
       <span data-letters={text} />
       <span data-letters={text} />

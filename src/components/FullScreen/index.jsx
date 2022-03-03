@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import screenFull from 'screenfull'
 import { message, Tooltip } from 'antd'
 import { FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons'
-import './index.less'
+import styles from './index.module.less'
 
 const FullScreen = () => {
   const [isFullscreen, setIsFullscreen] = useState( false )
@@ -30,7 +30,7 @@ const FullScreen = () => {
 
   const title = isFullscreen ? '取消全屏' : '全屏'
   return (
-    <div className='fullScreen-section'>
+    <div className={ styles.fullScreenSection }>
       <Tooltip placement='bottom' title={title}>
         {
           isFullscreen ? <FullscreenExitOutlined onClick={toggleScreen} /> : <FullscreenOutlined onClick={toggleScreen} />

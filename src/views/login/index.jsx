@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { withTranslation } from 'react-i18next'
 import DocumentTitle from 'react-document-title'
-import './index.less'
+
+import styles from './index.module.less'
 
 import { Spin } from 'antd'
 
@@ -26,13 +27,13 @@ const Login = ( { t } ) => {
 
   return (
     <DocumentTitle title= {t( 'login.title' )}>
-      <div className='login-container syNormal un-select'>
-        <div className={'body fix-width'}>
-          <div className={'top'}>
-            <Logo className='logos' />
-            <div className='desc'> {t( 'login.subTitle' )}</div>
+      <div className={`${styles.loginContainer} un-select`}>
+        <div className={`${styles.body} ${styles.fixWidth}`}>
+          <div className={styles.top}>
+            <Logo className={styles.logos} />
+            <div className={styles.desc}> {t( 'login.subTitle' )}</div>
           </div>
-          <div className='main'>
+          <div className={styles.main}>
             <Spin spinning={loading} tip={ t( 'login.loading' ) }>
               <PasswordLogin
                 loginFailed={ loginFailed }
@@ -41,8 +42,8 @@ const Login = ( { t } ) => {
               />
             </Spin>
           </div>
-          <div className='footer'>
-            <div className='desc'/>
+          <div className={styles.footer}>
+            <div className={styles.desc}/>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ import YuWeather from './components/YuWeather'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
 
-import './index.less'
+import styles from './index.module.less'
 
 import { Row, Col } from 'antd'
 
@@ -26,7 +26,7 @@ const cardList = [
     title : 'Order',
     icon : 'yu-icon-lifangti',
     badge : {
-      className : 'bg-info',
+      className : 'bgInfo',
       txt : '+56%'
     },
     info : 'From previous period'
@@ -41,7 +41,7 @@ const cardList = [
     title : 'Income',
     icon : 'yu-icon-chanpin1',
     badge : {
-      className : 'bg-danger',
+      className : 'bgDanger',
       txt : '+78%'
     },
     info : 'From previous period'
@@ -56,7 +56,7 @@ const cardList = [
     title : 'Average Price',
     icon : 'yu-icon-jiagebiaoqian',
     badge : {
-      className : 'bg-warning',
+      className : 'bgWarning',
       txt : '-5.2%'
     },
     info : 'From previous period'
@@ -68,7 +68,7 @@ const cardList = [
     title : 'Product Sold',
     icon : 'yu-icon-icon_xinyong_xianxing_jijin-129',
     badge : {
-      className : 'bg-info',
+      className : 'bgInfo',
       txt : '+22%'
     },
     info : 'From previous period'
@@ -78,7 +78,7 @@ const cardList = [
 const Dashboard = ( props ) => {
   return (
     <DocumentTitle title={'dashboard页面'}>
-      <div className='dashboard-editor-container un-select'>
+      <div className={ `${styles.dashboardEditorContainer} un-select` }>
 
         {/* 自定义card */}
         <Row gutter={16}>
@@ -91,10 +91,8 @@ const Dashboard = ( props ) => {
                     duration={list.duration}
                     decimals={list.decimals}
                     decimal={list.decimal}
-
                     prefix={list.prefix}
                     title={list.title}
-
                     icon={ <i className={`fr ${list.icon}`} />}
                     badge={ <span className={`badge ${list.badge.className}`}>{ list.badge.txt}</span>}
                     info={ list.info }
@@ -106,9 +104,9 @@ const Dashboard = ( props ) => {
         </Row>
 
         {/* 自定义chat*/}
-        <Row gutter={32} className={'chats-container'}>
+        <Row gutter={32} className={styles.chatsContainer}>
           <Col xs={24} sm={24} lg={8}>
-            <div className='chart-wrapper'>
+            <div className={styles.chartWrapper}>
               <RaddarChart />
             </div>
           </Col>
@@ -125,7 +123,7 @@ const Dashboard = ( props ) => {
         </Row>
 
         {/* 表格示例 + map*/}
-        <Row gutter={20} className={'table-list'}>
+        <Row gutter={20} className={styles.tableList}>
           <Col span={16}>
             <TransactionTable />
           </Col>
@@ -136,7 +134,7 @@ const Dashboard = ( props ) => {
         </Row>
 
         {/* user-info*/}
-        <Row gutter={20} className={'user-info'}>
+        <Row gutter={20} className={styles.userInfo}>
           <Col span={12}>
             <YuWeather />
           </Col>

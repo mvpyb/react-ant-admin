@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types'
 import { Upload, message } from 'antd'
 import XLSX from 'xlsx'
 import SvgIcon from '@/components/SvgIcon'
-import './index.less'
+import styles from './index.module.less'
 
 const { Dragger } = Upload
 
@@ -93,10 +93,10 @@ class UploadExcel extends Component {
 
   render() {
     return (
-      <div className={ 'upload-section' }>
+      <div >
         <Dragger {...this.draggerProps()}>
           <p className='ant-upload-drag-icon'>
-            <SvgIcon iconClass={'upload'} className={'upload'} />
+            <SvgIcon iconClass={'upload'} className={styles.upload} />
           </p>
           <p className='ant-upload-text'>
             Drop excel file here or click here

@@ -1,18 +1,12 @@
 
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useRef } from 'react'
 import { Card } from 'antd'
 import PropTypes from 'prop-types'
-
 import load from './dynamicLoadScript'
-// eslint-disable-next-line no-unused-vars
-import plugins from './plugins'
 import defaultToolBar from './toolbar'
-
-import './index.less'
+import styles from './index.module.less'
 
 const tinymceCDN = 'https://resources.shadowcreator.com/project-sources/lib/tinymce5.7.1/tinymce.min.js'
-
 const languageTypeList = {
   'en' : 'en',
   'zh' : 'zh_CN',
@@ -155,10 +149,10 @@ const RichTextEditor = ( {
   }
 
   return (
-    <div className={`editor-section ${fullscreen ? 'fullscreen' : ''}`} style={{ width : containerWidth }}>
+    <div className={`editorSection ${fullscreen ? styles.fullscreen : ''}`} style={{ width : containerWidth }}>
       <Card bordered={false}>
-        <div ref={el} className='tinymce-container'>
-          <textarea id={tinymceId} className='tinymce-textarea' />
+        <div ref={el} className={styles.tinymceContainer}>
+          <textarea id={tinymceId} className={styles.tinymceTextarea} />
         </div>
       </Card>
     </div>

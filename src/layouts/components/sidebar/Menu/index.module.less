@@ -1,0 +1,25 @@
+
+.sideMenuSection {
+  height:calc(100% - 64px);
+  svg {
+    width: 14px;
+    height: 14px;
+    transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1) 0s, margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s, color 0.3s ease 0s;
+  }
+  
+  :global {
+    .ant-menu {
+      .menuItemSection, .sideMenuSection {
+        &.hasIcon {
+          display: inline-block;
+        }
+        &.noIcon {
+          .ant-menu-item-icon {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,13 +1,13 @@
 
 import React from 'react'
 import logo from '@/assets/imgs/ant.svg'
-import './index.less'
+import styles from './index.module.less'
 
 const Logo = () => {
   return (
-    <div className='sidebar-logo-wrapper'>
-      <img src={logo} className='sidebar-logo' alt='logo' />
-      <h1 className='sidebar-title'>React-Ant-Admin</h1>
+    <div className={ styles.sidebarLogoWrapper }>
+      <img src={logo} className={ styles.sidebarLogo } alt='logo' />
+      <h1 className={ styles.sidebarTitle }>React-Ant-Admin</h1>
     </div>
   )
 }

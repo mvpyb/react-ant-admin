@@ -25,12 +25,15 @@ const path = require( 'path' )
 const HardSourceWebpackPlugin = require( 'hard-source-webpack-plugin' )
 const BundleAnalyzerPlugin = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin
 const SpeedMeasurePlugin = require( 'speed-measure-webpack-plugin' )
+const getCSSModuleLocalIdent = require( 'react-dev-utils/getCSSModuleLocalIdent' )
 
 function resolve( dir ) {
   return path.join( __dirname, dir )
 }
 
 process.env.CI = 'false'
+const isEnvProduction = process.env.NODE_ENV === 'production'
+const lessModuleRegex = /\.module\.(less)$/
 
 /**
  * @param target: 要遍历的对象
@@ -48,6 +51,46 @@ function invade( target, name, callback ) {
   )
 }
 
+/** 参照react-scripts/webpack.config.js line 505*/
+const getStyleLoaders = ( cssOptions, preProcessor, lessOptions ) => {
+  const loaders = [
+    require.resolve( 'style-loader' ),
+    {
+      loader : require.resolve( 'css-loader' ),
+      options : cssOptions
+    },
+    {
+      loader : require.resolve( 'postcss-loader' ),
+      options : {
+        ident : 'postcss',
+        plugins : () => [
+          require( 'postcss-flexbugs-fixes' ),
+          require( 'postcss-preset-env' )( {
+            autoprefixer : {
+              flexbox : 'no-2009'
+            },
+            stage : 3
+          } )
+        ],
+        sourceMap : true
+      }
+    }
+  ]
+  if ( preProcessor ) {
+    loaders.push( {
+      loader : require.resolve( preProcessor ),
+      options : lessOptions ? {
+        ...lessOptions,
+        sourceMap : true
+      } : {
+        sourceMap : true
+      }
+
+    } )
+  }
+  return loaders
+}
+
 // 自定义组合配置
 const addCustomize = () => ( config, env ) => {
   // 监控 webpack 每一步操作的耗时
@@ -56,8 +99,20 @@ const addCustomize = () => ( config, env ) => {
   )
 
   const oneOf_loc = config.module.rules.findIndex( rule => rule.oneOf )
-
   config.module.rules[oneOf_loc].oneOf = [
+    {
+      test : lessModuleRegex,
+      use : getStyleLoaders(
+        {
+          importLoaders : 2,
+          modules : {
+            getLocalIdent : getCSSModuleLocalIdent
+          }
+        },
+        'less-loader'
+      )
+    },
+
     {
       test : /.(eot|otf|fon|font|ttf|ttc|woff|woff2)$/,
       // test : /\.(eot|woff|ttf|woff2)\??.*$/,
@@ -111,7 +166,6 @@ const addCustomize = () => ( config, env ) => {
         }
       ]
     },
-
     {
       test : /\.svg$/,
       include : [resolve( './src/icons' )],
@@ -152,7 +206,7 @@ const addCustomize = () => ( config, env ) => {
     config.resolve.extensions.push( '.jsx' )
   }
 
-  if ( process.env.NODE_ENV === 'production' ) {
+  if ( isEnvProduction ) {
     config.devtool = false
     config.output.chunkFilename = config.output.chunkFilename.replace( '.chunk', '' )
 
@@ -252,9 +306,14 @@ module.exports = {
 
     // 使用less-loader对源码中的less的变量进行重新指定
     addLessLoader( {
+      sourceMap : true,
       javascriptEnabled : true,
       additionalData : `@import "${resolve( './src/styles/variable.less' )}";`
-      // modifyVars : { '@primary-color' : '#1DA57A' }
+      // // modifyVars : { '@primary-color' : '#1DA57A' },
+      // cssModules : {
+      //   // if you use CSS Modules, and custom `localIdentName`, default is '[local]--[hash:base64:5]'.
+      //   localIdentName : '[path][name]__[local]--[hash:base64:5]'
+      // }
     } ),
 
     addWebpackAlias( {
@@ -264,19 +323,18 @@ module.exports = {
     addCustomize(),
 
     adjustStyleLoaders( ( { use : [, css, postcss, resolve, processor] } ) => {
-      css.options.sourceMap = true
-      postcss.options.sourceMap = true
-
-      if ( resolve ) {
+      if ( css && css.options ) {
+        css.options.sourceMap = true
+      }
+      if ( postcss && postcss.options ) {
+        postcss.options.sourceMap = true
+      }
+      if ( resolve && resolve.options ) {
         resolve.options.sourceMap = true // resolve-url-loader
       }
-      // pre-processor
-      if ( processor && processor.loader.includes( 'sass-loader' ) ) {
-        processor.options.sourceMap = true // sass-loader
-      }
-      if ( processor && processor.loader.includes( 'less-loader' ) ) {
-        processor.options.sourceMap = true
-      }
+      // if ( processor && processor.options && processor.loader.includes( 'sass-loader' ) ) {
+      //   processor.options.sourceMap = true
+      // }
 
       // css.options.modules = {
       //   localIdentName : '[name]__[local]--[hash:base64:5]',

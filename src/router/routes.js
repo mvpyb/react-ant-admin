@@ -167,6 +167,12 @@ const asyncRoutesList = [
         title : '混合图表',
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'MixChart'*/'@/views/charts/mixChart' ) )
+      },
+      {
+        path : '/charts/g6',
+        title : 'G6',
+        roles : ['admin', 'editor'],
+        component : dynamicImport( () => import( /* webpackChunkName:'MixChart'*/'@/views/charts/g6' ) )
       }
     ]
   },

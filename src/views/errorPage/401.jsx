@@ -2,11 +2,8 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
-
 import { Button, Row, Col, Modal } from 'antd'
-
 import errGif from '@/assets/imgs/401_images/401.gif'
-
 import './styles/401.less'
 
 const Page404 = ( props ) => {

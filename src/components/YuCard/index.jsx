@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 
 // see more : https://www.npmjs.com/package/react-countup/v/2.0.0
 import CountUp from 'react-countup'
-
-import './index.less'
+import styles from './index.module.less'
 
 const YuCard = ( props ) => {
   const {
@@ -21,16 +20,16 @@ const YuCard = ( props ) => {
   } = props
 
   return (
-    <div className='content-section bg-primary card-item'>
-      <div className='card-body'>
-        <div className={'card-body-icon'}>
+    <div className={ `${styles.bgPrimary} ${styles.cardItem}` }>
+      <div className={styles.cardBody}>
+        <div className={styles.cardBodyIcon}>
           { props.icon }
         </div>
 
-        <div className={'text-white'}>
-          <h6 className='text-uppercase text-white'>{title}</h6>
+        <div className={ styles.textWhite }>
+          <h6 className={ `${styles.textUppercase} ${styles.textWhite}` }>{title}</h6>
 
-          <h2 className='text-white mb24'>
+          <h2 className={ `mb24 ${styles.textWhite}` }>
             <CountUp
               start={start}
               end={end}
@@ -44,10 +43,10 @@ const YuCard = ( props ) => {
             />
           </h2>
 
-          <div className='badge-box'>
+          <div className={styles.badgeBox}>
             { props.badge }
           </div>
-          <div className='card-info'>
+          <div className={styles.cardInfo}>
             { props.info }
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './index.less'
+import styles from './index.module.less'
 
 const SvgIcon = ( props ) => {
   const { iconClass, className } = props
@@ -10,13 +10,12 @@ const SvgIcon = ( props ) => {
     WebkitMask : `url(${iconClass}) no-repeat 50% 50%`
   }
   const iconName = `#icon-${iconClass}`
-  const svgClass = className ? 'svg-icon ' + className : 'svg-icon'
   const isExternal = ( path ) => /^(https?:|mailto:|tel:)/.test( path )
   return (
     <>
       {isExternal( iconClass )
-        ? <div style={styleExternalIcon} className={`svg-external-icon ${svgClass}`} />
-        : <svg className={svgClass} aria-hidden='true'>
+        ? <div style={styleExternalIcon} className={`${styles.svgExternalIcon} ${styles.svgIcon} ${className}`} />
+        : <svg className={ `${styles.svgIcon} ${className}` } aria-hidden='true'>
           <use xlinkHref={iconName} />
         </svg>
       }

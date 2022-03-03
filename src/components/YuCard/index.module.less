@@ -1,0 +1,80 @@
+.textWhite {
+  color: #fff;
+}
+.cardItem {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  flex-direction: column;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 -3px 31px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
+  border: none;
+  &.bgPrimary {
+    background-color: #7a6fbe;
+  }
+  &:hover {
+    transition: all 0.3s;
+    transform: translateY(-6px);
+  }
+  .cardBody {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    padding: 1.25rem 1.25rem;
+    background-image: url("~@/assets/imgs/bg-1.png");
+    background-size: cover;
+    .cardBodyIcon i {
+      font-size: 30px;
+      width: 64px;
+      height: 64px;
+      line-height: 64px;
+      text-align: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: inline-block;
+      color: #fff;
+    }
+    .textUppercase {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    .mb24 {
+      margin-bottom: 24px;
+      height: 28px;
+      line-height: 28px;
+    }
+    .badgeBox {
+      display: inline-block;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25em 0.4em;
+      font-size: 75%;
+      font-weight: 500;
+      line-height: 1;
+      color: #fff;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 0.25rem;
+      &.bgInfo {
+        background-color: #29bbe3;
+      }
+      &.bgDanger {
+        background-color: #ec536c;
+      }
+      &.bgWarning {
+        background-color: #f5b225;
+      }
+    }
+    .cardInfo {
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+  }
+}

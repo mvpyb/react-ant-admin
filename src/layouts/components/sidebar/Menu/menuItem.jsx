@@ -1,15 +1,11 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-import './index.less'
-
-// import { getFullKey } from '@/router/utils'
 import { isArray, isExternal } from '@/utils/validate'
 import SvgIcon from '@/components/SvgIcon'
-
 import Icon from '@ant-design/icons'
 import { Menu } from 'antd'
+import styles from './index.module.less'
 const { SubMenu, Item } = Menu
 
 const MenuItem = ( menuList ) => {
@@ -52,11 +48,10 @@ const MenuItem = ( menuList ) => {
         return null
       }
       const CustomSvg = () => (
-        item.icon ? <SvgIcon iconClass={ item.icon } className={ 'menu-icon' } /> : null
+        item.icon ? <SvgIcon iconClass={ item.icon } /> : null
       )
 
       const { hidden, children, title, path } = item
-      // const fullKey = getFullKey( item )
 
       if ( !hidden ) {
         // 判断children是否至少有一个有效的 ( hidden == false .length > 0)
@@ -66,7 +61,7 @@ const MenuItem = ( menuList ) => {
         if ( effectChildren && hasEffectChildren && !onlyOneChild.noShowingChildren ) {
           return (
             <SubMenu
-              className={ `sub-menu-section ${item.icon ? 'has-icon' : 'no-icon'}` }
+              className={ `${styles.sideMenuSection} ${item.icon ? styles.hasIcon : styles.noIcon}` }
               key={ path }
               title={ title }
               icon={ <Icon component={ CustomSvg } /> }
@@ -77,7 +72,7 @@ const MenuItem = ( menuList ) => {
         }
         return (
           <Item
-            className={ `menu-item-section ${item.icon ? 'has-icon' : 'no-icon'}` }
+            className={ `${styles.menuItemSection} ${item.icon ? styles.hasIcon : styles.noIcon}` }
             key={ path }
             onClick={() => callback( item ) }
             title={ title }

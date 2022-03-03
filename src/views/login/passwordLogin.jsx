@@ -4,7 +4,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { getUserInfoSlice, SET_TOKEN } from '@/store/reducers/users'
 
-import './index.less'
+import styles from './index.module.less'
 
 import { validPhone } from '@/utils/validate'
 import { localStorageHandle } from '@/utils/storages'
@@ -160,7 +160,7 @@ const PasswordLogin = ( props ) => {
     <Form
       ref={ formRef }
       name='passwordLogin'
-      className='login-form'
+      className={styles.loginForm}
       scrollToFirstError={ true }
       validateTrigger={ trigger }
       initialValues={ initialValues }
@@ -173,14 +173,14 @@ const PasswordLogin = ( props ) => {
         <Input
           allowClear={true}
           maxLength={11}
-          prefix={<UserOutlined className='site-form-item-icon' />}
+          prefix={<UserOutlined />}
           placeholder='username'
         />
       </Item>
       <Item name='password' rules={ rules.password } { ...itemConfig } >
         <Input
           maxLength={16}
-          prefix={<LockOutlined className='site-form-item-icon' />}
+          prefix={<LockOutlined />}
           type='password'
           placeholder='Password'
           onPressEnter={ handleLogin }
@@ -190,12 +190,12 @@ const PasswordLogin = ( props ) => {
         <Item name='remember' valuePropName='checked' noStyle>
           <Checkbox>记住密码</Checkbox>
         </Item>
-        <a className='login-form-forgot' href=''>
+        <a className={styles.loginFormForgot} href='#!'>
           忘记密码
         </a>
       </Item>
       <Item>
-        <Button type='primary' htmlType={ 'submit' } className='login-form-button' >登录</Button>
+        <Button type='primary' htmlType={ 'submit' } className={styles.loginFormButton} >登录</Button>
       </Item>
 
       <Item>
