@@ -35,6 +35,7 @@ yarn-debug.log*
 yarn-error.log*
 **/*.log
 **/*.test.js
+**/*.test.json
 
 #dist/**/*
 
