@@ -309,7 +309,7 @@ module.exports = {
       sourceMap : true,
       javascriptEnabled : true,
       additionalData : `@import "${resolve( './src/styles/variable.less' )}";`
-      // // modifyVars : { '@primary-color' : '#1DA57A' },
+      // modifyVars : { '@primary-color' : '#7A6FBE' }
       // cssModules : {
       //   // if you use CSS Modules, and custom `localIdentName`, default is '[local]--[hash:base64:5]'.
       //   localIdentName : '[path][name]__[local]--[hash:base64:5]'
