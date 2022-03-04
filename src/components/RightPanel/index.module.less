@@ -1,0 +1,38 @@
+
+// TODO
+.rightPanel {
+
+}
+.handleButton {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: -48px;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 6px 0 0 6px !important;
+  z-index: 0;
+  pointer-events: auto;
+  cursor: pointer;
+  color: #fff;
+  line-height: 48px;
+  background-color: rgb(24, 144, 255);
+  i {
+    font-size: 24px;
+    line-height: 48px;
+  }
+}
+
+.rightDrawContainer {
+  :global {
+    .ant-drawer-content-wrapper {
+      width: 300px !important;
+    }
+    .ant-drawer-content {
+      overflow: visible;
+    }
+    .ant-drawer-body {
+      //position: relative;
+    }
+  }
+}

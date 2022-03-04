@@ -78,7 +78,14 @@ const cardList = [
 const Dashboard = ( props ) => {
   return (
     <DocumentTitle title={'dashboard页面'}>
-      <div className={ `${styles.dashboardEditorContainer} un-select` }>
+      <div className={ `${styles.dashboardEditorContainer} un-select ` }>
+
+        <a
+          href='https://github.com/mvpyb/react-ant-admin'
+          target='_blank'
+          rel='noopener noreferrer'
+          className={styles.githubCorner}
+        />
 
         {/* 自定义card */}
         <Row gutter={16}>

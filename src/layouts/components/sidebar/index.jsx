@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import Logo from './Logo'
 import Menu from './Menu'
-
 const { Sider } = Layout
 
 const LayoutSider = ( props ) => {
   const { sidebarLogo, sidebarStatus } = props
+  console.log( 'LayoutSider', { ...props } )
 
   return (
     <Sider
