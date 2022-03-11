@@ -5,7 +5,6 @@ import { getCookie, addCookie } from '@/utils/cookies'
 export const initialState = {
   sidebarStatus : getCookie( 'sidebarStatus' ) ? !!+getCookie( 'sidebarStatus' ) : true,
   device : 'desktop'
-  // size : getCookie( 'size' ) || 'medium'
 }
 
 export const appSlice = createSlice( {
