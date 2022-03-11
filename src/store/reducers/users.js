@@ -39,7 +39,7 @@ export const userSlice = createSlice( {
     }
   },
 
-  // TODO https://zhuanlan.zhihu.com/p/382487951
+  // https://zhuanlan.zhihu.com/p/382487951
   extraReducers : ( builder ) => {
     builder.addCase( getUserInfoSlice.pending, () => {
       // console.log('pending 进行中');
