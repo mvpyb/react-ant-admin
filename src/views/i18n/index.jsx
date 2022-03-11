@@ -5,10 +5,10 @@ import {
   Row, Col, Card, Alert, Radio, List
 } from 'antd'
 
-// TODO hook 用法
+// hook 用法
 // import { useTranslation } from 'react-i18next'
 
-// TODO HOC 用法
+// HOC 用法
 import { withTranslation } from 'react-i18next'
 
 const I18n = ( { t, i18n } ) => {
