@@ -26,7 +26,7 @@ export function getAllRedirects( routers, directs, initPath = '' ) {
     // if ( item.index ) {
     const currentPath = path.startsWith( '/' ) ? `${initPath}${path}` : `${initPath}/${path}`
 
-    // TODO && component => 防止重复添加
+    // component => 防止重复添加
     if ( redirect && component ) {
       // if ( redirect ) {
       directs.push( {
