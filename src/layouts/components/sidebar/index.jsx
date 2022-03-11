@@ -8,7 +8,6 @@ const { Sider } = Layout
 
 const LayoutSider = ( props ) => {
   const { sidebarLogo, sidebarStatus } = props
-  console.log( 'LayoutSider', { ...props } )
 
   return (
     <Sider

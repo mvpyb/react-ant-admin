@@ -103,8 +103,7 @@ const MenuItem = ( menuList ) => {
       return < React.Fragment key={ fullKey } />
     } )
   }
-
-  // TODO 路由跳转
+  
   const menuClick = item => {
     // console.log( 'menuClick', { ...item })
     // const menuList = menuList

@@ -7,33 +7,22 @@ import Main from './components/main'
 import SlideBar from './components/sidebar'
 import TagsView from './components/tagsView'
 import Settings from './components/settings'
-// eslint-disable-next-line no-unused-vars
 import RightPanel from '@/components/RightPanel'
-
 import { Scrollbars } from 'react-custom-scrollbars'
 import styles from './index.module.less'
 
 const BaseLayout = ( props ) => {
-  console.log( 'BaseLayout', { ...props } )
-  const { tagsView, showSettings } = props
-
-  // const rightSettings = () => {
-  //   if ( showSettings ) {
-  //     return (
-  //       <RightPanel setting={ <Settings /> }></RightPanel>
-  //     )
-  //   } else {
-  //     return null
-  //   }
-  // }
+  const {
+    tagsView, showSettings, layoutMode, fixedHeader, sidebarStatus
+  } = props
 
   return (
     <div className={styles.layoutSection}>
       <Layout style={{ minHeight : '100vh' }}>
-
-        <SlideBar />
-
-        <Layout className={'layoutScrollWrapper'}>
+        {
+          layoutMode !== 'horizontal' ? <SlideBar /> : null
+        }
+        <Layout className={ `layoutScrollWrapper ${layoutMode}Mode` }>
           <Scrollbars
             autoHide
             autoHideTimeout={1000}
@@ -42,21 +31,31 @@ const BaseLayout = ( props ) => {
             thumbMinSize={30}
             universal={false}
           >
+            {/* 顶部导航*/}
+            <div
+              className={
+                `${styles[layoutMode]} ${styles.navBarContainer} ${fixedHeader ? styles.fixHeader : ''} ${sidebarStatus ? '' : styles.openSlider}`
+              }
+            >
+              <NavBar />
+              {tagsView ? <TagsView /> : null}
+            </div>
 
-            <NavBar />
-
-            {tagsView ? <TagsView /> : null}
-
+            {/* main content*/}
             <Main />
 
-            <RightPanel showSettings={showSettings} setting={ <Settings /> }></RightPanel>
-
+            <RightPanel showSettings={showSettings} setting={ <Settings /> } />
           </Scrollbars>
         </Layout>
-
       </Layout>
     </div>
   )
 }
 
-export default connect( ( state ) => state.settings )( BaseLayout )
+const mapStateToProps = state => {
+  return {
+    ...state.app,
+    ...state.settings
+  }
+}
+export default connect( mapStateToProps )( BaseLayout )

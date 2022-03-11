@@ -94,7 +94,6 @@ const MenuItem = ( menuList ) => {
     } )
   }
 
-  // TODO 路由跳转
   const menuClick = item => {}
 
   return renderMenu( menuList, menuClick )

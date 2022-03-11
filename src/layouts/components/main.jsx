@@ -5,17 +5,17 @@ import { connect } from 'react-redux'
 import { Outlet, useLocation } from 'react-router-dom'
 import '@/styles/transition.less'
 import styles from './main.module.less'
-
 const { Content } = Layout
-
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-const BaseLayout = ( props ) => {
+const Main = ( props ) => {
   const location = useLocation()
-  const { fixedHeader } = props
+  const { fixedHeader, tagsView } = props
 
   return (
-    <Content className={ `${styles.mainSection} ${fixedHeader ? styles.fixedHeader : ''} ` }>
+    <Content
+      className={ `${styles.mainSection} ${fixedHeader ? styles.fixedHeader : ''} ${tagsView ? styles.hasTags : styles.noTags} ` }
+    >
       {/* 动画 styles-transition.less => forward-from-right back-to-right fade-in fade-transform*/}
       <TransitionGroup
         className={styles.mainWrapper}
@@ -33,9 +33,7 @@ const BaseLayout = ( props ) => {
 
 const mapStateToProps = state => {
   return {
-    // ...state.users,
-    // ...state.app,
     ...state.settings
   }
 }
-export default connect( mapStateToProps )( BaseLayout )
+export default connect( mapStateToProps )( Main )

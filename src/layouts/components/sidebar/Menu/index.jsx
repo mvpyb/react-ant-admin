@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -9,17 +9,18 @@ import MenuItem from './menuItem'
 import styles from './index.module.less'
 
 const SideMenu = ( props ) => {
-  // console.log( 'SideMenu menu', { ...props } )
   const {
-    addRoutes : menuList, routes : routeLists, dispatch, tags, allRedirects
+    addRoutes : menuList,
+    routes : routeLists,
+    allRedirects,
+    dispatch,
+    tags,
+    layoutMode,
+    mode = 'inline',
+    theme = 'dark'
   } = props
-  const [openKeys, setOpenKeys] = useState( [] )
-
   const location = useLocation()
   const currentPath = location.pathname
-
-  // TODO 如果需要实现Element的 unique-opened（ 是否只保持一个子菜单的展开 ）， 需要获取与所有的key
-  const allSubmenuKeys = []
 
   // 现根据 key 去查找 allRedirects，获取完整的 path
   const findRealPath = ( key ) => {
@@ -66,15 +67,6 @@ const SideMenu = ( props ) => {
     return tag
   }
 
-  const onOpenChange = keys => {
-    const latestOpenKey = keys.find( key => openKeys.indexOf( key ) === -1 )
-    if ( allSubmenuKeys.indexOf( latestOpenKey ) === -1 ) {
-      setOpenKeys( keys )
-    } else {
-      setOpenKeys( latestOpenKey ? [latestOpenKey] : [] )
-    }
-  }
-
   const onSelect = menu => {
     const { key } = menu
     const realPath = findRealPath( key )
@@ -99,12 +91,25 @@ const SideMenu = ( props ) => {
     await dispatch( SET_DEFAULT_TAGS( fixTags ) )
   }
 
-  useEffect( () => {
-    initTags()
-  }, [currentPath] )
+  const MenuBar = () => {
+    return (
+      <div>
+        <Menu
+          className={''}
+          mode={ mode }
+          theme={ theme }
+          onSelect={onSelect}
+        >
+          {
+            MenuItem( menuList )
+          }
+        </Menu>
+      </div>
+    )
+  }
 
-  return (
-    <div className={styles.sideMenuSection}>
+  const VerticalScrollBar = ( { children } ) => {
+    return (
       <Scrollbars
         autoHide
         autoHideTimeout={1000}
@@ -113,30 +118,37 @@ const SideMenu = ( props ) => {
         thumbMinSize={30}
         universal={false}
       >
-        <div>
-          <Menu
-            className={''}
-            mode='inline'
-            theme='dark'
-            openKeys={openKeys}
-            onOpenChange={onOpenChange}
-            onSelect={onSelect}
-          >
-            {
-              MenuItem( menuList )
-            }
-          </Menu>
-        </div>
+        {
+          children
+        }
       </Scrollbars>
+    )
+  }
+
+  useEffect( () => {
+    initTags()
+  }, [currentPath] )
+
+  return (
+    <div className={styles.sideMenuSection}>
+      {
+        layoutMode === 'vertical'
+          ? (
+            <VerticalScrollBar>
+              <MenuBar />
+            </VerticalScrollBar>
+          )
+          : <MenuBar />
+      }
     </div>
   )
 }
 
 const mapStateToProps = state => {
   return {
+    ...state.settings,
     ...state.tagsView,
-    ...state.permission,
-    ...state.app
+    ...state.permission
   }
 }
 

@@ -1,14 +1,17 @@
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { Switch } from 'antd'
-import { TOGGLE_TAGS_VIEW, TOGGLE_SIDEBAR_LOGO, TOGGLE_FIX_HEADER } from '@/store/reducers/settings'
+import { Switch, Tooltip, Divider } from 'antd'
+import { TOGGLE_TAGS_VIEW, TOGGLE_SIDEBAR_LOGO, TOGGLE_FIX_HEADER, CHANGE_LAYOUT_MODE } from '@/store/reducers/settings'
 import styles from './index.module.less'
 
 const Settings = ( props ) => {
-  const { tagsView, fixedHeader, sidebarLogo } = props
+  const { tagsView, fixedHeader, sidebarLogo, layoutMode } = props
   const dispatch = useDispatch()
+  const verticalEl = useRef( null )
+  const horizontalEl = useRef( null )
+  // const mixEl = useRef( null )
 
   const toggleTagsView = ( e ) => {
     dispatch( TOGGLE_TAGS_VIEW() )
@@ -22,16 +25,15 @@ const Settings = ( props ) => {
     dispatch( TOGGLE_SIDEBAR_LOGO() )
   }
 
+  const changeMode = ( value ) => {
+    dispatch( CHANGE_LAYOUT_MODE( value ) )
+  }
+
   return (
     <div className={ styles.drawerContainer }>
       <div>
 
-        <h3 className={styles.drawerTitle}>系统布局配置</h3>
-
-        {/* <div className={ styles.drawerItem }>
-          <span>Theme Color</span>
-           <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange" />
-        </div>*/}
+        <Divider > 系统布局配置 </Divider>
 
         <div className={ styles.drawerItem }>
           <span>开启 TagsView</span>
@@ -46,6 +48,45 @@ const Settings = ( props ) => {
         <div className={ styles.drawerItem }>
           <span>侧边栏 Logo</span>
           <Switch checked={ sidebarLogo } onChange={toggleSideBarLogo} className={styles.drawerSwitch} />
+        </div>
+
+        <Divider > 布局模式 </Divider>
+
+        <div className={ styles.drawerItem }>
+          <div className={ styles.layoutMode }>
+            <Tooltip title='左侧模式'>
+              <div
+                className={ `${layoutMode === 'vertical' ? styles.active : ''} ${styles.modeItem}` }
+                ref={ verticalEl }
+                onClick={ () => changeMode( 'vertical' ) }
+              >
+                <div></div>
+                <div></div>
+              </div>
+            </Tooltip>
+
+            <Tooltip title='顶部模式'>
+              <div
+                className={ `${layoutMode === 'horizontal' ? styles.active : ''} ${styles.modeItem}` }
+                ref={ horizontalEl }
+                onClick={ () => changeMode( 'horizontal' ) }
+              >
+                <div></div>
+                <div></div>
+              </div>
+            </Tooltip>
+
+            {/* <Tooltip title='混合模式'>
+              <div
+                className={ `${layoutMode === 'mix' ? styles.active : ''} ${styles.modeItem}` }
+                ref={ mixEl }
+                onClick={ () => changeMode( 'mix' ) }
+              >
+                <div></div>
+                <div></div>
+              </div>
+            </Tooltip>*/}
+          </div>
         </div>
 
       </div>
