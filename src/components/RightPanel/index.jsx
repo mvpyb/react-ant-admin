@@ -14,6 +14,9 @@ const RightPanel = ( props ) => {
     const showStatus = !show
     setShow( showStatus )
   }
+  const onClose = () => {
+    setShow( false )
+  }
 
   return (
     <div ref={rightPanel} className={styles.rightPanel}>
@@ -24,6 +27,7 @@ const RightPanel = ( props ) => {
         closable={false}
         forceRender={true}
         visible={show}
+        onClose={onClose}
       >
         <div className={ styles.handleButton } onClick={ toggleShow } style={{ top : `${buttonTop}px` }} >
           { show ? <CloseOutlined /> : <SettingOutlined /> }
