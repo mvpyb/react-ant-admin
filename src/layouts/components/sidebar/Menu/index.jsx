@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -21,6 +21,13 @@ const SideMenu = ( props ) => {
   } = props
   const location = useLocation()
   const currentPath = location.pathname
+  const [routeList, setRouteList] = useState( menuList )
+  // eslint-disable-next-line no-unused-vars
+  let isUnmount = false
+
+  useEffect( () => {
+    setRouteList( menuList )
+  }, [menuList] )
 
   // 现根据 key 去查找 allRedirects，获取完整的 path
   const findRealPath = ( key ) => {
@@ -74,22 +81,23 @@ const SideMenu = ( props ) => {
     dispatch( UPDATE_TAGS( menuItem ) )
   }
 
-  const initTags = async() => {
-    const affixTags = findAffixTags( routeLists, [] )
-    const defaultTags = [
-      {
-        path : '/dashboard/index',
-        title : '首页'
-      }
-    ]
-    // 如果固定现实的tags为空，则默认添加首页
-    const fixTags = affixTags.length > 0 ? affixTags : defaultTags
-
-    const realPath = findRealPath( currentPath )
-    const menuItem = filterTags( routeLists, realPath, [...fixTags] )
-    await dispatch( UPDATE_TAGS( menuItem ) )
-    await dispatch( SET_DEFAULT_TAGS( fixTags ) )
-  }
+  const initTags = useCallback( () => {
+    if ( !isUnmount ) {
+      const affixTags = findAffixTags( routeLists, [] )
+      const defaultTags = [
+        {
+          path : '/dashboard/index',
+          title : '首页'
+        }
+      ]
+      // 如果固定现实的tags为空，则默认添加首页
+      const fixTags = affixTags.length > 0 ? affixTags : defaultTags
+      const realPath = findRealPath( currentPath )
+      const menuItem = filterTags( routeLists, realPath, [...fixTags] )
+      dispatch( UPDATE_TAGS( menuItem ) )
+      dispatch( SET_DEFAULT_TAGS( fixTags ) )
+    }
+  }, [] )
 
   const MenuBar = () => {
     return (
@@ -98,10 +106,10 @@ const SideMenu = ( props ) => {
           className={''}
           mode={ mode }
           theme={ theme }
-          onSelect={onSelect}
+          onSelect={ onSelect }
         >
           {
-            MenuItem( menuList )
+            MenuItem( routeList )
           }
         </Menu>
       </div>
@@ -127,6 +135,7 @@ const SideMenu = ( props ) => {
 
   useEffect( () => {
     initTags()
+    return () => isUnmount = true
   }, [currentPath] )
 
   return (

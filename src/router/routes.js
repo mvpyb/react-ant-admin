@@ -1,10 +1,9 @@
 
 import Layout from '@/layouts'
 import { dynamicImport } from './utils'
-// import { isExternal } from '@/utils/validate'
-
 import componentsRouter from './modules/components'
 import nestedRouter from './modules/nested'
+// import { isExternal } from '@/utils/validate'
 
 /**
  * Note: 子菜单只在路由子菜单时出现。长度> = 1

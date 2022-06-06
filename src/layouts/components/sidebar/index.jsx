@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import Logo from './Logo'
-import Menu from './Menu'
+import Menus from './Menu'
 const { Sider } = Layout
 
 const LayoutSider = ( props ) => {
@@ -18,7 +18,7 @@ const LayoutSider = ( props ) => {
       style={{ zIndex : '10' }}
     >
       {sidebarLogo ? <Logo /> : null}
-      <Menu />
+      <Menus />
     </Sider>
   )
 }

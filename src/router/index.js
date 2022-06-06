@@ -41,13 +41,19 @@ const RouterComponent = ( props ) => {
         // 权限判断
         const { users : { roles }} = await store.getState()
         const hasRoles = roles && roles.length > 0
-        let currentRoles
+        // let currentRoles
 
         // 权限为空 则重新获取用户信息
         if ( !hasRoles ) {
           try {
             const payload = await dispatch( getUserInfoSlice() ).unwrap()
-            currentRoles = payload.roles
+            // currentRoles = payload.roles
+
+            // 注入权限路由
+            await dispatch( asyncPermissionRoutes( payload.roles ) )
+            const { permission } = await store.getState()
+            const { routes } = permission
+            setRouteList( routes )
           } catch ( e ) {
             // 退出登录
             dispatch( CLEAR_USER_INFO() )
@@ -55,15 +61,15 @@ const RouterComponent = ( props ) => {
             window.location.reload()
           }
         } else {
-          currentRoles = roles
+          // currentRoles = roles
         }
-        // 注入权限路由
-        await dispatch( asyncPermissionRoutes( currentRoles ) )
 
-        const { permission } = await store.getState()
-        const { routes } = permission
-
-        setRouteList( routes )
+        // // 注入权限路由
+        // await dispatch( asyncPermissionRoutes( currentRoles ) )
+        // const { permission } = await store.getState()
+        // const { routes } = permission
+        // console.log( '路由守卫', routes )
+        // setRouteList( routes )
       }
     } else {
       // 注入基础路由
