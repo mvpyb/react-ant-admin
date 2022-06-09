@@ -1,6 +1,5 @@
 
-// eslint-disable-next-line no-unused-vars
-import React, { memo, useCallback } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import NavBar from './components/navbar'
@@ -16,8 +15,6 @@ const BaseLayout = ( props ) => {
   const {
     tagsView, showSettings, layoutMode, fixedHeader, sidebarStatus
   } = props
-
-  // console.log( 'BaseLayout', { ...props } )
 
   return (
     <div className={styles.layoutSection}>

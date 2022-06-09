@@ -2,7 +2,7 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { getUserInfoSlice, SET_TOKEN } from '@/store/reducers/users'
+import { SET_TOKEN } from '@/store/reducers/users'
 
 import styles from './index.module.less'
 
@@ -101,14 +101,13 @@ const PasswordLogin = ( props ) => {
       }
     }
   }
-  initLogin()
+  React.useEffect( () => initLogin, [] )
 
   const onFinish = async values => {
     const { username, password, remember } = values
     const { loginStart, loginSuccess, loginFailed, loginComplete } = props
     loginStart && loginStart()
     if ( remember ) {
-      // 保存本地
       localStorageHandle.set( 'login_info', {
         username,
         password,
@@ -129,8 +128,7 @@ const PasswordLogin = ( props ) => {
       const { code, data } = response
       if ( code == 200 ) {
         await dispatch( SET_TOKEN( data.token ) )
-        const payload = await dispatch( getUserInfoSlice() ).unwrap()
-        loginSuccess && loginSuccess( payload )
+        loginSuccess && loginSuccess()
       }
     } catch ( error ) {
       loginFailed && loginFailed( error )
