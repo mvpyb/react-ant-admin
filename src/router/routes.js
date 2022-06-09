@@ -79,7 +79,7 @@ const asyncRoutesList = [
         title : '首页',
         path : '/dashboard/index',
         hidden : true,
-        affix : true,
+        // affix : true,
         roles : ['admin', 'editor'],
         component : dynamicImport( () => import( /* webpackChunkName:'Dashboard'*/'@/views/dashboard' ) )
       }
@@ -97,10 +97,7 @@ const asyncRoutesList = [
       {
         path : '/icons/index',
         title : '图标',
-        icon : 'icon2',
         roles : ['admin', 'editor'],
-        hidden : true,
-        affix : true,
         component : dynamicImport( () => import( /* webpackChunkName:'Icons'*/'@/views/icons' ) )
       }
     ]

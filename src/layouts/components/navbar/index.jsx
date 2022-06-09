@@ -2,12 +2,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 import { loginOut } from '@/store/reducers/users'
 import FullScreen from '@/components/FullScreen'
 import Hamburger from '@/components/Hamburger'
 import { subStringStr } from '@/utils/filters'
 import {
-  Menu, Dropdown, Modal, Layout, Avatar
+  Menu, Dropdown, Modal, Layout, Avatar, Typography
 } from 'antd'
 import styles from './index.module.less'
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
@@ -15,11 +16,14 @@ const { Header } = Layout
 import logo from '@/assets/imgs/ant.svg'
 import MenuBar from '../sidebar/Menu'
 
+const { Text } = Typography
+
 const NavBar = ( props ) => {
   const {
-    avatar, username, sidebarStatus, fixedHeader, layoutMode
+    avatar, username, sidebarStatus, layoutMode,
+    theme = 'light'
+    // fixedHeader
   } = props
-  console.log( 'NavBar', fixedHeader, { ...props } )
 
   const dispatch = useDispatch()
 
@@ -41,16 +45,21 @@ const NavBar = ( props ) => {
     }
   }
 
-  const menu = (
-    <Menu onClick={menuClick} className={ styles.userInfo }>
-      <Menu.Item key='dashboard'>
-        {username}
-      </Menu.Item>
+  const DropMenu = () => {
+    const items = [
+      { label : <Text type={ 'danger' }> { username }</Text>, key : 'dashboard' },
+      { type : 'divider' },
+      { label : '登出', key : 'logout' }
+    ]
 
-      <Menu.Divider />
-      <Menu.Item key='logout'>登出</Menu.Item>
-    </Menu>
-  )
+    return (
+      <Menu
+        onClick={ menuClick }
+        className={ styles.userInfo }
+        items={ items }
+      />
+    )
+  }
 
   const Logo = () => {
     return (
@@ -62,9 +71,17 @@ const NavBar = ( props ) => {
   }
 
   const HorizontalMenu = () => {
+    const location = useLocation()
+    const [initPath, setInitPath] = React.useState( '' )
+
+    React.useEffect( () => {
+      setInitPath( location.pathname )
+    }, [] )
     return (
       <div className={ styles.horizontalMenuSection }>
-        <MenuBar mode={'horizontal'} theme={'light'} />
+        {
+          initPath ? <MenuBar initPath={ initPath } mode={ 'horizontal' } theme={ theme } /> : null
+        }
       </div>
     )
   }
@@ -88,9 +105,9 @@ const NavBar = ( props ) => {
         <div className={ styles.rightMenu }>
           <FullScreen />
           <div className={ styles.dropdownWrap }>
-            <Dropdown overlay={menu}>
+            <Dropdown overlay={ DropMenu }>
               <div>
-                <Avatar size={40} icon={<UserOutlined/> } src={avatar} className={ styles.avatarWrapper } />
+                <Avatar size={40} icon={ <UserOutlined/> } src={avatar} className={ styles.avatarWrapper } />
 
                 <span className={ styles.username } >{ subStringStr( username, 3 ) }</span>
 

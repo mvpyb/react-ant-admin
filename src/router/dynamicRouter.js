@@ -22,7 +22,7 @@ function generateRouter( routers ) {
       element = <item.component />
     } else {
       if ( redirect ) {
-        element = <Navigate to={item.redirect} replace />
+        element = <Navigate to={ item.redirect } replace />
       }
     }
     obj.element = element

@@ -5,7 +5,7 @@ import styles from './index.module.less'
 
 const TagsView = () => {
   return (
-    <div className={styles.tagsViewContainer}>
+    <div className={ styles.tagsViewContainer }>
       <TagList />
     </div>
   )

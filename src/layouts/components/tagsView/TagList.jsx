@@ -1,16 +1,20 @@
 
-import React, { useRef, useMemo, useState } from 'react'
+import React, {
+  useRef, useMemo, useState, useCallback, useEffect
+} from 'react'
 import { connect } from 'react-redux'
 import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { DELETE_TAGS, CLEAR_ALL_TAGS, CLOSE_OTHERS_TAGS } from '@/store/reducers/tagsView'
+import { UPDATE_TAGS, SET_DEFAULT_TAGS } from '@/store/reducers/tagsView'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Tag } from 'antd'
 import { isExternal } from '@/utils/validate'
 import styles from './index.module.less'
 
 const TagList = ( props ) => {
-  // console.log( 'TagList', { ...props } )
-  const { tags, dispatch, defaultTags } = props
+  const {
+    tags, dispatch, defaultTags, routes : routeLists, allRedirects
+  } = props
   const tagListContainer = useRef()
   const location = useLocation()
   const currentPath = location.pathname
@@ -21,6 +25,83 @@ const TagList = ( props ) => {
   const [left, setLeft] = useState( 0 )
   const [top, setTop] = useState( 0 )
   const [currentTag, setCurrentTag] = useState( {} )
+
+  // eslint-disable-next-line no-unused-vars
+  let isUnmount = false
+
+  // 现根据 key 去查找 allRedirects，获取完整的 path
+  const findRealPath = ( key ) => {
+    const result = allRedirects.find( v => v.path === key )
+    return result && result.redirect ? result.redirect : key
+  }
+
+  const filterTags = ( routes, key, tag = [] ) => {
+    routes.forEach( item => {
+      const { children, path, redirect } = item
+      if ( key == path && !tag.find( v => v.path == path ) ) {
+        if ( redirect && children && children.length > 0 ) {
+          const obj = children.find( v => v.path == redirect )
+          tag.push( {
+            ...obj
+          } )
+        } else {
+          tag.push( {
+            ...item
+          } )
+        }
+      }
+
+      if ( children && children.length > 0 ) {
+        filterTags( children, key, tag )
+      }
+    } )
+    return tag
+  }
+
+  const findAffixTags = ( routes, tag = [] ) => {
+    routes.forEach( item => {
+      const { children, affix } = item
+      if ( affix === true ) {
+        tag.push( {
+          ...item,
+          unRemove : true
+        } )
+      }
+      if ( children && children.length > 0 ) {
+        findAffixTags( children, tag )
+      }
+    } )
+    return tag
+  }
+
+  // 初始化
+  const initTags = useCallback( () => {
+    if ( !isUnmount ) {
+      const affixTags = findAffixTags( routeLists, [] )
+      const defaultTags = [
+        {
+          path : '/dashboard/index',
+          title : '首页'
+        }
+      ]
+      // 如果固定现实的tags为空，则默认添加首页
+      const fixTags = affixTags.length > 0 ? affixTags : defaultTags
+      const realPath = findRealPath( currentPath )
+      const menuItem = filterTags( routeLists, realPath, [...fixTags] )
+      dispatch( UPDATE_TAGS( menuItem ) )
+      dispatch( SET_DEFAULT_TAGS( fixTags ) )
+    }
+  }, [] )
+
+  useEffect( () => {
+    initTags()
+    return () => isUnmount = true
+  }, [] )
+  useEffect( () => {
+    const realPath = findRealPath( currentPath )
+    const menuItem = filterTags( routeLists, realPath, [...tags] )
+    dispatch( UPDATE_TAGS( menuItem ) )
+  }, [currentPath] )
 
   // 删除外链
   const filterExternalLink = ( lists ) => {
@@ -72,9 +153,7 @@ const TagList = ( props ) => {
     navigate( defaultTags[0]['path'] )
     closeContextMenu()
   }
-
   const closeContextMenu = () => setMenuVisible( false )
-
   const updatePage = ( path ) => {
     const len = tagLists.length
     if ( len <= 0 ) return
@@ -153,7 +232,8 @@ const TagList = ( props ) => {
 
 const mapStateToProps = state => {
   return {
-    ...state.tagsView
+    ...state.tagsView,
+    ...state.permission
   }
 }
 

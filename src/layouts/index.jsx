@@ -17,7 +17,7 @@ const BaseLayout = ( props ) => {
     tagsView, showSettings, layoutMode, fixedHeader, sidebarStatus
   } = props
 
-  console.log( 'BaseLayout', { ...props } )
+  // console.log( 'BaseLayout', { ...props } )
 
   return (
     <div className={styles.layoutSection}>
