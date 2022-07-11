@@ -137,13 +137,10 @@ ncu -f "react redux"
 # 更新的话只要在上面的每个语句后面加上 -u
 
 ```
-
-
-
 ## Donate
 
 如果你觉得这个项目帮助到了你，你可以帮作者买一杯果汁表示鼓励 
 
 | 微信 | 支付宝 |
 | ------ | ------- |
-| [![](http://pic.yupoo.com/454539387/5475a039/f2bd7591.png)](bitcoin:)<br /></center> |[![](http://pic.yupoo.com/454539387/902588ca/852b41a2.png)](bitcoin:)<br /></center> |
+| [![](http://pic.yupoo.com/454539387/193bac45/70a463c6.png)](bitcoin:)<br /></center> |[![](http://pic.yupoo.com/454539387/42d4b71d/2cb80871.png)](bitcoin:)<br /></center> |
