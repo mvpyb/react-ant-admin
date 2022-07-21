@@ -19,19 +19,27 @@ React Antd Admin 是一个免费开源的中后台模版。使用了最新的`re
 - [预览](http://simmon_page.gitee.io/react-antd-admin/)- 完整版预览 ( 码云 )
 
 
-## Vite Element Admin - （vite + Element Plus 开箱即用的中后台模板）
+## 其他项目
 
-- [没有梯子的可移步码云](https://simmon_page.gitee.io/vite-element-plus-admin/dist/) - 完整版预览 （ gitee ）
-- [vite-element-admin](https://mvpyb.github.io/vite-element-plus-admin/dist/) - 完整版预览 ( github )
-- [github](https://github.com/mvpyb/vite-element-plus-admin) - 完整版github站点
-- [码云](https://gitee.com/simmon_page/vite-element-plus-admin) - 完整版码云站点
+- JavaScript 版: [Vite-Element-Admin（Github）](https://github.com/mvpyb/vite-element-admin) 
+- JavaScript 版: [Vite-Element-Admin（Gitee）](https://gitee.com/simmon_page/vite-element-admin-ts) 
 
-## Vite Vant Template - （vite + vant H5 开箱即用的简易模板）
+---
 
-- [没有梯子的可移步码云]( https://simmon_page.gitee.io/vite-vant-template/dist/ ) - 完整版预览 （ gitee ）
-- [vite-element-admin](https://mvpyb.github.io/vite-vant-template/dist/) - 完整版预览 ( github )
-- [github](https://github.com/mvpyb/vite-vant-template) - 完整版github站点
-- [码云](https://gitee.com/simmon_page/vite-vant-template) - 完整版码云站点
+- Typescript 版: [Vite-Element-Admin-ts（Github）](https://github.com/mvpyb/vite-element-admin-ts)
+- Typescript 版: [Vite-Element-Admin-ts（Gitee）](https://github.com/mvpyb/vite-element-admin-ts)
+
+---
+
+- Nuxt Template: [Nuxt-Simple-Template（Github）](https://github.com/mvpyb/nuxt-simple-template) - 等3.x稳定了之后会同步增加3.x版本
+- Nuxt Template: [Nuxt-Simple-Template（Gitee）](https://gitee.com/simmon_page/nuxt-simple-template)
+
+---
+
+- Vant Template: [Vite-Vant-Template（Github）](https://github.com/mvpyb/vite-vant-template)
+- Vant Template: [Vite-Vant-Template（Gitee）](https://gitee.com/simmon_page/vite-vant-template)
+
+---
 
 测试账号: 随便填
 测试密码: 随便填
