@@ -1,9 +1,7 @@
-# /node_modules/* and /bower_components/* ignored by default
 
-/test
 /node_modules
 /scripts
 src/mock
+src/assets
 src/vendor
-src/index.js
-#src/*
+#src/

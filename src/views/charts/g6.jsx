@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import G6 from '@antv/g6'
 import { Card } from 'antd'
-import styles from './g6.module.less'
 
 const AntV = ( props ) => {
   const ref = React.useRef( null )
@@ -129,8 +128,9 @@ const AntV = ( props ) => {
             target={'_blank'}
             rel='noreferrer'
           >See More</a>
-        } >
-        <div ref={ref} className={styles.container} />
+        }
+      >
+        <div ref={ref} />
       </Card>
     </div>
   )

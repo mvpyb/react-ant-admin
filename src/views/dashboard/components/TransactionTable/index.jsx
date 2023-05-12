@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Tag } from 'antd'
 import CountUp from 'react-countup'
-
 import { getDashboardList } from '@/api/table'
 
 const columns = [

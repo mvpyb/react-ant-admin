@@ -23,10 +23,8 @@ const getItemStyle = ( isDragging, draggableStyle ) => ( {
   userSelect : 'none',
   padding : grid * 2,
   margin : `0 0 ${grid}px 0`,
-
   // 拖动时改变背景颜色
   background : isDragging ? 'lightgreen' : 'grey',
-
   // 我们需要将样式应用在可拖放的物体上
   ...draggableStyle
 } )

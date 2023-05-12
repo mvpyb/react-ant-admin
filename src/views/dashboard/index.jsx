@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
+import { Row, Col } from 'antd'
 import DocumentTitle from 'react-document-title'
 import YuCard from '@/components/YuCard'
 
@@ -14,9 +15,7 @@ import YuWeather from './components/YuWeather'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
 
-import styles from './index.module.less'
-
-import { Row, Col } from 'antd'
+import styles from './index.cjs'
 
 const cardList = [
   {
@@ -75,11 +74,10 @@ const cardList = [
   }
 ]
 
-const Dashboard = ( props ) => {
+const Dashboard = () => {
   return (
-    <DocumentTitle title={'dashboard页面'}>
-      <div className={ `${styles.dashboardEditorContainer} un-select ` }>
-
+    <DocumentTitle title={'首页'}>
+      <div className={ `${styles.dashboardEditorContainer} un-select` }>
         <a
           href='https://github.com/mvpyb/react-ant-admin'
           target='_blank'
@@ -145,11 +143,9 @@ const Dashboard = ( props ) => {
           <Col span={12}>
             <YuWeather />
           </Col>
-
           <Col span={6}>
             <TodoList />
           </Col>
-
           <Col span={6}>
             <BoxCard />
           </Col>

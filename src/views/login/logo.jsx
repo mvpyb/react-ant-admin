@@ -1,16 +1,16 @@
 
 import React from 'react'
-import styles from './logo.module.less'
+import styles from './logo.cjs.js'
 import logo from '@/assets/imgs/ant.svg'
 
-const Logo = ( props ) => {
+const Logo = () => {
   return (
-    <div className={styles.logoContanier}>
+    <div className={styles.logoContainer}>
       <img className={styles.img} src={logo} alt='logo' />
-      <span className={`${styles.name} ${styles.name1}`}>A</span>
-      <span className={`${styles.name} ${styles.name2}`}>nt </span>
-      <span className={`${styles.name} ${styles.name1}`}>D</span>
-      <span className={`${styles.name} ${styles.name2}`}>esign</span>
+      <span className={`${styles.name}`}>A</span>
+      <span className={`${styles.name} name2`}>nt </span>
+      <span className={`${styles.name}`}>D</span>
+      <span className={`${styles.name} name2`}>esign</span>
     </div>
   )
 }

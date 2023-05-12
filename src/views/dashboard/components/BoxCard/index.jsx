@@ -1,12 +1,10 @@
 
 import React from 'react'
-
 import { Card, Progress } from 'antd'
 import { connect } from 'react-redux'
 import PanThumb from '@/components/PanThumb'
 import Mallki from '@/components//Mallki'
-
-import './index.less'
+import styles from './index.cjs'
 
 const boxCardList = [
   {
@@ -46,7 +44,7 @@ const BoxCard = ( props ) => {
 
   return (
     <Card
-      className='box-card-component'
+      className={ styles.boxCardComponent }
       title={
         <div className='box-card-header'>
           <img src='https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png'/>

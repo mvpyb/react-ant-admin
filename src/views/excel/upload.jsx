@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Table } from 'antd'
 import UploadExcelComponent from '@/components/UploadExcel'
+import DocumentTitle from 'react-document-title'
 
 class UploadExcel extends Component {
   state = {
@@ -18,21 +19,23 @@ class UploadExcel extends Component {
 
   render() {
     return (
-      <div className='app-container'>
-        <UploadExcelComponent uploadSuccess={this.handleSuccess} />
-        <br />
-        <Table
-          bordered
-          columns={this.state.tableHeader.map( ( item ) => ( {
-            title : item,
-            dataIndex : item,
-            key : item,
-            width : 195,
-            align : 'center'
-          } ) )}
-          dataSource={this.state.tableData}
-        />
-      </div>
+      <DocumentTitle title= {'Upload'}>
+        <div className='app-container'>
+          <UploadExcelComponent uploadSuccess={this.handleSuccess} />
+          <br />
+          <Table
+            bordered
+            columns={this.state.tableHeader.map( ( item ) => ( {
+              title : item,
+              dataIndex : item,
+              key : item,
+              width : 195,
+              align : 'center'
+            } ) )}
+            dataSource={this.state.tableData}
+          />
+        </div>
+      </DocumentTitle>
     )
   }
 }

@@ -4,9 +4,9 @@ import clip from '@/utils/clipboard'
 import {
   Button, Row, Col, Card, Input
 } from 'antd'
-const { TextArea } = Input
-
 import { CopyOutlined } from '@ant-design/icons'
+
+const { TextArea } = Input
 
 const handleCopy = ( text, event ) => {
   clip( text, event )

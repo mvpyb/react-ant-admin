@@ -1,5 +1,8 @@
 
 import React, { Component } from 'react'
+import { ProfileOutlined, FileExcelOutlined } from '@ant-design/icons'
+import { getTableData } from '@/api/table'
+import DocumentTitle from 'react-document-title'
 import {
   Table,
   Tag,
@@ -13,11 +16,6 @@ import {
 } from 'antd'
 
 const { Item } = Form
-
-import { ProfileOutlined, FileExcelOutlined } from '@ant-design/icons'
-
-import { getTableData } from '@/api/table'
-
 const columns = [
   {
     title : 'Id',
@@ -156,74 +154,70 @@ class Excel extends Component {
     }
 
     return (
-      <div className='export-section app-container'>
-        <div style={{ marginTop : '20px' }}>
-          <Form layout='inline'>
-            <Item label='文件名:'>
-              <Input
-                style={{ width : '250px' }}
-                prefix={
-                  <ProfileOutlined style={{ color : 'rgba(0,0,0,.25)' }} />
-                }
-                placeholder='请输入文件名(默认excel-file)'
-                onChange={this.filenameChange}
-              />
-            </Item>
-            <Item label='单元格宽度是否自适应:'>
-              <Radio.Group
-                onChange={this.autoWidthChange}
-                value={this.state.autoWidth}
-              >
-                <Radio value={true}>是</Radio>
-                <Radio value={false}>否</Radio>
-              </Radio.Group>
-            </Item>
-            <Item label='文件类型:'>
-              <Select
-                defaultValue='xlsx'
-                style={{ width : 120 }}
-                onChange={this.bookTypeChange}
-              >
-                <Select.Option value='xlsx'>xlsx</Select.Option>
-                <Select.Option value='csv'>csv</Select.Option>
-                <Select.Option value='txt'>txt</Select.Option>
-              </Select>
-            </Item>
-            <Item>
-              <Button
-                type='primary'
-                icon={<FileExcelOutlined />}
-                onClick={this.handleDownload.bind( null, 'all' )}
-              >
-                全部导出
-              </Button>
-            </Item>
-            <Item>
-              <Button
-                type='primary'
-                icon={<FileExcelOutlined />}
-                onClick={this.handleDownload.bind( null, 'selected' )}
-              >
-                导出选择项
-              </Button>
-            </Item>
-          </Form>
+      <DocumentTitle title= {'Export'}>
+        <div className='app-container'>
+          <div style={{ marginTop : '20px' }}>
+            <Form layout='inline'>
+              <Item label='文件名:'>
+                <Input
+                  style={{ width : '250px' }}
+                  prefix={
+                    <ProfileOutlined style={{ color : 'rgba(0,0,0,.25)' }} />
+                  }
+                  placeholder='请输入文件名(默认excel-file)'
+                  onChange={this.filenameChange}
+                />
+              </Item>
+              <Item label='单元格宽度是否自适应:'>
+                <Radio.Group onChange={this.autoWidthChange} value={this.state.autoWidth} >
+                  <Radio value={true}>是</Radio>
+                  <Radio value={false}>否</Radio>
+                </Radio.Group>
+              </Item>
+              <Item label='文件类型:'>
+                <Select
+                  defaultValue='xlsx'
+                  style={{ width : 120 }}
+                  onChange={this.bookTypeChange}
+                >
+                  <Select.Option value='xlsx'>xlsx</Select.Option>
+                  <Select.Option value='csv'>csv</Select.Option>
+                  <Select.Option value='txt'>txt</Select.Option>
+                </Select>
+              </Item>
+              <Item>
+                <Button
+                  type='primary'
+                  icon={<FileExcelOutlined />}
+                  onClick={this.handleDownload.bind( null, 'all' )}
+                >
+                  全部导出
+                </Button>
+              </Item>
+              <Item>
+                <Button
+                  type='primary'
+                  icon={<FileExcelOutlined />}
+                  onClick={this.handleDownload.bind( null, 'selected' )}
+                >
+                  导出选择项
+                </Button>
+              </Item>
+            </Form>
+          </div>
+          <Divider />
+          <Table
+            bordered
+            size={'small'}
+            columns={columns}
+            rowKey={( record ) => record.id}
+            dataSource={this.state.list}
+            pagination={true}
+            rowSelection={rowSelection}
+            loading={this.state.downloadLoading}
+          />
         </div>
-
-        <Divider />
-
-        <Table
-          bordered
-          size={'small'}
-          columns={columns}
-          rowKey={( record ) => record.id}
-          dataSource={this.state.list}
-          pagination={true}
-          rowSelection={rowSelection}
-          loading={this.state.downloadLoading}
-        />
-
-      </div>
+      </DocumentTitle>
     )
   }
 }

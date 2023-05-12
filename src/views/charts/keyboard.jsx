@@ -168,10 +168,7 @@ class KeyboardChart extends Component {
   }
   render() {
     return (
-      <div
-        style={{ width : '100%', height : 'calc(100vh - 100px)' }}
-        className='app-container'
-      >
+      <div style={{ width : '100%', height : 'calc(100vh - 100px)' }} className='app-container' >
         <div
           style={{ width : '100%', height : '100%' }}
           ref={( el ) => ( this.el = el )}

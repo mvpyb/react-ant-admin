@@ -1,22 +1,21 @@
 
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { withTranslation } from 'react-i18next'
 import DocumentTitle from 'react-document-title'
-import styles from './index.module.less'
-import { Spin } from 'antd'
 import Logo from './logo'
 import PasswordLogin from './passwordLogin'
-// TODO 此页面写了内置了国际化的基础功能，其他页面如果想要集成国际化，可参考此处
+import { useNavigate } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
+import { Spin } from 'antd'
+import styles from './index.cjs'
+// import styles from './index.module.less'
 
+// TODO 此页面写了内置了国际化的基础功能，其他页面如果想要集成国际化，可参考此处
 const Login = ( { t } ) => {
   const [loading, setLoading] = useState( false )
   const navigate = useNavigate()
-
   const loginStart = () => {
     setLoading( true )
   }
-
   const loginSuccess = async() => {
     navigate( '/' )
   }

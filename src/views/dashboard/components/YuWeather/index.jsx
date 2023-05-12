@@ -1,19 +1,16 @@
 
 import React from 'react'
-import './index.less'
-
 import SvgIcon from '@/components/SvgIcon'
-
 import { Row, Col, Carousel } from 'antd'
+import styles from './index.cjs'
 
 const YuWeather = ( props ) => {
   return (
-    <div className='card weather'>
-      <div className='city-selected l-salmon'>
+    <div className={ styles.card }>
+      <div className={ styles.citySelected }>
 
         <Row gutter={0} className={'table-list'}>
           <Col span={14}>
-
             <div className='info'>
               <div className='city'>
                 <span>City:</span>
@@ -23,17 +20,15 @@ const YuWeather = ( props ) => {
               <div className='temperature'>34°</div>
             </div>
           </Col>
-
           <Col span={10}>
             <div className='icon'>
               <SvgIcon iconClass='rain' className='panel-icon'/>
             </div>
           </Col>
-
         </Row>
       </div>
 
-      <table className='table table-striped'>
+      <table className={`${styles.table} ${styles.tableStriped}`}>
         <tbody>
           <tr>
             <td>Wind</td>
@@ -58,8 +53,8 @@ const YuWeather = ( props ) => {
         </tbody>
       </table>
 
-      <div className='week-weather'>
-        <Carousel autoplay dots={false} className={'week-weather'}>
+      <div className={ styles.weekWeather }>
+        <Carousel autoplay dots={false} className={ styles.weekWeather }>
           <ul className='days-list'>
             <li className='day'>
               <p>Monday</p>

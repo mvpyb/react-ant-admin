@@ -1,17 +1,14 @@
 
-import React from 'react'
-
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { SET_TOKEN } from '@/store/reducers/users'
-
-import styles from './index.module.less'
-
 import { validPhone } from '@/utils/validate'
 import { localStorageHandle } from '@/utils/storages'
 import { login } from '@/api/login'
-
 import { Form, Input, Button, Checkbox } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import styles from './index.cjs'
+
 const { Item } = Form
 
 const PasswordLogin = ( props ) => {
@@ -101,7 +98,7 @@ const PasswordLogin = ( props ) => {
       }
     }
   }
-  React.useEffect( () => initLogin, [] )
+  useEffect( () => initLogin, [] )
 
   const onFinish = async values => {
     const { username, password, remember } = values
@@ -195,7 +192,6 @@ const PasswordLogin = ( props ) => {
       <Item>
         <Button type='primary' htmlType={ 'submit' } className={styles.loginFormButton} >登录</Button>
       </Item>
-
       <Item>
         账号 ： admin | editor ， 密码 ：password
       </Item>

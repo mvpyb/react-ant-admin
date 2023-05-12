@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-
+import DocumentTitle from 'react-document-title'
 import {
   Row, Col, Card, Alert, Radio, List
 } from 'antd'
@@ -35,45 +35,43 @@ const I18n = ( { t, i18n } ) => {
   ]
 
   return (
-    <div className={'app-container'}>
-      <Row gutter={16}>
+    <DocumentTitle title= {'国际化'}>
+      <div className={'app-container'}>
+        <Row gutter={16}>
+          <Col span={24}>
+            <div>
+              <Card title={t( 'i18n.title' )} style={{ width : 600, margin : '50px auto' }} hoverable>
+                <Radio.Group value={lang} buttonStyle='solid' onChange={ ( e ) => radioChange( e ) }>
+                  <Radio.Button value='zh'>中文</Radio.Button>
+                  <Radio.Button value='en'>English</Radio.Button>
+                  <Radio.Button value='es'>Español</Radio.Button>
+                  <Radio.Button value='ja'>日本語</Radio.Button>
+                </Radio.Group>
+                <Alert message={t( 'i18n.note' )} type='info' style={{ marginTop : '50px' }} />
+              </Card>
+            </div>
+          </Col>
 
-        <Col className='gutter-row' span={24}>
-          <div className='i18n-section'>
-            <Card title={t( 'i18n.title' )} style={{ width : 600, margin : '50px auto' }} hoverable>
-              <Radio.Group value={lang} buttonStyle='solid' onChange={ ( e ) => radioChange( e ) }>
-                <Radio.Button value='zh'>中文</Radio.Button>
-                <Radio.Button value='en'>English</Radio.Button>
-                <Radio.Button value='es'>Español</Radio.Button>
-                <Radio.Button value='ja'>日本語</Radio.Button>
-              </Radio.Group>
+          <Col span={24}>
+            <div>
+              <List
+                itemLayout='horizontal'
+                dataSource={data}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta
+                      title={<a href={ item.more } target={'_blank'} rel='noreferrer'>{item.title}</a>}
+                      description={t( item.content )}
+                    />
+                  </List.Item>
+                )}
+              />
+            </div>
+          </Col>
 
-              <Alert message={t( 'i18n.note' )} type='info' style={{ marginTop : '50px' }} />
-
-            </Card>
-          </div>
-        </Col>
-
-        <Col className='gutter-row' span={24}>
-          <div className='i18n-section'>
-
-            <List
-              itemLayout='horizontal'
-              dataSource={data}
-              renderItem={item => (
-                <List.Item>
-                  <List.Item.Meta
-                    title={<a href={ item.more } target={'_blank'} rel='noreferrer'>{item.title}</a>}
-                    description={t( item.content )}
-                  />
-                </List.Item>
-              )}
-            />
-          </div>
-        </Col>
-
-      </Row>
-    </div>
+        </Row>
+      </div>
+    </DocumentTitle>
   )
 }
 

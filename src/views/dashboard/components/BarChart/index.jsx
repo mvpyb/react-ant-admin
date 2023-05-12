@@ -10,16 +10,16 @@ class BarChart extends Component {
     height : PropTypes.string,
     className : PropTypes.string,
     styles : PropTypes.object
-  };
+  }
   static defaultProps = {
     width : '100%',
     height : '300px',
     styles : {},
     className : ''
-  };
+  }
   state = {
     chart : null
-  };
+  }
 
   componentDidMount() {
     debounce( this.initChart.bind( this ), 300 )()

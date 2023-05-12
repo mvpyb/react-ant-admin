@@ -3,12 +3,10 @@ import React, { useState, useEffect } from 'react'
 import {
   Table, Tag, Form, Button, Input, Divider
 } from 'antd'
-
 import { ProfileOutlined, FileZipOutlined } from '@ant-design/icons'
-const { Item } = Form
-
 import { getTableData } from '@/api/table'
 
+const { Item } = Form
 const columns = [
   {
     title : 'Id',
@@ -68,21 +66,13 @@ const Zip = () => {
   }, [] )
 
   const exportZip = () => {
-    import( '@/vendor/Export2Zip' ).then( ( zip ) => {
+    import( '@/vendor/Export2Zip' ).then( zip => {
       setDownloadLoading( true )
       const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
       const filterVal = ['id', 'title', 'author', 'readings', 'date']
       const data = formatJson( filterVal, tableData )
-
-      zip.export_txt_to_zip(
-        tHeader,
-        data,
-        fileName,
-        fileName
-      )
-
+      zip.export_txt_to_zip( tHeader, data, fileName, fileName )
       setDownloadLoading( false )
-      console.log( 'downloadLoading', downloadLoading )
     } )
   }
 
@@ -91,8 +81,7 @@ const Zip = () => {
   }
 
   return (
-    <div className='zip-section app-container'>
-
+    <div className='app-container'>
       <div style={{ marginTop : '20px' }}>
         <Form layout='inline'>
           <Item label='文件名:'>
@@ -107,19 +96,11 @@ const Zip = () => {
             />
           </Item>
           <Item>
-            <Button
-              type='primary'
-              icon={<FileZipOutlined />}
-              onClick={exportZip}
-            >
-              导出Zip
-            </Button>
+            <Button type='primary' icon={<FileZipOutlined />} onClick={exportZip} >导出Zip</Button>
           </Item>
         </Form>
       </div>
-
       <Divider />
-
       <Table
         bordered
         size={'small'}
@@ -129,7 +110,6 @@ const Zip = () => {
         pagination={true}
         loading={downloadLoading}
       />
-
     </div>
   )
 }

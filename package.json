@@ -16,6 +16,7 @@
   "private": true,
   "dependencies": {
     "@antv/g6": "^4.5.5",
+    "@emotion/css": "^11.11.0",
     "@manaflair/redux-batch": "^1.0.0",
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/user-event": "^7.2.1",

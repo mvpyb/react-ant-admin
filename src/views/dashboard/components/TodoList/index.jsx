@@ -1,12 +1,10 @@
 
 import React, { useState, useMemo } from 'react'
+import cloneDeep from 'loadsh/cloneDeep'
+import Todo from './todo'
+import { localStorageHandle } from '@/utils/storages'
 import './index.less'
 
-import cloneDeep from 'loadsh/cloneDeep'
-
-import Todo from './todo'
-
-import { localStorageHandle } from '@/utils/storages'
 const TODO_LIST_KEY = 'react-todos'
 const defaultTodo = [
   { id : 1, text : 'star this repository', done : false },
