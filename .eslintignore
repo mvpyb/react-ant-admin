@@ -4,4 +4,4 @@
 src/mock
 src/assets
 src/vendor
-#src/
+src/**/*

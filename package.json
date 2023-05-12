@@ -69,6 +69,8 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.0",
+    "browserslist": "^4.21.5",
+    "caniuse-lite": "^1.0.30001486",
     "clean-webpack-plugin": "^4.0.0",
     "commitizen": "^4.0.3",
     "customize-cra": "^0.9.1",
