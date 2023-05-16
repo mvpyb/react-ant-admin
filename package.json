@@ -1,105 +1,95 @@
 {
-  "name": "react-ant-admin",
-  "version": "1.0.0",
-  "author": "灰是小灰灰的灰<454539387@qq.com>",
-  "license": "MIT",
-  "scripts": {
-    "dev": "react-app-rewired start",
-    "dll": "webpack --config ./webpack.dll.config.js",
-    "build": "react-app-rewired --max-old-space-size=4096 build",
-    "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
-    "commit": "git cz",
-    "lint": "eslint --ext .js,.jsx src",
-    "lint-fix": "eslint --fix --ext .js,.jsx src"
-  },
+  "name": "react18",
+  "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development craco start ",
+    "build": "cross-env NODE_ENV=production craco build",
+    "test": "craco test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src -c .eslintrc.js --fix --ext .ts,.tsx,.js,.jsx src",
+    "prepare": "husky install"
+  },
   "dependencies": {
-    "@antv/g6": "^4.5.5",
     "@emotion/css": "^11.11.0",
-    "@manaflair/redux-batch": "^1.0.0",
-    "@reduxjs/toolkit": "^1.8.2",
-    "@testing-library/user-event": "^7.2.1",
-    "@tinymce/tinymce-react": "^3.13.0",
-    "@toast-ui/react-editor": "^2.1.0",
-    "add-asset-html-webpack-plugin": "^3.2.0",
-    "antd": "^4.21.0",
-    "axios": "^0.24.0",
-    "clipboard": "^2.0.10",
-    "draft-js": "^0.11.5",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@tinymce/tinymce-react": "^4.3.0",
+    "ahooks": "^3.7.7",
+    "antd": "^5.4.7",
+    "axios": "^1.4.0",
+    "clipboard": "^2.0.11",
+    "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "draftjs-to-markdown": "^0.6.0",
     "driver.js": "^0.9.8",
-    "echarts": "^4.7.0",
-    "file-saver": "^2.0.2",
-    "hard-source-webpack-plugin": "^0.13.1",
-    "i18next": "^21.6.6",
-    "js-cookie": "^3.0.1",
-    "jszip": "^3.4.0",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
-    "loadsh": "0.0.4",
+    "echarts": "^5.4.2",
+    "file-saver": "^2.0.5",
+    "i18next": "^22.4.15",
+    "js-cookie": "^3.0.5",
+    "jszip": "^3.10.1",
+    "loadsh": "^0.0.4",
     "nprogress": "^0.2.0",
-    "ol": "^6.12.0",
-    "path-browserify": "^1.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-beautiful-dnd": "^13.0.0",
-    "react-countup": "^6.2.0",
+    "ol": "^7.3.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-countup": "^6.4.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-document-title": "^2.0.3",
-    "react-dom": "^17.0.2",
-    "react-draft-wysiwyg": "^1.14.5",
-    "react-error-overlay": "^6.0.9",
-    "react-i18next": "^11.15.3",
+    "react-dom": "^18.2.0",
+    "react-draft-wysiwyg": "^1.15.0",
+    "react-i18next": "^12.2.2",
     "react-loadable": "^5.5.0",
-    "react-redux": "^8.0.2",
-    "react-router-dom": "^6.2.1",
-    "react-scripts": "3.4.1",
-    "react-transition-group": "^4.4.2",
-    "redux-logger": "^3.0.6",
-    "screenfull": "^6.0.1",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.11.1",
+    "react-scripts": "5.0.1",
+    "react-transition-group": "^4.4.5",
+    "screenfull": "^6.0.2",
     "script-loader": "^0.7.2",
-    "svgo": "^2.8.0",
-    "xlsx": "^0.17.5"
+    "svgo": "^3.0.2",
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.1.0",
-    "babel-plugin-import": "^1.13.0",
-    "browserslist": "^4.21.5",
-    "caniuse-lite": "^1.0.30001486",
-    "clean-webpack-plugin": "^4.0.0",
-    "commitizen": "^4.0.3",
-    "customize-cra": "^0.9.1",
-    "customize-cra-eslint": "^0.1.3",
-    "cz-conventional-changelog": "^3.0.2",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-react": "^7.28.0",
+    "@craco/craco": "^7.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.40.0",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
     "mockjs": "^1.1.0",
-    "react-app-rewired": "^2.1.5",
-    "script-ext-html-webpack-plugin": "2.1.3",
+    "path-browserify": "^1.0.1",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
     "speed-measure-webpack-plugin": "^1.5.0",
     "svg-sprite-loader": "^6.0.11",
-    "svgo-loader": "^3.0.0",
-    "user-agent": "^1.0.4",
-    "webpack": "^4.42.0",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-cli": "^4.9.2"
+    "svgo-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.8"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "eslint -c .eslintrc.js --fix"
+    ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
