@@ -4,4 +4,5 @@
 src/mock
 src/assets
 src/vendor
+craco.config.js
 src/**/*
