@@ -2,42 +2,40 @@
 import React, { Component } from 'react'
 import { Table } from 'antd'
 import UploadExcelComponent from '@/components/UploadExcel'
-import DocumentTitle from 'react-document-title'
+import withTitle from '@/utils/withTitle'
 
 class UploadExcel extends Component {
   state = {
-    tableData : [],
-    tableHeader : []
+    tableData: [],
+    tableHeader: []
   }
 
-  handleSuccess = ( { results, header } ) => {
-    this.setState( {
-      tableData : results,
-      tableHeader : header
-    } )
+  handleSuccess = ({ results, header }) => {
+    this.setState({
+      tableData: results,
+      tableHeader: header
+    })
   }
 
   render() {
     return (
-      <DocumentTitle title= {'Upload'}>
         <div className='app-container'>
           <UploadExcelComponent uploadSuccess={this.handleSuccess} />
           <br />
           <Table
             bordered
-            columns={this.state.tableHeader.map( ( item ) => ( {
-              title : item,
-              dataIndex : item,
-              key : item,
-              width : 195,
-              align : 'center'
-            } ) )}
+            columns={this.state.tableHeader.map((item) => ({
+              title: item,
+              dataIndex: item,
+              key: item,
+              width: 195,
+              align: 'center'
+            }))}
             dataSource={this.state.tableData}
           />
         </div>
-      </DocumentTitle>
     )
   }
 }
 
-export default UploadExcel
+export default withTitle(UploadExcel, '表格上传')

@@ -2,14 +2,13 @@
 import React from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
 
-function generateRouter( routers ) {
-  return routers.map( ( item ) => {
+function generateRouter(routers) {
+  return routers.map((item) => {
     const obj = { ...item }
-    const { children, redirect, component } = item
-    if ( children && children.length ) {
-      obj.children = generateRouter( children )
+    const { children, redirect, component: Component } = item
+    if (children && children.length) {
+      obj.children = generateRouter(children)
     }
-
     /**
      * redirect 目前尝试出的几个解决方案
      * 1、遍历所有路由，提取出所有包含 redirect 字段的路由，然后统一用 Navigate  （目前采用，）
@@ -18,21 +17,21 @@ function generateRouter( routers ) {
      * 后期在做分析 或者有没有其他方案
      * */
     let element
-    if ( component ) {
-      element = <item.component />
+    if (Component) {
+      element = typeof Component === 'function' ? <Component /> : Component
     } else {
-      if ( redirect ) {
+      if (redirect) {
         element = <Navigate to={ item.redirect } replace />
       }
     }
     obj.element = element
     return obj
-  } )
+  })
 }
 
-const DynamicRouter = ( props ) => {
+const DynamicRouter = (props) => {
   const routeList = props.routes
-  return useRoutes( generateRouter( routeList ) )
+  return useRoutes(generateRouter(routeList))
 }
 
 export default DynamicRouter

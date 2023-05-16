@@ -1,71 +1,71 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import './index.less'
+import './index.scss'
 
-const TodoItem = ( props ) => {
+const TodoItem = (props) => {
   const {
     todo = () => {
       return {}
     }
   } = props
 
-  const [editing, setEditing] = useState( false )
-  const [editVal, setEditVal] = useState( todo.text )
+  const [editing, setEditing] = useState(false)
+  const [editVal, setEditVal] = useState(todo.text)
 
   const todoRef = useRef()
 
   const deleteTodo = () => {
-    props.deleteTodo && props.deleteTodo( todo.id )
+    props.deleteTodo && props.deleteTodo(todo.id)
   }
 
-  const editTodo = ( value ) => {
-    props.editTodo && props.editTodo( { id : todo.id, value } )
+  const editTodo = (value) => {
+    props.editTodo && props.editTodo({ id: todo.id, value })
   }
 
   const toggleTodo = () => {
-    props.toggleTodo && props.toggleTodo( todo.id )
+    props.toggleTodo && props.toggleTodo(todo.id)
   }
 
-  const doneEdit = ( e ) => {
+  const doneEdit = (e) => {
     const value = e.target.value.trim()
-    if ( !value ) {
+    if (!value) {
       deleteTodo()
-    } else if ( editing ) {
-      editTodo( value )
-      setEditing( false )
+    } else if (editing) {
+      editTodo(value)
+      setEditing(false)
     }
   }
 
-  const cancelEdit = ( e ) => {
+  const cancelEdit = (e) => {
     e.target.value = todo.text
-    setEditing( false )
+    setEditing(false)
   }
 
-  const handleKeyUp = ( e ) => {
+  const handleKeyUp = (e) => {
     const keyCode = e.keyCode
-    if ( keyCode == 13 ) {
-      doneEdit( e )
-    } else if ( keyCode == 27 ) {
+    if (keyCode == 13) {
+      doneEdit(e)
+    } else if (keyCode == 27) {
       cancelEdit()
     }
   }
 
   const editingTodo = () => {
-    setEditing( true )
-    setEditVal( todo.text )
+    setEditing(true)
+    setEditVal(todo.text)
   }
 
-  const changeTodo = ( e ) => {
+  const changeTodo = (e) => {
     const val = e.target.value.trim()
-    setEditVal( val )
+    setEditVal(val)
   }
 
-  useEffect( () => {
-    if ( editing && todoRef.current ) {
+  useEffect(() => {
+    if (editing && todoRef.current) {
       todoRef.current.select()
     }
-  }, [editing] )
+  }, [editing])
 
   return (
     <li className={ `todo ${todo.done ? 'completed' : ''} ${editing ? 'editing' : ''}` }>
@@ -94,10 +94,10 @@ const TodoItem = ( props ) => {
 }
 
 TodoItem.propTypes = {
-  todo : PropTypes.object,
-  deleteTodo : PropTypes.func,
-  editTodo : PropTypes.func,
-  toggleTodo : PropTypes.func
+  todo: PropTypes.object,
+  deleteTodo: PropTypes.func,
+  editTodo: PropTypes.func,
+  toggleTodo: PropTypes.func
 }
 
 export default TodoItem

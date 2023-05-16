@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[8867],{78867:function(e,t,a){a.r(t);var c,u=a(87886),n=/\.\/(.*)\.svg/,r=(c=u,c.keys()).map((function(e){return e.match(n)[1]}));t.default=r}}]);

@@ -1,7 +1,7 @@
 import { css } from '@emotion/css'
 
 const styles = {
-  card : css`
+  card: css`
     background: #fff;
     transition: 0.5s;
     border: 0;
@@ -10,7 +10,7 @@ const styles = {
     width: 100%;
     box-shadow: 0 -3px 31px 0 rgba(0,0,0,0.05), 0 6px 20px 0 rgba(0,0,0,0.02);
     `,
-  citySelected : css`
+  citySelected: css`
     font-size: 14px;
     padding: 20px;
     font-weight: 400;
@@ -56,7 +56,7 @@ const styles = {
       }
     }
   `,
-  table : css`
+  table: css`
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1rem;
@@ -71,12 +71,12 @@ const styles = {
       padding: 14px 20px;
     }
   `,
-  tableStriped : css`
+  tableStriped: css`
     tbody tr:nth-of-type(odd) {
       background-color: rgba(0, 0, 0, 0.05);
     }
   `,
-  weekWeather : css`
+  weekWeather: css`
     height: 120px;
     ul,
     li {

@@ -1,25 +1,24 @@
 
 import React, { useState } from 'react'
 import clip from '@/utils/clipboard'
-import {
-  Button, Row, Col, Card, Input
-} from 'antd'
+import { Button, Row, Col, Card, Input } from 'antd'
 import { CopyOutlined } from '@ant-design/icons'
+import { useTitle } from 'ahooks'
 
 const { TextArea } = Input
-
-const handleCopy = ( text, event ) => {
-  clip( text, event )
+const handleCopy = (text, event) => {
+  clip(text, event)
 }
 
-const defaultText = 'React Ant Admin 是一个免费开源的中后台模版。使用了最新的`react 17.x`,`react-router 6.x`,`@reduxjs/toolkit`,`antd4.x`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。模板集成了基础权限、国际化以及各种常用组件。More : https://github.com/mvpyb/react-ant-admin'
+const defaultText = 'React Ant Admin 是一个免费开源的中后台模版。使用了最新的`react 18.x`,`react-router 6.x`,`@reduxjs/toolkit`,`antd5.x`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。模板集成了基础权限、国际化以及各种常用组件。More : https://github.com/mvpyb/react-ant-admin'
 
 const Clipboard = () => {
-  const [text, setText] = useState( defaultText )
+  useTitle('剪辑板')
+  // console.log('test1234567890')
+  const [text, setText] = useState(defaultText)
   return (
     <div className={'app-container'}>
       <Row gutter={16}>
-
         <Col className='gutter-row' span={12}>
           <div className='clipboard-section'>
             <Card title='文字复制' >
@@ -27,8 +26,8 @@ const Clipboard = () => {
               <Button
                 type='primary'
                 icon={ <CopyOutlined /> }
-                onClick={( e ) => {
-                  handleCopy( defaultText, e )
+                onClick={(e) => {
+                  handleCopy(defaultText, e)
                 }}
               >
                 Copy
@@ -36,25 +35,24 @@ const Clipboard = () => {
             </Card>
           </div>
         </Col>
-
         <Col className='gutter-row' span={12}>
           <div className='clipboard-section'>
             <Card title='表单复制'>
-              <div style={{ marginBottom : '5px' }}>
+              <div style={{ marginBottom: '5px' }}>
                 <TextArea
                   autoSize={true}
                   showCount
                   value={text}
-                  onChange={ ( e ) => {
-                    setText( e.target.value )
+                  onChange={ (e) => {
+                    setText(e.target.value)
                   } }
                 />
               </div>
               <Button
                 type='primary'
                 icon={ <CopyOutlined /> }
-                onClick={( e ) => {
-                  handleCopy( text, e )
+                onClick={(e) => {
+                  handleCopy(text, e)
                 }}
               >
                 Copy
@@ -62,7 +60,6 @@ const Clipboard = () => {
             </Card>
           </div>
         </Col>
-
       </Row>
     </div>
   )

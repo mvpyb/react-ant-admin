@@ -1,5 +1,5 @@
 
-import echarts from 'echarts/lib/echarts'
+import * as echarts from 'echarts/lib/echarts'
 
 // 提示框和标题组件
 import 'echarts/lib/component/legend'

@@ -17,18 +17,18 @@ i18n
 //   .use( LanguageDetector )
 
 // pass the i18n instance to react-i18next.
-  .use( initReactI18next )
+  .use(initReactI18next)
 
 // init i18next
 // 文档参数: https://www.i18next.com/overview/configuration-options
-  .init( {
-    fallbackLng : 'zh',
-    lng : 'zh',
-    debug : false,
-    resources : lang,
-    interpolation : {
-      escapeValue : false
+  .init({
+    fallbackLng: 'zh',
+    lng: 'zh',
+    debug: false,
+    resources: lang,
+    interpolation: {
+      escapeValue: false
     }
-  } )
+  })
 
 export default i18n

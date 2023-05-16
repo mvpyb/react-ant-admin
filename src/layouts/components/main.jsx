@@ -3,23 +3,23 @@ import React from 'react'
 import { Layout } from 'antd'
 import { connect } from 'react-redux'
 import { Outlet, useLocation } from 'react-router-dom'
-import '@/styles/transition.less'
-import styles from './main.module.less'
-const { Content } = Layout
+import '@/styles/transition.scss'
+import styles from './main.cjs.js'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+const { Content } = Layout
 
-const Main = ( props ) => {
+const Main = (props) => {
   const location = useLocation()
   const { fixedHeader, tagsView } = props
 
   return (
     <Content
-      className={ `${styles.mainSection} ${fixedHeader ? styles.fixedHeader : ''} ${tagsView ? styles.hasTags : styles.noTags} ` }
+      className={ `${styles.mainSection} ${fixedHeader ? 'fixedHeader' : ''} ${tagsView ? 'hasTags' : 'noTags'} ` }
     >
-      {/* 动画 styles-transition.less => forward-from-right back-to-right fade-in fade-transform*/}
+      {/* 动画 styles-transition.scss => forward-from-right back-to-right fade-in fade-transform*/}
       <TransitionGroup
         className={styles.mainWrapper}
-        childFactory={child => React.cloneElement( child, { classNames : 'forward-from-right' } )}
+        childFactory={child => React.cloneElement(child, { classNames: 'forward-from-right' })}
       >
         <CSSTransition timeout={500} key={location.pathname}>
           <div className={ styles.mainContent }>
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
     ...state.settings
   }
 }
-export default connect( mapStateToProps )( Main )
+export default connect(mapStateToProps)(Main)

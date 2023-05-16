@@ -1,30 +1,30 @@
 export default {
-  title : 'React Ant Admin',
+  title: 'React Ant Admin',
   /**
    * @type {boolean} true | false
    * @description Whether show the settings right-panel
    */
-  showSettings : false,
+  showSettings: false,
   /**
    * @type {boolean} true | false
    * @description Whether show the logo in sidebar
    */
-  sidebarLogo : true,
+  sidebarLogo: true,
 
   /**
    * @type {boolean} true | false
    * @description Whether fix the header
    */
-  fixedHeader : false,
+  fixedHeader: false,
 
   /**
    * @type {boolean} true | false
    * @description Whether need tagsView
    */
-  tagsView : true,
+  tagsView: true,
   /**
    * @type {string} vertical | horizontal
    * @description global layout mode
    */
-  layoutMode : 'vertical'
+  layoutMode: 'vertical'
 }

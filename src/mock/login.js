@@ -1,6 +1,7 @@
 
 const tokens = {
-  admin : "admin-token",
+  // admin : "admin-token",
+  test : "admin-token",
   guest : "guest-token",
   editor : "editor-token"
 }
@@ -23,7 +24,6 @@ const users = {
 }
 
 export default {
-  
   login : ( config ) => {
     const { username } = JSON.parse( config.body )
     const token = tokens[username]

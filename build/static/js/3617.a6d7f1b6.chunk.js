@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[3617],{63617:function(n,r,t){t.r(r),t.d(r,{default:function(){return c}});var e=t(1413),u=t(93098),a=t(10161);function c(n){return function(r){var t=(0,u.TH)(),c=(0,u.s0)(),s=(0,u.UO)();return(0,a.jsx)(n,(0,e.Z)((0,e.Z)({},r),{},{router:{location:t,navigate:c,params:s}}))}}}}]);

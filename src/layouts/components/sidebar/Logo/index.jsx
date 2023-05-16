@@ -1,7 +1,7 @@
 
 import React from 'react'
 import logo from '@/assets/imgs/ant.svg'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
 const Logo = () => {
   return (

@@ -5,17 +5,17 @@
  * @param  {[String]} mime [description]
  * @return {[blob]}      [description]
  */
-export default function( data, mime ) {
+export default function(data, mime) {
   // eslint-disable-next-line no-param-reassign
-  data = data.split( ',' )[1]
+  data = data.split(',')[1]
   // eslint-disable-next-line no-param-reassign
-  data = window.atob( data )
-  var ia = new Uint8Array( data.length )
-  for ( var i = 0; i < data.length; i++ ) {
-    ia[i] = data.charCodeAt( i )
+  data = window.atob(data)
+  var ia = new Uint8Array(data.length)
+  for (var i = 0; i < data.length; i++) {
+    ia[i] = data.charCodeAt(i)
   }
   // canvas.toDataURL 返回的默认格式就是 image/png
-  return new Blob( [ia], {
-    type : mime
-  } )
+  return new Blob([ia], {
+    type: mime
+  })
 }

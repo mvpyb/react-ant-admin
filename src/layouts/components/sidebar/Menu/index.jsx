@@ -4,13 +4,13 @@ import { Scrollbars } from 'react-custom-scrollbars'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Menu } from 'antd'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 import { isArray, isExternal } from '@/utils/validate'
 import SvgIcon from '@/components/SvgIcon'
 
-const SideMenu = ( props ) => {
+const SideMenu = (props) => {
   const {
-    addRoutes : menuList,
+    addRoutes: menuList,
     // routes : routeLists,
     layoutMode,
     initPath = '',
@@ -18,62 +18,62 @@ const SideMenu = ( props ) => {
     theme = 'dark'
   } = props
 
-  const [defaultOpenKeys, setDefaultOpenKeys] = useState( [] )
-  const [selectedKeys, setSelectedKeys] = useState( [] )
+  const [defaultOpenKeys, setDefaultOpenKeys] = useState([])
+  const [selectedKeys, setSelectedKeys] = useState([])
 
-  useEffect( () => {
+  useEffect(() => {
     initActiveMenu()
-  }, [] )
+  }, [])
 
   // 获取所有的 path 集合
   // eslint-disable-next-line no-unused-vars
-  const getOpenKeysFromMenuData = ( menuData ) => {
-    return ( menuData || [] ).reduce( ( pre, item ) => {
-      if ( item.path ) {
-        pre.push( item.path )
+  const getOpenKeysFromMenuData = (menuData) => {
+    return (menuData || []).reduce((pre, item) => {
+      if (item.path) {
+        pre.push(item.path)
       }
-      if ( item.children ) {
-        const newArray = pre.concat( getOpenKeysFromMenuData( item.children ) || [] )
+      if (item.children) {
+        const newArray = pre.concat(getOpenKeysFromMenuData(item.children) || [])
         return newArray
       }
       return pre
-    }, [] )
+    }, [])
   }
 
   // 递归routerList，设置label children 等
-  const changeRoutes = ( routers = [] ) => {
-    if ( !routers || !routers.length ) {
+  const changeRoutes = (routers = []) => {
+    if (!routers || !routers.length) {
       return null
     }
-    const datas = routers.filter( v => v.title )
-    return datas.map( ( item ) => {
+    const list = routers.filter(v => v.title)
+    return list.map((item) => {
       const { children } = item
       const obj = {
         ...item,
-        label : menuLink( item.path, item.title || item.label ),
-        key : item.path,
-        icon : item.icon ? <SvgIcon iconClass={ item.icon } /> : null
+        label: menuLink(item.path, item.title || item.label),
+        key: item.path,
+        icon: item.icon ? <SvgIcon iconClass={ item.icon } /> : null
       }
 
-      const { has, onlyOneChild } = hasEffectChild( children, item, {} )
+      const { has, onlyOneChild } = hasEffectChild(children, item, {})
 
       // 如果 children 存在并且 noShowingChildren !== true, 则递归处理children
       // 否则 删除children，并重置父级label
-      if ( has && !onlyOneChild.noShowingChildren ) {
+      if (has && !onlyOneChild.noShowingChildren) {
         obj.label = item.title || item.label
-        obj.children = changeRoutes( children )
+        obj.children = changeRoutes(children)
       } else {
-        obj.label = menuLink( onlyOneChild.path, onlyOneChild.title || onlyOneChild.label )
+        obj.label = menuLink(onlyOneChild.path, onlyOneChild.title || onlyOneChild.label)
         obj.icon = onlyOneChild.icon ? <SvgIcon iconClass={ onlyOneChild.icon } /> : null
         delete obj.children
       }
       return obj
-    } )
+    })
   }
 
   // 初始化需展开的导航 和 高亮当前路径的导航
   const initActiveMenu = () => {
-    const rank = initPath.split( '/' )
+    const rank = initPath.split('/')
     const len = rank.length
 
     // 其中 openMenus 存储当前选中的路径，是个数组
@@ -92,18 +92,18 @@ const SideMenu = ( props ) => {
     const openMenus = [initPath]
     const selectedOpenMenus = []
     const index = len - 2
-    if ( len > 0 ) {
-      for ( let i = 0; i < index + 1; i++ ) {
-        if ( i < index ) {
-          selectedOpenMenus.push( rank.slice( 0, i + 2 ).join( '/' ) )
+    if (len > 0) {
+      for (let i = 0; i < index + 1; i++) {
+        if (i < index) {
+          selectedOpenMenus.push(rank.slice(0, i + 2).join('/'))
         }
       }
     }
-    setSelectedKeys( openMenus )
-    setDefaultOpenKeys( selectedOpenMenus )
+    setSelectedKeys(openMenus)
+    setDefaultOpenKeys(selectedOpenMenus)
   }
 
-  const VerticalScrollBar = ( { children } ) => {
+  const VerticalScrollBar = ({ children }) => {
     return (
       <Scrollbars
         autoHide
@@ -120,36 +120,36 @@ const SideMenu = ( props ) => {
     )
   }
 
-  const hasEffectChild = ( children = [], parent, onlyOneChild = {} ) => {
-    if ( !children || !isArray( children ) || !children.length ) {
+  const hasEffectChild = (children = [], parent, onlyOneChild = {}) => {
+    if (!children || !isArray(children) || !children.length) {
       return {
-        has : false,
-        onlyOneChild : {
+        has: false,
+        onlyOneChild: {
           ...parent,
-          noShowingChildren : true
+          noShowingChildren: true
         }
       }
     }
-    const showingChildren = children.filter( v => !v.hidden )
+    const showingChildren = children.filter(v => !v.hidden)
     // 如果没有要显示的子路由器，则显示parent
     // eslint-disable-next-line no-param-reassign
     onlyOneChild = showingChildren.length > 0 ? { ...showingChildren[0] } : {
       ...parent,
-      path : parent.redirect || children[0].redirect || children[0].path,
-      noShowingChildren : true
+      path: parent.redirect || children[0].redirect || children[0].path,
+      noShowingChildren: true
     }
     return {
-      has : true,
+      has: true,
       onlyOneChild
     }
   }
 
-  const isLink = ( to ) => {
-    return isExternal( to ) || !( to.startsWith( '/' ) )
+  const isLink = (to) => {
+    return isExternal(to) || !(to.startsWith('/'))
   }
 
-  const menuLink = ( url, title ) => {
-    if ( isLink( url ) ) {
+  const menuLink = (url, title) => {
+    if (isLink(url)) {
       return <a href={ url } target={ '_blank' } rel='noreferrer'> { title } </a>
     } else {
       return <Link to={ url }> { title } </Link>
@@ -157,7 +157,9 @@ const SideMenu = ( props ) => {
   }
 
   const MenuBar = () => {
-    const newList = [...changeRoutes( menuList )]
+    // null || [...]
+    const list = changeRoutes(menuList)
+    const newList = list ? [...changeRoutes(menuList)] : []
 
     return (
       <div>
@@ -195,4 +197,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect( mapStateToProps )( SideMenu )
+export default connect(mapStateToProps)(SideMenu)

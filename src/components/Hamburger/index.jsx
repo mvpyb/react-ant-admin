@@ -3,14 +3,14 @@ import React from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { TOGGLE_SIDEBAR } from '@/store/reducers/app'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
-const Hamburger = ( props ) => {
+const Hamburger = (props) => {
   const { sidebarStatus } = props
   const dispatch = useDispatch()
 
   const toggleClick = () => {
-    dispatch( TOGGLE_SIDEBAR() )
+    dispatch(TOGGLE_SIDEBAR())
   }
 
   return (
@@ -22,4 +22,4 @@ const Hamburger = ( props ) => {
   )
 }
 
-export default connect( ( state ) => state.app )( Hamburger )
+export default connect((state) => state.app)(Hamburger)

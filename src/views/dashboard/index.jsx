@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Row, Col } from 'antd'
-import DocumentTitle from 'react-document-title'
+import { useTitle } from 'ahooks'
 import YuCard from '@/components/YuCard'
 
 import BarChart from './components/BarChart'
@@ -14,70 +14,69 @@ import YuStreetMap from '@/components/YuStreetMap'
 import YuWeather from './components/YuWeather'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
-
 import styles from './index.cjs'
 
 const cardList = [
   {
-    id : 1,
-    end : 6666,
-    duration : 3,
-    title : 'Order',
-    icon : 'yu-icon-lifangti',
-    badge : {
-      className : 'bgInfo',
-      txt : '+56%'
+    id: 1,
+    end: 6666,
+    duration: 3,
+    title: 'Order',
+    icon: 'yu-icon-lifangti',
+    badge: {
+      className: 'bgInfo',
+      txt: '+56%'
     },
-    info : 'From previous period'
+    info: 'From previous period'
   },
   {
-    id : 2,
-    end : 95270,
-    duration : 3,
-    prefix : '￥',
-    decimals : 2,
-    decimal : '.',
-    title : 'Income',
-    icon : 'yu-icon-chanpin1',
-    badge : {
-      className : 'bgDanger',
-      txt : '+78%'
+    id: 2,
+    end: 95270,
+    duration: 3,
+    prefix: '￥',
+    decimals: 2,
+    decimal: '.',
+    title: 'Income',
+    icon: 'yu-icon-chanpin1',
+    badge: {
+      className: 'bgDanger',
+      txt: '+78%'
     },
-    info : 'From previous period'
+    info: 'From previous period'
   },
   {
-    id : 3,
-    end : 666,
-    duration : 1,
-    prefix : '$',
-    decimals : 2,
-    decimal : '.',
-    title : 'Average Price',
-    icon : 'yu-icon-jiagebiaoqian',
-    badge : {
-      className : 'bgWarning',
-      txt : '-5.2%'
+    id: 3,
+    end: 666,
+    duration: 1,
+    prefix: '$',
+    decimals: 2,
+    decimal: '.',
+    title: 'Average Price',
+    icon: 'yu-icon-jiagebiaoqian',
+    badge: {
+      className: 'bgWarning',
+      txt: '-5.2%'
     },
-    info : 'From previous period'
+    info: 'From previous period'
   },
   {
-    id : 4,
-    end : 9527,
-    duration : 3,
-    title : 'Product Sold',
-    icon : 'yu-icon-icon_xinyong_xianxing_jijin-129',
-    badge : {
-      className : 'bgInfo',
-      txt : '+22%'
+    id: 4,
+    end: 9527,
+    duration: 3,
+    title: 'Product Sold',
+    icon: 'yu-icon-icon_xinyong_xianxing_jijin-129',
+    badge: {
+      className: 'bgInfo',
+      txt: '+22%'
     },
-    info : 'From previous period'
+    info: 'From previous period'
   }
 ]
 
 const Dashboard = () => {
+  useTitle('首页')
   return (
-    <DocumentTitle title={'首页'}>
-      <div className={ `${styles.dashboardEditorContainer} un-select` }>
+    <div className={ `${styles.dashboardEditorContainer} un-select` }>
         <a
           href='https://github.com/mvpyb/react-ant-admin'
           target='_blank'
@@ -88,7 +87,7 @@ const Dashboard = () => {
         {/* 自定义card */}
         <Row gutter={16}>
           {
-            cardList && cardList.map( ( list, index ) => {
+            cardList && cardList.map((list, index) => {
               return (
                 <Col sm={12} md={12} xl={6} key={index}>
                   <YuCard
@@ -104,7 +103,7 @@ const Dashboard = () => {
                   />
                 </Col>
               )
-            } )
+            })
           }
         </Row>
 
@@ -152,8 +151,7 @@ const Dashboard = () => {
         </Row>
 
       </div>
-    </DocumentTitle>
   )
 }
 
-export default connect( ( state ) => state.users )( Dashboard )
+export default connect((state) => state.users)(Dashboard)

@@ -3,19 +3,19 @@ import React, { useState, useRef } from 'react'
 import { PropTypes } from 'prop-types'
 import { Drawer } from 'antd'
 import { CloseOutlined, SettingOutlined } from '@ant-design/icons'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
-const RightPanel = ( props ) => {
+const RightPanel = (props) => {
   const { buttonTop, setting } = props
-  const [show, setShow] = useState( false )
-  const rightPanel = useRef( null )
+  const [show, setShow] = useState(false)
+  const rightPanel = useRef(null)
 
   const toggleShow = () => {
     const showStatus = !show
-    setShow( showStatus )
+    setShow(showStatus)
   }
   const onClose = () => {
-    setShow( false )
+    setShow(false)
   }
 
   return (
@@ -26,13 +26,12 @@ const RightPanel = ( props ) => {
         placement='right'
         closable={false}
         forceRender={true}
-        visible={show}
+        open={show}
         onClose={onClose}
       >
-        <div className={ styles.handleButton } onClick={ toggleShow } style={{ top : `${buttonTop}px` }} >
+        <div className={ styles.handleButton } onClick={ toggleShow } style={{ top: `${buttonTop}px` }} >
           { show ? <CloseOutlined /> : <SettingOutlined /> }
         </div>
-
         {
           setting
         }
@@ -43,13 +42,13 @@ const RightPanel = ( props ) => {
 }
 
 RightPanel.propTypes = {
-  buttonTop : PropTypes.number,
-  clickNotClose : PropTypes.bool
+  buttonTop: PropTypes.number,
+  clickNotClose: PropTypes.bool
 }
 
 RightPanel.defaultProps = {
-  buttonTop : 250,
-  clickNotClose : false
+  buttonTop: 250,
+  clickNotClose: false
 }
 
 export default RightPanel

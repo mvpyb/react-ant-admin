@@ -1,7 +1,7 @@
 
 import React from 'react'
 import TagList from './TagList'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
 const TagsView = () => {
   return (

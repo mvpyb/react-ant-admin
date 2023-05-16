@@ -4,7 +4,7 @@ import SvgIcon from '@/components/SvgIcon'
 import { Row, Col, Carousel } from 'antd'
 import styles from './index.cjs'
 
-const YuWeather = ( props ) => {
+const YuWeather = (props) => {
   return (
     <div className={ styles.card }>
       <div className={ styles.citySelected }>

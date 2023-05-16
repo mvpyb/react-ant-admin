@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[9358],{69358:function(l,a,e){e.r(a),a.default={mallki:"Mallki_mallki__3F5Zn"}}}]);

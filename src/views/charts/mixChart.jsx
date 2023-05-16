@@ -6,16 +6,16 @@ import debounce from 'loadsh/debounce'
 
 class MixChart extends Component {
   state = {
-    chart : null
-  };
-
-  componentDidMount() {
-    debounce( this.initChart.bind( this ), 300 )()
-    window.addEventListener( 'resize', () => this.resize() )
+    chart: null
   }
 
-  UNSAFE_componentWillReceiveProps( nextProps ) {
-    if ( nextProps.sidebarCollapsed !== this.props.sidebarCollapsed ) {
+  componentDidMount() {
+    debounce(this.initChart.bind(this), 300)()
+    window.addEventListener('resize', () => this.resize())
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.sidebarCollapsed !== this.props.sidebarCollapsed) {
       this.resize()
     }
   }
@@ -26,164 +26,162 @@ class MixChart extends Component {
 
   resize() {
     const chart = this.state.chart
-    if ( chart ) {
-      debounce( chart.resize.bind( this ), 300 )()
+    if (chart) {
+      debounce(chart.resize.bind(this), 300)()
     }
   }
 
   dispose() {
-    if ( !this.state.chart ) {
+    if (!this.state.chart) {
       return
     }
-    window.removeEventListener( 'resize', () => this.resize() ) // 移除窗口，变化时重置图表
-    this.setState( { chart : null } )
+    window.removeEventListener('resize', () => this.resize()) // 移除窗口，变化时重置图表
+    this.setState({ chart: null })
   }
 
   setOptions() {
-    const xData = ( function() {
+    const xData = (function() {
       const data = []
-      for ( let i = 1; i < 13; i++ ) {
-        data.push( i + 'month' )
+      for (let i = 1; i < 13; i++) {
+        data.push(i + 'month')
       }
       return data
-    } )()
-    this.state.chart.setOption( {
-      backgroundColor : '#344b58',
-      title : {
-        text : 'statistics',
-        x : '20',
-        top : '20',
-        textStyle : {
-          color : '#fff',
-          fontSize : '22'
+    })()
+    this.state.chart.setOption({
+      backgroundColor: '#344b58',
+      title: {
+        text: 'statistics',
+        x: '20',
+        top: '20',
+        textStyle: {
+          color: '#fff',
+          fontSize: '22'
         },
-        subtextStyle : {
-          color : '#90979c',
-          fontSize : '16'
+        subtextStyle: {
+          color: '#90979c',
+          fontSize: '16'
         }
       },
-      tooltip : {
-        trigger : 'axis',
-        axisPointer : {
-          textStyle : {
-            color : '#fff'
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          textStyle: {
+            color: '#fff'
           }
         }
       },
-      grid : {
-        left : '5%',
-        right : '5%',
-        borderWidth : 0,
-        top : 150,
-        bottom : 95,
-        textStyle : {
-          color : '#fff'
+      grid: {
+        left: '5%',
+        right: '5%',
+        borderWidth: 0,
+        top: 150,
+        bottom: 95,
+        textStyle: {
+          color: '#fff'
         }
       },
-      legend : {
-        x : '5%',
-        top : '10%',
-        textStyle : {
-          color : '#90979c'
+      legend: {
+        x: '5%',
+        top: '10%',
+        textStyle: {
+          color: '#90979c'
         },
-        data : ['female', 'male', 'average']
+        data: ['female', 'male', 'average']
       },
-      calculable : true,
-      xAxis : [
+      calculable: true,
+      xAxis: [
         {
-          type : 'category',
-          axisLine : {
-            lineStyle : {
-              color : '#90979c'
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#90979c'
             }
           },
-          splitLine : {
-            show : false
+          splitLine: {
+            show: false
           },
-          axisTick : {
-            show : false
+          axisTick: {
+            show: false
           },
-          splitArea : {
-            show : false
+          splitArea: {
+            show: false
           },
-          axisLabel : {
-            interval : 0
+          axisLabel: {
+            interval: 0
           },
-          data : xData
+          data: xData
         }
       ],
-      yAxis : [
+      yAxis: [
         {
-          type : 'value',
-          splitLine : {
-            show : false
+          type: 'value',
+          splitLine: {
+            show: false
           },
-          axisLine : {
-            lineStyle : {
-              color : '#90979c'
+          axisLine: {
+            lineStyle: {
+              color: '#90979c'
             }
           },
-          axisTick : {
-            show : false
+          axisTick: {
+            show: false
           },
-          axisLabel : {
-            interval : 0
+          axisLabel: {
+            interval: 0
           },
-          splitArea : {
-            show : false
+          splitArea: {
+            show: false
           }
         }
       ],
-      dataZoom : [
+      dataZoom: [
         {
-          show : true,
-          height : 30,
-          xAxisIndex : [0],
-          bottom : 30,
-          start : 10,
-          end : 80,
-          handleIcon :
+          show: true,
+          height: 30,
+          xAxisIndex: [0],
+          bottom: 30,
+          start: 10,
+          end: 80,
+          handleIcon:
             'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
-          handleSize : '110%',
-          handleStyle : {
-            color : '#d3dee5'
+          handleSize: '110%',
+          handleStyle: {
+            color: '#d3dee5'
           },
-          textStyle : {
-            color : '#fff'
+          textStyle: {
+            color: '#fff'
           },
-          borderColor : '#90979c'
+          borderColor: '#90979c'
         },
         {
-          type : 'inside',
-          show : true,
-          height : 15,
-          start : 1,
-          end : 35
+          type: 'inside',
+          show: true,
+          height: 15,
+          start: 1,
+          end: 35
         }
       ],
-      series : [
+      series: [
         {
-          name : 'female',
-          type : 'bar',
-          stack : 'total',
-          barMaxWidth : 35,
-          barGap : '10%',
-          itemStyle : {
-            normal : {
-              color : 'rgba(255,144,128,1)',
-              label : {
-                show : true,
-                textStyle : {
-                  color : '#fff'
-                },
-                position : 'insideTop',
-                formatter( p ) {
-                  return p.value > 0 ? p.value : ''
-                }
+          name: 'female',
+          type: 'bar',
+          stack: 'total',
+          barMaxWidth: 35,
+          barGap: '10%',
+          itemStyle: {
+            color: 'rgba(255,144,128,1)',
+            label: {
+              show: true,
+              textStyle: {
+                color: '#fff'
+              },
+              position: 'insideTop',
+              formatter(p) {
+                return p.value > 0 ? p.value : ''
               }
             }
           },
-          data : [
+          data: [
             709,
             1917,
             2455,
@@ -200,23 +198,21 @@ class MixChart extends Component {
         },
 
         {
-          name : 'male',
-          type : 'bar',
-          stack : 'total',
-          itemStyle : {
-            normal : {
-              color : 'rgba(0,191,183,1)',
-              barBorderRadius : 0,
-              label : {
-                show : true,
-                position : 'top',
-                formatter( p ) {
-                  return p.value > 0 ? p.value : ''
-                }
+          name: 'male',
+          type: 'bar',
+          stack: 'total',
+          itemStyle: {
+            color: 'rgba(0,191,183,1)',
+            borderRadius: 0,
+            label: {
+              show: true,
+              position: 'top',
+              formatter(p) {
+                return p.value > 0 ? p.value : ''
               }
             }
           },
-          data : [
+          data: [
             327,
             1776,
             507,
@@ -232,25 +228,23 @@ class MixChart extends Component {
           ]
         },
         {
-          name : 'average',
-          type : 'line',
-          stack : 'total',
-          symbolSize : 10,
-          symbol : 'circle',
-          itemStyle : {
-            normal : {
-              color : 'rgba(252,230,48,1)',
-              barBorderRadius : 0,
-              label : {
-                show : true,
-                position : 'top',
-                formatter( p ) {
-                  return p.value > 0 ? p.value : ''
-                }
+          name: 'average',
+          type: 'line',
+          stack: 'total',
+          symbolSize: 10,
+          symbol: 'circle',
+          itemStyle: {
+            color: 'rgba(252,230,48,1)',
+            borderRadius: 0,
+            label: {
+              show: true,
+              position: 'top',
+              formatter(p) {
+                return p.value > 0 ? p.value : ''
               }
             }
           },
-          data : [
+          data: [
             1036,
             3693,
             2962,
@@ -266,21 +260,21 @@ class MixChart extends Component {
           ]
         }
       ]
-    } )
+    })
   }
 
   initChart() {
-    if ( !this.el ) return
-    this.setState( { chart : echarts.init( this.el, 'macarons' ) }, () => {
+    if (!this.el) return
+    this.setState({ chart: echarts.init(this.el, 'macarons') }, () => {
       this.setOptions()
-    } )
+    })
   }
   render() {
     return (
-      <div style={{ width : '100%', height : 'calc(100vh - 100px)' }} className='app-container' >
+      <div style={{ width: '100%', height: 'calc(100vh - 100px)' }} className='app-container' >
         <div
-          style={{ width : '100%', height : '100%' }}
-          ref={( el ) => ( this.el = el )}
+          style={{ width: '100%', height: '100%' }}
+          ref={(el) => (this.el = el)}
         />
       </div>
     )
@@ -293,4 +287,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect( mapStateToProps )( MixChart )
+export default connect(mapStateToProps)(MixChart)

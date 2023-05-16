@@ -5,17 +5,17 @@ import es from './es.json'
 import ja from './ja.json'
 
 const Lang = {
-  en : {
-    translation : en
+  en: {
+    translation: en
   },
-  zh : {
-    translation : zh
+  zh: {
+    translation: zh
   },
-  es : {
-    translation : es
+  es: {
+    translation: es
   },
-  ja : {
-    translation : ja
+  ja: {
+    translation: ja
   }
 }
 

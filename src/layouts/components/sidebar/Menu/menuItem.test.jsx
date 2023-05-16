@@ -5,45 +5,45 @@ import { isArray, isExternal } from '@/utils/validate'
 import SvgIcon from '@/components/SvgIcon'
 import Icon from '@ant-design/icons'
 import { Menu } from 'antd'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 const { SubMenu, Item } = Menu
 
-const MenuItemTest = ( menuList ) => {
+const MenuItemTest = (menuList) => {
   let onlyOneChild = null
 
-  const hasEffectChild = ( children = [], parent ) => {
-    if ( !children || !isArray( children ) || !children.length ) {
+  const hasEffectChild = (children = [], parent) => {
+    if (!children || !isArray(children) || !children.length) {
       return false
     }
 
-    const showingChildren = children.filter( item => {
-      if ( item.hidden ) {
+    const showingChildren = children.filter(item => {
+      if (item.hidden) {
         return false
       } else {
         // 临时设置
         onlyOneChild = item
         return true
       }
-    } )
+    })
     // 如果没有要显示的子路由器，则显示parent
-    if ( showingChildren.length === 0 ) {
-      onlyOneChild = { ...parent, path : '', noShowingChildren : true }
+    if (showingChildren.length === 0) {
+      onlyOneChild = { ...parent, path: '', noShowingChildren: true }
       return true
     }
     return true
   }
 
-  const isLink = ( to ) => {
-    return isExternal( to ) || !( to.startsWith( '/' ) )
+  const isLink = (to) => {
+    return isExternal(to) || !(to.startsWith('/'))
   }
 
-  const renderMenu = ( lists, callback ) => {
-    if ( !lists || !lists.length || !isArray( lists ) ) {
+  const renderMenu = (lists, callback) => {
+    if (!lists || !lists.length || !isArray(lists)) {
       return null
     }
 
-    return lists.map( item => {
-      if ( item.path == '*' ) {
+    return lists.map(item => {
+      if (item.path == '*') {
         return null
       }
       const CustomSvg = () => (
@@ -52,12 +52,12 @@ const MenuItemTest = ( menuList ) => {
 
       const { hidden, children, title, path } = item
 
-      if ( !hidden ) {
+      if (!hidden) {
         // 判断children是否至少有一个有效的 ( hidden == false .length > 0)
-        const hasEffectChildren = hasEffectChild( children, item )
-        const effectChildren = !!( children && children.length && isArray( children ) )
+        const hasEffectChildren = hasEffectChild(children, item)
+        const effectChildren = !!(children && children.length && isArray(children))
 
-        if ( effectChildren && hasEffectChildren && !onlyOneChild.noShowingChildren ) {
+        if (effectChildren && hasEffectChildren && !onlyOneChild.noShowingChildren) {
           return (
             <SubMenu
               className={ `${styles.sideMenuSection} ${item.icon ? styles.hasIcon : styles.noIcon}` }
@@ -65,7 +65,7 @@ const MenuItemTest = ( menuList ) => {
               title={ title }
               icon={ <Icon component={ CustomSvg } /> }
             >
-              { renderMenu( children, callback ) }
+              { renderMenu(children, callback) }
             </SubMenu>
           )
         }
@@ -73,13 +73,13 @@ const MenuItemTest = ( menuList ) => {
           <Item
             className={ `${styles.menuItemSection} ${item.icon ? styles.hasIcon : styles.noIcon}` }
             key={ path }
-            onClick={() => callback( item ) }
+            onClick={() => callback(item) }
             title={ title }
             icon={ <Icon component={ CustomSvg } /> }
           >
             {
-              isLink( item.path )
-                ? ( <a href={ item.path } target={ '_blank' } rel='noreferrer'> { title } </a> )
+              isLink(item.path)
+                ? (<a href={ item.path } target={ '_blank' } rel='noreferrer'> { title } </a>)
                 : (
                   <Link to={ item.path }>
                     { title }
@@ -90,12 +90,12 @@ const MenuItemTest = ( menuList ) => {
         )
       }
       return < React.Fragment key={ path } />
-    } )
+    })
   }
 
   const menuClick = item => {}
 
-  return renderMenu( menuList, menuClick )
+  return renderMenu(menuList, menuClick)
 }
 
 export default MenuItemTest

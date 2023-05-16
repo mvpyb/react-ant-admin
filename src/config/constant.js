@@ -4,35 +4,34 @@ const STORAGE_PREFIX = 'rad_'
 const COOKIE_PREFIX = 'rad_'
 
 const GLOBAL_DATA = {
-  env : 'fat',
-  proxy_url : 'https://webapi-fat.shadowcreator.com',
-  dev : {
-    // 'baseUrl' : '/api/100026'
-    'baseUrl' : '/dev-api'
+  env: 'fat',
+  proxy_url: '/',
+  dev: {
+    'baseUrl': '/api'
   },
-  fat : {
-    'baseUrl' : 'http://webapi-fat.shadowcreator.com/100026'
+  fat: {
+    'baseUrl': '/'
 
   },
-  uat : {
-    'baseUrl' : 'http://webapi-uat.shadowcreator.com/100026'
+  uat: {
+    'baseUrl': '/'
   },
-  pro : {
-    'baseUrl' : 'http://webapi.shadowcreator.com/100026'
+  pro: {
+    'baseUrl': '/'
   }
 }
 
 const WHITE_CODE_LIST = [
   {
-    code : 200,
-    msg : ''
+    code: 200,
+    msg: ''
   }
 ]
 
 const LOGIN_ERROR_CODE = [
   {
-    code : 5004,
-    msg : '无效token'
+    code: 5004,
+    msg: '无效token'
   }
 ]
 

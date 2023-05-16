@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[822],{40822:function(e,c,l){l.r(c),c.default={fullScreenSection:"FullScreen_fullScreenSection__so0rH"}}}]);

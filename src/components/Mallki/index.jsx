@@ -1,9 +1,9 @@
 
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
-const Mallki = ( props ) => {
+const Mallki = (props) => {
   const { className, text } = props
   return (
     <a className={`${styles.mallki} ${className}`} href='#/'>
@@ -15,13 +15,13 @@ const Mallki = ( props ) => {
 }
 
 Mallki.propTypes = {
-  className : PropTypes.string,
-  text : PropTypes.string
+  className: PropTypes.string,
+  text: PropTypes.string
 }
 
 Mallki.defaultProps = {
-  className : '',
-  text : 'react-ant-admin'
+  className: '',
+  text: 'react-ant-admin'
 }
 
 export default Mallki

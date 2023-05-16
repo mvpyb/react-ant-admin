@@ -1,44 +1,44 @@
 import { css } from '@emotion/css'
 
 const styles = {
-  loginContainer : css`
+  loginContainer: css`
       width: 100%;
       min-height: 100%;
       padding: 160px 0 144px;
       position: relative;
       background-image: url('~@/assets/imgs/bgimg.svg');
     `,
-  body : css`
+  body: css`
     box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
     border-radius: 4px;
     border: 1px solid #e6ebf5;
     background-color: #fff;
     padding: 20px 30px;
   `,
-  fixWidth : css`
+  fixWidth: css`
     min-width: 260px;
     width: 390px;
     margin: 0 auto;
   `,
-  top : css`
+  top: css`
     .header{
       position: relative;
       padding-top: 20px;
     }
   `,
   /* 自定义tab*/
-  logos : css`
+  logos: css`
     text-align: center;
     margin: 30px 0 15px;
   `,
-  desc : css`
+  desc: css`
     text-align: center;
     font-size: 14px;
     color: rgba(0,0,0,.45);
     margin-top: 12px;
     margin-bottom: 40px;
   `,
-  main : css`
+  main: css`
     .title{
       font-size : 20px;
       text-align: center;
@@ -54,19 +54,19 @@ const styles = {
       }
     }
   `,
-  footer : css`
+  footer: css`
   
   `,
-  loginForm : css`
+  loginForm: css`
     max-width: 300px;
   `,
-  loginFormForgot : css`
+  loginFormForgot: css`
     float: right;
   `,
-  loginFormButton : css`
+  loginFormButton: css`
     width: 100%;
   `,
-  imgCode : css`
+  imgCode: css`
     display: inline-block;
     width: 100%;
     height: 36px;

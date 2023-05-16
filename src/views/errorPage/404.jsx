@@ -1,19 +1,19 @@
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import DocumentTitle from 'react-document-title'
+import { useTitle } from 'ahooks'
 import img404 from '@/assets/imgs/404_images/404.png'
 import cloud from '@/assets/imgs/404_images/404_cloud.png'
-import './styles/404.less'
+import './styles/404.scss'
 
 const Page404 = () => {
+  useTitle('404')
   const navigate = useNavigate()
-  const backToHome = ( e ) => {
+  const backToHome = (e) => {
     e.preventDefault()
-    navigate( '/' )
+    navigate('/')
   }
   return (
-    <DocumentTitle title={'404'} >
       <div className={ `wscn-http-404container app-container` }>
         <div className={ 'wscn-http404' }>
           <div className={ 'pic-404' }>
@@ -31,7 +31,6 @@ const Page404 = () => {
           </div>
         </div>
       </div>
-    </DocumentTitle>
   )
 }
 

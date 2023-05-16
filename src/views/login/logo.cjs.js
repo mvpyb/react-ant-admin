@@ -1,17 +1,17 @@
 import { css } from '@emotion/css'
 
 const styles = {
-  logoContainer : css`
+  logoContainer: css`
     text-align: center;
     `,
-  img : css`
+  img: css`
     display: inline-block;
     width: 30px;
     height: 30px;
     vertical-align: middle;
     margin-right: 10px;
   `,
-  name : css`
+  name: css`
     vertical-align: middle;
     font-weight: 400;
     font-size: 26px;

@@ -1,12 +1,12 @@
 import { css } from '@emotion/css'
 
 const styles = {
-  dashboardEditorContainer : css`
+  dashboardEditorContainer: css`
     padding: 32px;
     background-color: rgb(240, 242, 245);
     position: relative;
     `,
-  githubCorner : css`
+  githubCorner: css`
     position: absolute;
     top: 0;
     right: 0;
@@ -17,8 +17,8 @@ const styles = {
     z-index: 9;
     cursor: pointer;
   `,
-  chatsContainer : css``,
-  chartWrapper : css`
+  chatsContainer: css``,
+  chartWrapper: css`
     border-radius: 5px;
     background: #fff;
     padding: 20px;
@@ -30,14 +30,14 @@ const styles = {
       transform: translateY(-6px);
     }
   `,
-  tableList : css`
+  tableList: css`
     height: 447px;
     .el-col {
       padding-right: 8px;
       margin-bottom: 30px;
     }
   `,
-  userInfo : css`
+  userInfo: css`
     height: 560px;
     margin: 20px 0;
   `

@@ -1,7 +1,7 @@
 import { css } from '@emotion/css'
 
 const styles = {
-  boxCardComponent : css`
+  boxCardComponent: css`
     .ant-card-head, .ant-card-head-title {
       padding: 0;
     }

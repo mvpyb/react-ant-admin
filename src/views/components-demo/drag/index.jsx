@@ -2,38 +2,39 @@
 import React, { useState } from 'react'
 import { Alert } from 'antd'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { useTitle } from 'ahooks'
 
 const getItems = count =>
-  Array.from( { length : count }, ( v, k ) => k ).map( k => ( {
-    id : `item-${k}`,
-    content : `item ${k}`
-  } ) )
+  Array.from({ length: count }, (v, k) => k).map(k => ({
+    id: `item-${k}`,
+    content: `item ${k}`
+  }))
 
-const reorder = ( list, startIndex, endIndex ) => {
-  const result = Array.from( list )
-  const [removed] = result.splice( startIndex, 1 )
-  result.splice( endIndex, 0, removed )
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
 
   return result
 }
 
 const grid = 8
 
-const getItemStyle = ( isDragging, draggableStyle ) => ( {
-  userSelect : 'none',
-  padding : grid * 2,
-  margin : `0 0 ${grid}px 0`,
+const getItemStyle = (isDragging, draggableStyle) => ({
+  userSelect: 'none',
+  padding: grid * 2,
+  margin: `0 0 ${grid}px 0`,
   // 拖动时改变背景颜色
-  background : isDragging ? 'lightgreen' : 'grey',
+  background: isDragging ? 'lightgreen' : 'grey',
   // 我们需要将样式应用在可拖放的物体上
   ...draggableStyle
-} )
+})
 
-const getListStyle = isDraggingOver => ( {
-  background : isDraggingOver ? 'lightblue' : 'lightgrey',
-  padding : grid,
-  width : 250
-} )
+const getListStyle = isDraggingOver => ({
+  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+  padding: grid,
+  width: 250
+})
 
 const TitleContent = () => {
   // return <p> 此页面用到的富文本编辑器是 <a href='https://www.npmjs.com/package/react-draggable'>react-draggable</a>。</p>
@@ -41,7 +42,8 @@ const TitleContent = () => {
 }
 
 const DragList = () => {
-  const [items, setItems] = useState( getItems( 5 ) )
+  useTitle('拖拽')
+  const [items, setItems] = useState(getItems(5))
 
   // const onBeforeCapture = () => {
   //
@@ -55,9 +57,9 @@ const DragList = () => {
   // const onDragUpdate = () => {
   //
   // }
-  const onDragEnd = ( result ) => {
+  const onDragEnd = (result) => {
     // dropped outside the list
-    if ( !result.destination ) {
+    if (!result.destination) {
       return
     }
 
@@ -67,7 +69,7 @@ const DragList = () => {
       result.destination.index
     )
 
-    setItems( newItems )
+    setItems(newItems)
   }
 
   return (
@@ -77,15 +79,15 @@ const DragList = () => {
 
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId='droppable'>
-          {( provided, snapshot ) => (
+          {(provided, snapshot) => (
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
-              style={getListStyle( snapshot.isDraggingOver )}
+              style={getListStyle(snapshot.isDraggingOver)}
             >
-              {items.map( ( item, index ) => (
+              {items.map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {( provided, snapshot ) => (
+                  {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
@@ -99,7 +101,7 @@ const DragList = () => {
                     </div>
                   )}
                 </Draggable>
-              ) )}
+              ))}
               {provided.placeholder}
             </div>
           )}

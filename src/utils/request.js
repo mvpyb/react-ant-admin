@@ -20,7 +20,6 @@ import {
 
 import store from '@/store'
 import { loginOut } from '@/store/reducers/users'
-// import qs from 'qs'
 
 class HttpRequest {
   // #baseUrl
@@ -37,19 +36,19 @@ class HttpRequest {
 
   getConfig() {
     const config = {
-      baseURL : this.baseUrl,
-      timeout : this.timeout,
-      withCredentials : this.withCredentials,
-      headers : {
-        'Content-Type' : 'application/json;charset=UTF-8'
+      baseURL: this.baseUrl,
+      timeout: this.timeout,
+      withCredentials: this.withCredentials,
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
       }
     }
     return config
   }
 
-  getParams( payload ) {
+  getParams(payload) {
     const { method, data } = payload
-    if ( ['post', 'put', 'patch', 'delete'].indexOf( method ) >= 0 ) {
+    if (['post', 'put', 'patch', 'delete'].indexOf(method) >= 0) {
       payload.data = data
     } else {
       payload.params = data
@@ -58,9 +57,9 @@ class HttpRequest {
     return payload
   }
 
-  checkStatus( status ) {
+  checkStatus(status) {
     let errMessage = ''
-    switch ( status ) {
+    switch (status) {
       case 400:
         errMessage = '错误请求'
         break
@@ -104,85 +103,85 @@ class HttpRequest {
   }
 
   // 拦截处理
-  setInterceptors( instance ) {
+  setInterceptors(instance) {
     const that = this
 
     // 请求拦截
     instance.interceptors.request.use(
-      ( config ) => {
-        if ( !navigator.onLine ) {
-          AntMessage.warning( {
-            message : '请检查您的网络是否正常',
-            duration : 3 * 1000
-          } )
-          return Promise.reject( '请检查您的网络是否正常' )
+      (config) => {
+        if (!navigator.onLine) {
+          AntMessage.warning({
+            message: '请检查您的网络是否正常',
+            duration: 3 * 1000
+          })
+          return Promise.reject('请检查您的网络是否正常')
         }
         // config.headers.token = getCookie( 'token' ) || ''
-        config.headers.common['token'] = getCookie( 'token' ) || ''
+        config.headers.common['token'] = getCookie('token') || ''
         // config.data = qs.stringify(config.data)
 
         return config
       },
-      ( error ) => {
-        return Promise.reject( error )
+      (error) => {
+        return Promise.reject(error)
       }
     )
 
     // 响应拦截
     instance.interceptors.response.use(
-      ( res ) => {
+      (res) => {
         const result = res.data
-        const type = Object.prototype.toString.call( result )
+        const type = Object.prototype.toString.call(result)
         // 如果是文件流 直接返回
-        if ( type === '[object Blob]' || type === '[object ArrayBuffer]' ) {
+        if (type === '[object Blob]' || type === '[object ArrayBuffer]') {
           return result
         } else {
           const { code, message } = result
-          const isErrorToken = LOGIN_ERROR_CODE.find( item => item.code == code )
-          const isWhiteCode = WHITE_CODE_LIST.find( item => item.code == code )
+          const isErrorToken = LOGIN_ERROR_CODE.find(item => item.code == code)
+          const isWhiteCode = WHITE_CODE_LIST.find(item => item.code == code)
 
-          if ( isErrorToken ) {
+          if (isErrorToken) {
             // token已过期 跳转到登录
-            store.dispatch( loginOut() )
+            store.dispatch(loginOut())
             window.location.reload()
-          } else if ( !isWhiteCode ) {
-            AntMessage.error( {
-              content : message || 'Error',
-              duration : 3 * 1000
-            } )
-            return Promise.reject( message || 'Error' )
+          } else if (!isWhiteCode) {
+            AntMessage.error({
+              content: message || 'Error',
+              duration: 3 * 1000
+            })
+            return Promise.reject(message || 'Error')
           } else {
             return result
           }
         }
       },
-      ( error ) => {
-        if ( error && error.response ) {
-          error.message = that.checkStatus( error.response.status )
+      (error) => {
+        if (error && error.response) {
+          error.message = that.checkStatus(error.response.status)
         }
-        const isTimeout = error.message.includes( 'timeout' )
-        AntMessage.error( {
-          message : isTimeout
+        const isTimeout = error.message.includes('timeout')
+        AntMessage.error({
+          message: isTimeout
             ? '网络请求超时'
             : error.message || '连接到服务器失败',
-          type : 'error',
-          duration : 2 * 1000
-        } )
-        return Promise.reject( error.message )
+          type: 'error',
+          duration: 2 * 1000
+        })
+        return Promise.reject(error.message)
       }
     )
   }
 
-  request( options ) {
+  request(options) {
     const instance = axios.create()
     const baseOpt = this.getConfig()
-    const params = Object.assign( {}, baseOpt, this.getParams( options ) )
-    this.setInterceptors( instance )
-    return instance( params )
+    const params = Object.assign({}, baseOpt, this.getParams(options))
+    this.setInterceptors(instance)
+    return instance(params)
   }
 }
 
 const http = new HttpRequest()
 
-export const request = http.request.bind( http )
+export const request = http.request.bind(http)
 export default http

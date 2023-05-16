@@ -4,29 +4,29 @@ import { connect } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { Switch, Tooltip, Divider } from 'antd'
 import { TOGGLE_TAGS_VIEW, TOGGLE_SIDEBAR_LOGO, TOGGLE_FIX_HEADER, CHANGE_LAYOUT_MODE } from '@/store/reducers/settings'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
-const Settings = ( props ) => {
+const Settings = (props) => {
   const { tagsView, fixedHeader, sidebarLogo, layoutMode } = props
   const dispatch = useDispatch()
-  const verticalEl = useRef( null )
-  const horizontalEl = useRef( null )
+  const verticalEl = useRef(null)
+  const horizontalEl = useRef(null)
   // const mixEl = useRef( null )
 
-  const toggleTagsView = ( e ) => {
-    dispatch( TOGGLE_TAGS_VIEW() )
+  const toggleTagsView = (e) => {
+    dispatch(TOGGLE_TAGS_VIEW())
   }
 
-  const toggleFixedHeader = ( e ) => {
-    dispatch( TOGGLE_FIX_HEADER() )
+  const toggleFixedHeader = (e) => {
+    dispatch(TOGGLE_FIX_HEADER())
   }
 
-  const toggleSideBarLogo = ( e ) => {
-    dispatch( TOGGLE_SIDEBAR_LOGO() )
+  const toggleSideBarLogo = (e) => {
+    dispatch(TOGGLE_SIDEBAR_LOGO())
   }
 
-  const changeMode = ( value ) => {
-    dispatch( CHANGE_LAYOUT_MODE( value ) )
+  const changeMode = (value) => {
+    dispatch(CHANGE_LAYOUT_MODE(value))
   }
 
   return (
@@ -58,7 +58,7 @@ const Settings = ( props ) => {
               <div
                 className={ `${layoutMode === 'vertical' ? styles.active : ''} ${styles.modeItem}` }
                 ref={ verticalEl }
-                onClick={ () => changeMode( 'vertical' ) }
+                onClick={ () => changeMode('vertical') }
               >
                 <div></div>
                 <div></div>
@@ -69,7 +69,7 @@ const Settings = ( props ) => {
               <div
                 className={ `${layoutMode === 'horizontal' ? styles.active : ''} ${styles.modeItem}` }
                 ref={ horizontalEl }
-                onClick={ () => changeMode( 'horizontal' ) }
+                onClick={ () => changeMode('horizontal') }
               >
                 <div></div>
                 <div></div>
@@ -99,5 +99,5 @@ const mapStateToProps = state => {
     ...state.settings
   }
 }
-export default connect( mapStateToProps )( Settings )
+export default connect(mapStateToProps)(Settings)
 

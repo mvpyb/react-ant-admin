@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[3937],{13937:function(e,c,a){e.exports=a.p+"static/media/iconfont.cde6ec0a11204aaf4de3.woff"}}]);

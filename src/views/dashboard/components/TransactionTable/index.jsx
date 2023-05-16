@@ -5,35 +5,35 @@ import { getDashboardList } from '@/api/table'
 
 const columns = [
   {
-    title : 'Date',
-    dataIndex : 'date',
-    ellipsis : true,
-    key : 'date'
+    title: 'Date',
+    dataIndex: 'date',
+    ellipsis: true,
+    key: 'date'
   },
   {
-    title : 'Order_No',
-    dataIndex : 'order_no',
-    key : 'order_no',
-    ellipsis : true
+    title: 'Order_No',
+    dataIndex: 'order_no',
+    key: 'order_no',
+    ellipsis: true
   },
   {
-    title : 'Status',
-    key : 'status',
-    dataIndex : 'status',
-    width : 100,
-    ellipsis : true,
-    render : ( tag ) => (
+    title: 'Status',
+    key: 'status',
+    dataIndex: 'status',
+    width: 100,
+    ellipsis: true,
+    render: (tag) => (
       <Tag color={tag.toLocaleLowerCase() === 'pending' ? 'magenta' : 'green'} key={tag}>
         {tag}
       </Tag>
     )
   },
   {
-    title : 'Price',
-    dataIndex : 'price',
-    key : 'price',
-    ellipsis : true,
-    render : ( val ) => (
+    title: 'Price',
+    dataIndex: 'price',
+    key: 'price',
+    ellipsis: true,
+    render: (val) => (
       <CountUp
         start={1}
         end={val}
@@ -48,17 +48,17 @@ const columns = [
     )
   },
   {
-    title : 'Name',
-    dataIndex : 'name',
-    ellipsis : true,
-    key : 'name'
+    title: 'Name',
+    dataIndex: 'name',
+    ellipsis: true,
+    key: 'name'
   },
   {
-    title : 'Address',
-    dataIndex : 'address',
-    key : 'address',
+    title: 'Address',
+    dataIndex: 'address',
+    key: 'address',
     // width : 200,
-    ellipsis : true
+    ellipsis: true
   }
 ]
 
@@ -66,19 +66,19 @@ class TransactionTable extends Component {
   _isMounted = false
 
   state = {
-    list : []
+    list: []
   }
 
   fetchData = async() => {
     try {
       const response = await getDashboardList()
       const { list } = response.data
-      if ( this._isMounted ) {
-        this.setState( { list } )
+      if (this._isMounted) {
+        this.setState({ list })
       }
-    } catch ( e ) {
-      if ( this._isMounted ) {
-        this.setState( { list : [] } )
+    } catch (e) {
+      if (this._isMounted) {
+        this.setState({ list: [] })
       }
     }
   }

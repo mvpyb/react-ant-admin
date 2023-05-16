@@ -8,128 +8,133 @@ import { login } from '@/api/login'
 import { Form, Input, Button, Checkbox } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import styles from './index.cjs'
+import { getCookie } from '@/utils/cookies'
 
 const { Item } = Form
 
-const PasswordLogin = ( props ) => {
+const PasswordLogin = (props) => {
   const dispatch = useDispatch()
 
   const trigger = ['onChange', 'onBlur']
   // 这个是rules自定义的验证方法
   const checkAccount = value => {
-    if ( !value ) {
+    if (!value) {
       return {
-        pass : false,
-        message : '账号格式错误'
+        pass: false,
+        message: '账号格式错误'
       }
-    } else if ( !validPhone( value ) ) {
+    } else if (!validPhone(value)) {
       // return {
       //   pass : false,
       //   message : '账号格式错误'
       // }
       return {
-        pass : true
+        pass: true
       }
     } else {
       return {
-        pass : true
+        pass: true
       }
     }
   }
   const rules = {
-    username : [
+    username: [
       {
-        validator : ( rule, value ) => {
+        validator: (rule, value) => {
           try {
-            const validate = checkAccount( value )
-            if ( validate && validate.pass ) {
+            const validate = checkAccount(value)
+            if (validate && validate.pass) {
               return Promise.resolve()
             } else {
-              return Promise.reject( validate.message || '账号格式错误' )
+              return Promise.reject(validate.message || '账号格式错误')
             }
-          } catch ( e ) {
-            return Promise.reject( e )
+          } catch (e) {
+            return Promise.reject(e)
           }
         }
       }
     ],
-    password : [
+    password: [
       {
-        required : true,
-        message : '请输入密码'
+        required: true,
+        message: '请输入密码'
       },
       {
-        type : 'string',
-        min : 8
+        type: 'string',
+        min: 8
       },
       {
-        type : 'string',
-        max : 16
+        type: 'string',
+        max: 16
       }
     ]
   }
   let initialValues = {
-    remember : true,
-    username : 'admin',
-    password : 'password'
+    remember: true,
+    username: 'admin',
+    // username : 'test',
+    password: 'password'
   }
   const itemConfig = {
-    colon : false, //
-    hidden : false //
+    colon: false, //
+    hidden: false //
   }
 
   const formRef = React.createRef()
 
   // 初始话登录信息 => 是否记住密码
   const initLogin = () => {
-    const loginInfo = localStorageHandle.get( 'login_info' )
-    if ( loginInfo && loginInfo.remember ) {
+    const loginInfo = localStorageHandle.get('login_info')
+    if (loginInfo && loginInfo.remember) {
       const { username, password } = loginInfo
       initialValues = {
-        remember : true,
+        remember: true,
         username,
         password
       }
     } else {
       initialValues = {
-        remember : false,
-        username : '',
-        password : ''
+        remember: false,
+        username: '',
+        password: ''
       }
     }
   }
-  useEffect( () => initLogin, [] )
+  useEffect(() => initLogin, [])
 
   const onFinish = async values => {
     const { username, password, remember } = values
     const { loginStart, loginSuccess, loginFailed, loginComplete } = props
     loginStart && loginStart()
-    if ( remember ) {
-      localStorageHandle.set( 'login_info', {
+    if (remember) {
+      localStorageHandle.set('login_info', {
         username,
         password,
-        remember : true,
-        expiration : new Date().valueOf() + ( 7 * 24 * 60 * 60 * 1000 ) // 有效期 7 天
-      } )
+        remember: true,
+        expiration: new Date().valueOf() + (7 * 24 * 60 * 60 * 1000) // 有效期 7 天
+      })
     } else {
       // 删除登录信息
-      localStorageHandle.remove( 'login_info' )
+      localStorageHandle.remove('login_info')
     }
 
     // 发送登录请求
     try {
-      const response = await login( {
+      const response = await login({
         username,
         password
-      } )
+      })
       const { code, data } = response
-      if ( code == 200 ) {
-        await dispatch( SET_TOKEN( data.token ) )
+      if (code == 200) {
+        await dispatch(SET_TOKEN(data.token))
+        const hasToken = getCookie('token')
         loginSuccess && loginSuccess()
       }
-    } catch ( error ) {
-      loginFailed && loginFailed( error )
+    } catch (error) {
+      // console.log('loginFailed', error)
+      loginFailed && loginFailed(error)
     } finally {
+      // console.log('loginComplete')
       loginComplete && loginComplete()
     }
   }
@@ -140,14 +145,14 @@ const PasswordLogin = ( props ) => {
 
   const onFinishFailed = error => {
     // const { values, errorFields, outOfDate } = error
-    console.log( 'onFinishFailed', error )
+    console.log('onFinishFailed', error)
   }
 
-  const onFieldsChange = ( changedFields, allFields ) => {
+  const onFieldsChange = (changedFields, allFields) => {
     // console.log('onFieldsChange', changedFields, allFields );
   }
 
-  const onValuesChange = ( changedValues, allValues ) => {
+  const onValuesChange = (changedValues, allValues) => {
     // console.log('onValuesChange', changedValues, allValues );
   }
 

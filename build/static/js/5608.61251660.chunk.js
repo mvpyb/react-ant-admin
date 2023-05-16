@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[5608],{95608:function(e,t,a){e.exports=a.p+"static/media/big.63f559a03f829d4d22b2.jpg"}}]);

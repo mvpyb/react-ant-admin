@@ -8,24 +8,24 @@ import styles from './index.cjs'
 
 const boxCardList = [
   {
-    id : 1,
-    title : 'JavaScript',
-    percent : 100
+    id: 1,
+    title: 'JavaScript',
+    percent: 100
   },
   {
-    id : 2,
-    title : 'React',
-    percent : 98
+    id: 2,
+    title: 'React',
+    percent: 98
   },
   {
-    id : 3,
-    title : 'React-Router',
-    percent : 98
+    id: 3,
+    title: 'React-Router',
+    percent: 98
   },
   {
-    id : 4,
-    title : 'Redux',
-    percent : 88
+    id: 4,
+    title: 'Redux',
+    percent: 88
   },
   // {
   //   id : 5,
@@ -33,13 +33,13 @@ const boxCardList = [
   //   percent : 96
   // },
   {
-    id : 6,
-    title : 'Webpack',
-    percent : 88
+    id: 6,
+    title: 'Webpack',
+    percent: 88
   }
 ]
 
-const BoxCard = ( props ) => {
+const BoxCard = (props) => {
   const { avatar } = props
 
   return (
@@ -52,22 +52,22 @@ const BoxCard = ( props ) => {
       }
     >
 
-      <div style={{ position : 'relative' }}>
+      <div style={{ position: 'relative' }}>
 
         <PanThumb image={avatar} className='panThumb' />
 
         <Mallki className='mallki-text' text='灰是小灰灰的灰' />
 
-        <div style={{ paddingTop : '35px' }} >
+        <div style={{ paddingTop: '35px' }} >
           {
-            boxCardList.map( list => {
+            boxCardList.map(list => {
               return (
                 <div key={list.id} className='progress-item'>
                   <span>{list.title}</span>
                   <Progress percent={ list.percent } />
                 </div>
               )
-            } )
+            })
           }
         </div>
 
@@ -82,4 +82,4 @@ const mapStateToProps = state => {
     ...state.users
   }
 }
-export default connect( mapStateToProps )( BoxCard )
+export default connect(mapStateToProps)(BoxCard)

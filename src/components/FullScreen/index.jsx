@@ -3,30 +3,30 @@ import React, { useState, useEffect } from 'react'
 import screenFull from 'screenfull'
 import { message, Tooltip } from 'antd'
 import { FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
 const FullScreen = () => {
-  const [isFullscreen, setIsFullscreen] = useState( false )
+  const [isFullscreen, setIsFullscreen] = useState(false)
   const isEnabled = screenFull.isEnabled
 
   const change = () => {
-    setIsFullscreen( screenFull.isFullscreen )
+    setIsFullscreen(screenFull.isFullscreen)
   }
 
   const toggleScreen = () => {
-    if ( !isEnabled ) {
-      message.warning( '你的浏览器不支持，请更换高版本浏览器' )
+    if (!isEnabled) {
+      message.warning('你的浏览器不支持，请更换高版本浏览器')
       return false
     }
     screenFull.toggle()
   }
 
-  useEffect( () => {
-    isEnabled && screenFull.on( 'change', change )
+  useEffect(() => {
+    isEnabled && screenFull.on('change', change)
     return () => {
-      isEnabled && screenFull.off( 'change', change )
+      isEnabled && screenFull.off('change', change)
     }
-  }, [] )
+  }, [])
 
   const title = isFullscreen ? '取消全屏' : '全屏'
   return (

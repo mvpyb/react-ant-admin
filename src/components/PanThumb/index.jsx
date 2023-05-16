@@ -1,8 +1,8 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
-const PanThumb = ( props ) => {
+const PanThumb = (props) => {
   const {
     image, zIndex, width, height, className
   } = props
@@ -24,18 +24,18 @@ const PanThumb = ( props ) => {
 }
 
 PanThumb.propTypes = {
-  image : PropTypes.string.isRequired,
-  zIndex : PropTypes.number,
-  width : PropTypes.string,
-  height : PropTypes.string,
-  className : PropTypes.string
+  image: PropTypes.string.isRequired,
+  zIndex: PropTypes.number,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  className: PropTypes.string
 }
 
 PanThumb.defaultProps = {
-  width : '150px',
-  height : '150px',
-  zIndex : 1,
-  className : ''
+  width: '150px',
+  height: '150px',
+  zIndex: 1,
+  className: ''
 }
 
 export default PanThumb

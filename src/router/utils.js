@@ -1,16 +1,24 @@
 
-// import { Suspense, lazy } from 'react'
+import React, { Suspense, lazy } from 'react'
 import Loadable from 'react-loadable'
 import Loading from '@/components/Loading'
 
-// 文档： https://www.npmjs.com/package/react-loadable
-export const dynamicImport = ( fn ) => {
-  return Loadable( {
-    loader : fn,
-    loading : Loading
+// 当前版本废弃使用，改用Suspense + Lazy 实现：文档： https://www.npmjs.com/package/react-loadable
+export const dynamicImport = (fn) => {
+  return Loadable({
+    loader: fn,
+    loading: Loading
     // delay : 100,
     // timedOut : 1000 * 60 * 5 // 5分钟
-  } )
+  })
+}
+export const LazyLoad = (path, webpackChunkName = '') => {
+  const Comp = lazy(() => import(`@/${path}`))
+  return (
+    <Suspense fallback={<> <Loading /></>}>
+      <Comp />
+    </Suspense>
+  )
 }
 
 /**
@@ -20,26 +28,26 @@ export const dynamicImport = ( fn ) => {
  * @params initPath : 所有父级path累加值，默认为空
  * @returns [ { path, redirect } ]
  * */
-export function getAllRedirects( routers, directs, initPath = '' ) {
-  routers.forEach( item => {
+export function getAllRedirects(routers, directs, initPath = '') {
+  routers.forEach(item => {
     const { children, redirect, path, component } = item
     // if ( item.index ) {
-    const currentPath = path.startsWith( '/' ) ? `${initPath}${path}` : `${initPath}/${path}`
+    const currentPath = path.startsWith('/') ? `${initPath}${path}` : `${initPath}/${path}`
 
     // component => 防止重复添加
-    if ( redirect && component ) {
+    if (redirect && component) {
       // if ( redirect ) {
-      directs.push( {
-        path : currentPath,
+      directs.push({
+        path: currentPath,
         redirect
-      } )
+      })
     }
 
-    if ( children && children.length ) {
-      getAllRedirects( children, directs, currentPath )
+    if (children && children.length) {
+      getAllRedirects(children, directs, currentPath)
     }
     // }
-  } )
+  })
   return directs
 }
 
@@ -48,9 +56,9 @@ export function getAllRedirects( routers, directs, initPath = '' ) {
  * @param roles 用户当前得权限标识 Array
  * @param route 路由参数
  */
-function hasPermission( roles, route ) {
-  if ( route.roles && roles.length ) {
-    return roles.some( role => route.roles.includes( role ) )
+function hasPermission(roles, route) {
+  if (route.roles && roles.length) {
+    return roles.some(role => route.roles.includes(role))
   } else {
     return true
   }
@@ -61,18 +69,18 @@ function hasPermission( roles, route ) {
  * @param routes asyncRoutes
  * @param roles
  */
-export function filterAsyncRoutes( routes, roles ) {
+export function filterAsyncRoutes(routes, roles) {
   const res = []
-  if ( roles && roles.length ) {
-    routes.forEach( route => {
+  if (roles && roles.length) {
+    routes.forEach(route => {
       const tmp = { ...route }
-      if ( hasPermission( roles, tmp ) ) {
-        if ( tmp.children ) {
-          tmp.children = filterAsyncRoutes( tmp.children, roles )
+      if (hasPermission(roles, tmp)) {
+        if (tmp.children) {
+          tmp.children = filterAsyncRoutes(tmp.children, roles)
         }
-        res.push( tmp )
+        res.push(tmp)
       }
-    } )
+    })
   }
   return res
 }

@@ -2,31 +2,31 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Button, Row, Col, Modal } from 'antd'
-import DocumentTitle from 'react-document-title'
+import { useTitle } from 'ahooks'
 import errGif from '@/assets/imgs/401_images/401.gif'
-import './styles/401.less'
+import './styles/401.scss'
 
 const Page404 = () => {
+  useTitle('401')
   const navigate = useNavigate()
-  const [isModalVisible, setIsModalVisible] = useState( false )
+  const [isModalVisible, setIsModalVisible] = useState(false)
 
   const backToHome = () => {
-    navigate( '/' )
+    navigate('/')
   }
 
-  const showModal = ( e ) => {
+  const showModal = (e) => {
     e.preventDefault()
-    setIsModalVisible( true )
+    setIsModalVisible(true)
   }
 
   const hideModal = () => {
-    setIsModalVisible( false )
+    setIsModalVisible(false)
   }
 
-  const ewizardClap = 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646'
+  const dynamicSrc = 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646'
 
   return (
-    <DocumentTitle title={'404'}>
       <div className='errPage-container app-container'>
         <Button type='primary' onClick={ backToHome }>返回主页</Button>
         <Row>
@@ -55,12 +55,15 @@ const Page404 = () => {
 
         <Modal
           onCancel={ hideModal }
-          visible={isModalVisible} title={ '随便看' } wrapClassName='more-imgs' footer={ null }>
-          <img src={ewizardClap} className='pan-img' />
+          open={isModalVisible}
+          title={ '随便看' }
+          wrapClassName='more-imgs'
+          footer={ null }
+        >
+          <img src={ dynamicSrc } className='pan-img' />
         </Modal>
 
       </div>
-    </DocumentTitle>
   )
 }
 

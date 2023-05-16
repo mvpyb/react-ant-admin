@@ -9,16 +9,16 @@ import TagsView from './components/tagsView'
 import Settings from './components/settings'
 import RightPanel from '@/components/RightPanel'
 import { Scrollbars } from 'react-custom-scrollbars'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
-const BaseLayout = ( props ) => {
+const BaseLayout = (props) => {
   const {
     tagsView, showSettings, layoutMode, fixedHeader, sidebarStatus
   } = props
 
   return (
     <div className={styles.layoutSection}>
-      <Layout style={{ minHeight : '100vh' }}>
+      <Layout style={{ minHeight: '100vh' }}>
         {
           layoutMode !== 'horizontal' ? <SlideBar /> : null
         }
@@ -58,4 +58,4 @@ const mapStateToProps = state => {
     ...state.settings
   }
 }
-export default connect( mapStateToProps )( BaseLayout )
+export default connect(mapStateToProps)(BaseLayout)

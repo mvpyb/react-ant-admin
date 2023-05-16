@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[8479],{8479:function(e,t,n){n.r(t);t.default=function(e){e&&e instanceof Function&&n.e(1072).then(n.bind(n,21072)).then((function(t){var n=t.getCLS,c=t.getFID,u=t.getFCP,a=t.getLCP,f=t.getTTFB;n(e),c(e),u(e),a(e),f(e)}))}}}]);

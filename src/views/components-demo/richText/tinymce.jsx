@@ -2,13 +2,15 @@
 import React from 'react'
 import RichTextEditor from '@/components/RichText/tynimce'
 import { Alert } from 'antd'
+import { useTitle } from 'ahooks'
 
 const TitleContent = () => {
   return <p> 此页面用到的富文本编辑器是 <a href='https://www.tiny.cloud/docs/quick-start/'>Tinymce</a>。</p>
 }
 
 const RichTextTinymce = () => {
-  const editoInput = ( value ) => {
+  useTitle('Tynimce')
+  const editoInput = (value) => {
     // console.log( 'editoInput', value )
   }
 

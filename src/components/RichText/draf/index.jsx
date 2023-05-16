@@ -8,12 +8,12 @@ import draftToHtml from 'draftjs-to-html'
 import draftToMarkdown from 'draftjs-to-markdown'
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import './index.less'
+import './index.scss'
 
 const RichTextEditor = () => {
-  const [editorState, setEditorState] = useState( EditorState.createEmpty() )
+  const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
-  const onEditorStateChange = ( editorState ) => setEditorState( editorState )
+  const onEditorStateChange = (editorState) => setEditorState(editorState)
 
   return (
     <div className={'editor-section'}>
@@ -24,7 +24,7 @@ const RichTextEditor = () => {
           wrapperClassName='wrapper-class'
           editorClassName='editor-class'
           toolbarClassName='toolbar-class'
-          localization={{ locale : 'zh' }}
+          localization={{ locale: 'zh' }}
         />
       </Card>
       <br />
@@ -33,20 +33,20 @@ const RichTextEditor = () => {
           <Card
             title='同步转换HTML'
             bordered={false}
-            style={{ minHeight : 200 }}
+            style={{ minHeight: 200 }}
           >
             {editorState &&
-              draftToHtml( convertToRaw( editorState.getCurrentContent() ) )}
+              draftToHtml(convertToRaw(editorState.getCurrentContent()))}
           </Card>
         </Col>
         <Col span={12}>
           <Card
             title='同步转换MarkDown'
             bordered={false}
-            style={{ minHeight : 200 }}
+            style={{ minHeight: 200 }}
           >
             {editorState &&
-              draftToMarkdown( convertToRaw( editorState.getCurrentContent() ) )}
+              draftToMarkdown(convertToRaw(editorState.getCurrentContent()))}
           </Card>
         </Col>
       </Row>

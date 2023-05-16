@@ -7,14 +7,14 @@ import Logo from './Logo'
 import Menus from './Menu'
 const { Sider } = Layout
 
-const LayoutSider = ( props ) => {
+const LayoutSider = (props) => {
   const { sidebarLogo, sidebarStatus } = props
   const location = useLocation()
-  const [initPath, setInitPath] = React.useState( '' )
+  const [initPath, setInitPath] = React.useState('')
 
-  React.useEffect( () => {
-    setInitPath( location.pathname )
-  }, [] )
+  React.useEffect(() => {
+    setInitPath(location.pathname)
+  }, [])
 
   return (
     <Sider
@@ -22,21 +22,20 @@ const LayoutSider = ( props ) => {
       collapsible
       className={ 'sidebar-section' }
       collapsed={sidebarStatus}
-      style={{ zIndex : '10' }}
+      style={{ zIndex: '10' }}
     >
       { sidebarLogo ? <Logo /> : null }
       {
         initPath ? <Menus initPath={ initPath } /> : null
       }
-
     </Sider>
   )
 }
 
-const mapStateToProps = ( state ) => {
+const mapStateToProps = (state) => {
   return {
     ...state.app,
     ...state.settings
   }
 }
-export default connect( mapStateToProps )( LayoutSider )
+export default connect(mapStateToProps)(LayoutSider)

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 
 // see more : https://www.npmjs.com/package/react-countup/v/2.0.0
 import CountUp from 'react-countup'
-import styles from './index.module.less'
+import styles from './index.module.scss'
 
-const YuCard = ( props ) => {
+const YuCard = (props) => {
   const {
     start = 1,
     end = 9527,
@@ -58,15 +58,15 @@ const YuCard = ( props ) => {
 
 // props校验
 YuCard.propTypes = {
-  start : PropTypes.number,
-  end : PropTypes.number,
-  duration : PropTypes.number,
-  decimals : PropTypes.number,
-  title : PropTypes.string,
-  prefix : PropTypes.string,
-  suffix : PropTypes.string,
-  decimal : PropTypes.string,
-  separator : PropTypes.string
+  start: PropTypes.number,
+  end: PropTypes.number,
+  duration: PropTypes.number,
+  decimals: PropTypes.number,
+  title: PropTypes.string,
+  prefix: PropTypes.string,
+  suffix: PropTypes.string,
+  decimal: PropTypes.string,
+  separator: PropTypes.string
 }
 
 export default YuCard
