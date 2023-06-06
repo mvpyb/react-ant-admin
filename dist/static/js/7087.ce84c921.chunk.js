@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_ant_admin=self.webpackChunkreact_ant_admin||[]).push([[7087],{17087:function(n,e,a){a.r(e);a(34706);var r=a(93098),s=a(10161);e.default=function(){return(0,s.jsxs)("div",{children:[(0,s.jsx)("h1",{children:"Menu1-2 "}),(0,s.jsx)("hr",{}),(0,s.jsx)(r.j3,{})]})}}}]);

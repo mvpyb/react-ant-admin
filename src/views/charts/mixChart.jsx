@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import echarts from '@/vendor/echarts'
-import debounce from 'loadsh/debounce'
+import debounce from 'lodash/debounce'
 
 class MixChart extends Component {
   state = {

@@ -1,67 +1,64 @@
 
 const path = require( 'path' )
 const { GLOBAL_DATA } = require( './src/config/constant' )
+const { Compress, SplitChunks } = require("./scripts")
+const SpeedMeasurePlugin = require( 'speed-measure-webpack-plugin' )
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CompressionPlugin = require("compression-webpack-plugin")
 
 const resolve = pathUrl => path.join(__dirname, pathUrl)
-const SpeedMeasurePlugin = require( 'speed-measure-webpack-plugin' )
-// const TerserPlugin = require("terser-webpack-plugin")
 const env = process.env
-// const isEnvProduction = env.NODE_ENV === 'production'
+const isEnvProduction = env.NODE_ENV === 'production'
 
 // https://blog.csdn.net/guxin_duyin/article/details/127048203
 // https://github.com/dilanx/craco/blob/main/packages/craco/README.md
 module.exports = {
   reactScriptsVersion: 'react-scripts' /* (default value) */,
-  // eslint: {
-  //   mode: 'file',
-  // },
   webpack: {
     alias: {
       '@': resolve('src')
     },
-    configure(config) {
-      // config.output.path = resolve( "./dist")
-      // config.output.cleanUp = true
+    // https://www.likecs.com/ask-275347.html
+    configure(config, { env, paths }) {
+      config.output = {
+        ...config.output,
+        path: resolve( "./dist")
+      }
+      
       // 监控 webpack 每一步操作的耗时
       config.plugins.push(
         new SpeedMeasurePlugin()
       )
       
-      // const Compress = new TerserPlugin({
-      //   terserOptions: {
-      //     sourceMap: false,
-      //     ecma: undefined,
-      //     warnings: false,
-      //     parse: {
-      //       ecma: 8,
-      //     },
-      //     // https://github.com/terser/terser#compress-options optimization
-      //     compress: {
-      //       ecma: 5,
-      //       warnings: false,
-      //       comparisons: false,
-      //       inline: 2,
-      //       drop_console: process.env.NODE_ENV === "production", // 生产环境下移除控制台所有的内容
-      //       drop_debugger: true,
-      //       pure_funcs:
-      //         process.env.NODE_ENV === "production" ? ["console.log"] : "", // 生产环境下移除console
-      //     },
-      //     mangle: {
-      //       safari10: true,
-      //     },
-      //     // keep_classnames: isEnvProductionProfile,
-      //     // keep_fnames: isEnvProductionProfile,
-      //     output: {
-      //       ecma: 5,
-      //       comments: false,
-      //       // Turned on because emoji and regex is not minified properly using default
-      //       // https://github.com/facebook/create-react-app/issues/2488
-      //       ascii_only: true,
-      //     },
-      //   },
-      // })
-      // config.optimization.minimizer[0] = Compress
-      // config.optimization.minimizer.push( Compress )
+      // 打包依赖插件分析
+      if( isEnvProduction ) {
+        if( env['REACT_APP_ANALYZER'] === 'true' ) {
+          config.plugins.push(
+            new BundleAnalyzerPlugin()
+          )
+        }
+      }
+  
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: SplitChunks,
+        minimizer: [
+          // Compress,
+          ...config.optimization.minimizer
+        ],
+      }
+  
+      // gzip 压缩
+      config.plugins.push(
+        new CompressionPlugin({
+          filename: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: /\.(js|jsx|ts|tsx|json|scss|css|html|svg)$/,
+          threshold: 0, // 只有大小大于该值的资源会被处理
+          minRatio: 1, // 默认0.8 只有压缩率小于这个值的资源才会被处理
+          deleteOriginalAssets: env['REACT_APP_COMPRESS_CLEAN'] === 'true' // 删除原文件
+        })
+      )
       
       const oneOf_loc = config.module.rules.findIndex( rule => rule.oneOf )
       config.module.rules[oneOf_loc].oneOf = [
@@ -117,11 +114,12 @@ module.exports = {
         },
         ...config.module.rules[oneOf_loc].oneOf
       ]
-  
-      // console.log('webpackConfig', config)
       return config
     },
-    
+    plugins:{
+      // add:[],
+      // remove:[]
+    }
   },
   style: {
     postcss: {

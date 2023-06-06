@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_ant_admin=self.webpackChunkreact_ant_admin||[]).push([[5608],{95608:function(a,t,e){a.exports=e.p+"static/media/big.63f559a03f829d4d22b2.jpg"}}]);

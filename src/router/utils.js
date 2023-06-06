@@ -1,20 +1,22 @@
 
 import React, { Suspense, lazy } from 'react'
-import Loadable from 'react-loadable'
+// import Loadable from 'react-loadable'
 import Loading from '@/components/Loading'
 
-// 当前版本废弃使用，改用Suspense + Lazy 实现：文档： https://www.npmjs.com/package/react-loadable
-export const dynamicImport = (fn) => {
-  return Loadable({
-    loader: fn,
-    loading: Loading
-    // delay : 100,
-    // timedOut : 1000 * 60 * 5 // 5分钟
-  })
-}
+// // 当前版本废弃使用，改用Suspense + Lazy 实现：文档： https://www.npmjs.com/package/react-loadable
+// export const dynamicImport = (fn) => {
+//   return Loadable({
+//     loader: fn,
+//     loading: Loading
+//     // delay : 100,
+//     // timedOut : 1000 * 60 * 5 // 5分钟
+//   })
+// }
+
+// 此处返回值需要包装成一个function
 export const LazyLoad = (path, webpackChunkName = '') => {
   const Comp = lazy(() => import(`@/${path}`))
-  return (
+  return () => (
     <Suspense fallback={<> <Loading /></>}>
       <Comp />
     </Suspense>

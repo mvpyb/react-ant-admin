@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[728],{728:function(e,a,c){e.exports=c.p+"static/media/monkey2.bb1a3ac1b29942aea817.png"}}]);

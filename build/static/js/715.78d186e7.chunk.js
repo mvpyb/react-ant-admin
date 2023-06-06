@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[715],{60715:function(t,e,n){n.r(e),e.default={handleButton:"RightPanel_handleButton__CCs9e",rightDrawContainer:"RightPanel_rightDrawContainer__LHtlE"}}}]);

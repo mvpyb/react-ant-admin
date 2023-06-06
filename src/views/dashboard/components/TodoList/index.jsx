@@ -1,6 +1,6 @@
 
 import React, { useState, useMemo } from 'react'
-import cloneDeep from 'loadsh/cloneDeep'
+import cloneDeep from 'lodash/cloneDeep'
 import Todo from './todo'
 import { localStorageHandle } from '@/utils/storages'
 import './index.scss'

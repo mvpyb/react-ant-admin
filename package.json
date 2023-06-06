@@ -1,5 +1,5 @@
 {
-  "name": "react18",
+  "name": "react-ant-admin",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,10 +8,12 @@
     "test": "craco test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src -c .eslintrc.js --fix --ext .ts,.tsx,.js,.jsx src",
+    "preview": "cd dist && live-server --port=9527",
     "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/css": "^11.11.0",
+    "@rc-component/color-picker": "^1.0.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -30,14 +32,13 @@
     "i18next": "^22.4.15",
     "js-cookie": "^3.0.5",
     "jszip": "^3.10.1",
-    "loadsh": "^0.0.4",
+    "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "ol": "^7.3.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-countup": "^6.4.2",
-    "react-custom-scrollbars": "^4.2.1",
     "react-document-title": "^2.0.3",
     "react-dom": "^18.2.0",
     "react-draft-wysiwyg": "^1.15.0",
@@ -55,6 +56,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
+    "compression-webpack-plugin": "^5.0.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.40.0",
     "eslint-plugin-react": "^7.32.2",
@@ -67,7 +69,8 @@
     "speed-measure-webpack-plugin": "^1.5.0",
     "svg-sprite-loader": "^6.0.11",
     "svgo-loader": "^4.0.0",
-    "terser-webpack-plugin": "^5.3.8"
+    "terser-webpack-plugin": "^5.3.8",
+    "webpack-bundle-analyzer": "^4.8.0"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx}": [

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_ant_admin=self.webpackChunkreact_ant_admin||[]).push([[6709],{66709:function(e,n,t){t.r(n),t.d(n,{login:function(){return a}});t(77494);function a(e){return Promise.resolve({code:200,message:"success",data:{token:"admin-token"}})}}}]);

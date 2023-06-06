@@ -18,7 +18,8 @@ function generateRouter(routers) {
      * */
     let element
     if (Component) {
-      element = typeof Component === 'function' ? <Component /> : Component
+      // element = typeof Component === 'function' ? <Component /> : Component
+      element = <Component />
     } else {
       if (redirect) {
         element = <Navigate to={ item.redirect } replace />
@@ -30,8 +31,8 @@ function generateRouter(routers) {
 }
 
 const DynamicRouter = (props) => {
-  const routeList = props.routes
-  return useRoutes(generateRouter(routeList))
+  const list = generateRouter(props.routes)
+  return useRoutes(list)
 }
 
 export default DynamicRouter

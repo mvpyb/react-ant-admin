@@ -1,12 +1,11 @@
 
-import React, {
-  useRef, useMemo, useState, useCallback, useEffect
-} from 'react'
+import React, { useRef, useMemo, useState, useCallback, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { DELETE_TAGS, CLEAR_ALL_TAGS, CLOSE_OTHERS_TAGS } from '@/store/reducers/tagsView'
 import { UPDATE_TAGS, SET_DEFAULT_TAGS } from '@/store/reducers/tagsView'
-import { Scrollbars } from 'react-custom-scrollbars'
+// import { Scrollbars } from 'react-custom-scrollbars'
+import { Scrollbars } from '@/vendor/react-custom-scrollbars.min.js'
 import { Tag } from 'antd'
 import { isExternal } from '@/utils/validate'
 import styles from './index.module.scss'

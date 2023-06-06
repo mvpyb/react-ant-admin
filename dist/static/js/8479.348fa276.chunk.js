@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_ant_admin=self.webpackChunkreact_ant_admin||[]).push([[8479],{8479:function(n,t,e){e.r(t);t.default=function(n){n&&n instanceof Function&&e.e(1072).then(e.bind(e,21072)).then((function(t){var e=t.getCLS,a=t.getFID,c=t.getFCP,i=t.getLCP,u=t.getTTFB;e(n),a(n),c(n),i(n),u(n)}))}}}]);

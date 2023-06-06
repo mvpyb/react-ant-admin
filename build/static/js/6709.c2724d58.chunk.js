@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[6709],{66709:function(e,n,s){s.r(n),s.d(n,{login:function(){return t}});s(77494);function t(e){return Promise.resolve({code:200,message:"success",data:{token:"admin-token"}})}}}]);

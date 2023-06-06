@@ -1,1 +1,0 @@
-(this["webpackJsonpreact-ant-admin"]=this["webpackJsonpreact-ant-admin"]||[]).push([[22],{1844:function(n,t,a){"use strict";a.r(t);var e=a(0),c=a.n(e);t.default=function(){return c.a.createElement("h1",null,"Menu1-1")}}}]);

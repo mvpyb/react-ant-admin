@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import echarts from '@/vendor/echarts'
-import debounce from 'loadsh/debounce'
+import debounce from 'lodash/debounce'
 
 class PieChart extends Component {
   static propTypes = {

@@ -8,7 +8,8 @@ import SlideBar from './components/sidebar'
 import TagsView from './components/tagsView'
 import Settings from './components/settings'
 import RightPanel from '@/components/RightPanel'
-import { Scrollbars } from 'react-custom-scrollbars'
+// import { Scrollbars } from 'react-custom-scrollbars'
+import { Scrollbars } from '@/vendor/react-custom-scrollbars.min.js'
 import styles from './index.module.scss'
 
 const BaseLayout = (props) => {

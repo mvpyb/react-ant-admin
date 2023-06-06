@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_ant_admin=self.webpackChunkreact_ant_admin||[]).push([[9112],{89112:function(a,t,c){a.exports=c.p+"static/media/iconfont.c7a1244c7bbbac73b1a0.ttf"}}]);

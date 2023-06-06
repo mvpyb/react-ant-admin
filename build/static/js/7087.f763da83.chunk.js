@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[7087],{17087:function(e,n,r){r.r(n);r(34706);var s=r(93098),c=r(10161);n.default=function(){return(0,c.jsxs)("div",{children:[(0,c.jsx)("h1",{children:"Menu1-2 "}),(0,c.jsx)("hr",{}),(0,c.jsx)(s.j3,{})]})}}}]);

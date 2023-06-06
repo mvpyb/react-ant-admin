@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_ant_admin=self.webpackChunkreact_ant_admin||[]).push([[8272],{8272:function(a,e,t){a.exports=t.p+"static/media/logo.2d27ead7c10f774c5306.svg"}}]);

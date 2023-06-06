@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_ant_admin=self.webpackChunkreact_ant_admin||[]).push([[8867],{78867:function(a,n,t){t.r(n);var e,c=t(87886),u=/\.\/(.*)\.svg/,r=(e=c,e.keys()).map((function(a){return a.match(u)[1]}));n.default=r}}]);

@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
-import { Scrollbars } from 'react-custom-scrollbars'
+// import { Scrollbars } from 'react-custom-scrollbars'
+import { Scrollbars } from '@/vendor/react-custom-scrollbars.min.js'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Menu } from 'antd'

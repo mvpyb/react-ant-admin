@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact18=self.webpackChunkreact18||[]).push([[6474],{6474:function(e,n,u){u.r(n);u(34706);var c=u(10161);n.default=function(){return(0,c.jsx)("h1",{children:"Menu1-1"})}}}]);
